@@ -1,11 +1,10 @@
 import { Outlet } from "react-router-dom";
+import Navbar from "./Navbar";
 
 export default function Root() {
   return (
     <>
-      <nav>
-        <h1>Tasks</h1>
-      </nav>
+      <Navbar />
       <main>
         <Outlet />
       </main>

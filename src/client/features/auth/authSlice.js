@@ -10,6 +10,7 @@ const authApi = api.injectEndpoints({
         method: "POST",
         body: credentials,
       }),
+      transformErrorResponse: (response) => response.data,
     }),
     login: builder.mutation({
       query: (credentials) => ({
@@ -17,6 +18,7 @@ const authApi = api.injectEndpoints({
         method: "POST",
         body: credentials,
       }),
+      transformErrorResponse: (response) => response.data,
     }),
   }),
 });

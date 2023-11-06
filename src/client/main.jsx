@@ -8,10 +8,17 @@ import store from "./store";
 import Root from "./layout/Root.jsx";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import AuthForm from "./features/auth/AuthForm";
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
+    children: [
+      {
+        path: "/login",
+        element: <AuthForm />,
+      },
+    ],
   },
 ]);
 
