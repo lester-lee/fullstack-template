@@ -6,13 +6,13 @@ export default function NewTask() {
   const [description, setDescription] = useState("");
   const [createTask] = useCreateTaskMutation();
 
-  const tryCreateTask = async (evt) => {
+  const create = async (evt) => {
     evt.preventDefault();
     createTask({ description });
   };
 
   return (
-    <form onSubmit={tryCreateTask}>
+    <form onSubmit={create}>
       <label>
         Description
         <input
@@ -22,7 +22,7 @@ export default function NewTask() {
           required
         />
       </label>
-      <button>+</button>
+      <button>Create</button>
     </form>
   );
 }

@@ -19,8 +19,8 @@ const tasksApi = api.injectEndpoints({
       invalidatesTags: ["Tasks"],
     }),
     editTask: builder.mutation({
-      query: ({ id, task }) => ({
-        url: `/tasks/${id}`,
+      query: (task) => ({
+        url: `/tasks/${task.id}`,
         method: "PUT",
         body: task,
       }),
