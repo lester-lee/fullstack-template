@@ -2,6 +2,7 @@
   "name": "fullstack_template",
   "private": true,
   "version": "0.0.0",
+  "main": "src/server/index.js",
   "scripts": {
     "dev": "nodemon src/server/index.js",
     "build": "vite build",
