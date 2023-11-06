@@ -13,15 +13,12 @@ export default function NewTask() {
 
   return (
     <form onSubmit={create}>
-      <label>
-        Description
-        <input
-          type="text"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          required
-        />
-      </label>
+      <input
+        type="text"
+        value={description}
+        onChange={(e) => setDescription(e.target.value)}
+        required
+      />
       <button>Create</button>
     </form>
   );

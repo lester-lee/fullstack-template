@@ -30,18 +30,17 @@ export default function Task({ task }) {
     <li>
       <form onSubmit={save}>
         <input type="checkbox" checked={task.done} onChange={toggleTask} />
-        <label>
-          Description
-          <input
-            type="text"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            required
-          />
-        </label>
+        <input
+          type="text"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          required
+        />
         <button>Save</button>
+        <button onClick={onDelete} aria-label="delete">
+          🞪
+        </button>
       </form>
-      <button onClick={onDelete}>Delete</button>
     </li>
   );
 }

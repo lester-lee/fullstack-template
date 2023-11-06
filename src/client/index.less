@@ -1,0 +1,36 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter");
+
+@bg: #ffffff;
+@text: #333;
+@link-color: #428bca; // sea blue
+@link-color-hover: darken(@link-color, 10%);
+
+:root {
+  font-family: Inter, sans-serif;
+
+  color: @text;
+  background-color: @bg;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+ul,
+ol,
+menu {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: @link-color;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+    color: @link-color-hover;
+  }
+}

@@ -4,6 +4,8 @@ import NewTask from "./NewTask";
 import Task from "./Task";
 import { useGetTasksQuery } from "./taskSlice";
 
+import "./Tasks.less";
+
 /** Main interface for user to interact with their tasks */
 export default function Tasks() {
   const token = useSelector(selectToken);
@@ -14,9 +16,11 @@ export default function Tasks() {
   }
 
   return (
-    <>
+    <div className="tasks">
       <h1>Tasks</h1>
+      <h2>Add New Task</h2>
       <NewTask />
+      <h2>Your Tasks</h2>
       {isLoading && <p>Loading tasks...</p>}
       {tasks && (
         <ul>
@@ -25,6 +29,6 @@ export default function Tasks() {
           ))}
         </ul>
       )}
-    </>
+    </div>
   );
 }
