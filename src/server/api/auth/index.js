@@ -10,6 +10,11 @@ router.post("/register", async (req, res, next) => {
   try {
     const { username, password } = req.body;
 
+    // Check if username and password provided
+    if (!username || !password) {
+      throw new ServerError(400, "Username and password required.");
+    }
+
     // Check if account already exists
     const user = await prisma.user.findUnique({
       where: { username },
@@ -21,10 +26,9 @@ router.post("/register", async (req, res, next) => {
       );
     }
 
-    // Create new account with hashed password
-    const hashed = await bcrypt.hash(password, 10);
+    // Create new user
     const newUser = await prisma.user.create({
-      data: { username, password: hashed },
+      data: { username, password },
     });
 
     const token = jwt.sign({ id: newUser.id });
@@ -38,6 +42,11 @@ router.post("/register", async (req, res, next) => {
 router.post("/login", async (req, res, next) => {
   try {
     const { username, password } = req.body;
+
+    // Check if username and password provided
+    if (!username || !password) {
+      throw new ServerError(400, "Username and password required.");
+    }
 
     // Check if account exists
     const user = await prisma.user.findUnique({
