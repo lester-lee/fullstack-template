@@ -14,8 +14,8 @@ export default function AuthForm() {
     : "Already have an account? Login here.";
 
   // Controlled form fields
-  const [username, setUsername] = useState("foo");
-  const [password, setPassword] = useState("bar");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   // Form submission
   const [login, { isLoading: loginLoading, error: loginError }] =
