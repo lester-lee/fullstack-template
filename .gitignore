@@ -1,4 +1,5 @@
 .env
+*.db*
 
 # Logs
 logs
