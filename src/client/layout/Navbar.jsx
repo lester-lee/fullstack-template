@@ -12,14 +12,14 @@ export default function Navbar() {
 
   const token = useSelector(selectToken);
 
-  const handleLogout = () => {
-    dispatch(logout());
+  const handleLogout = async () => {
+    await dispatch(logout());
     navigate("/");
   };
 
   return (
     <nav>
-      <h1>Tasks</h1>
+      <h1>Task Tracker</h1>
       <menu>
         <li>
           <NavLink to="/">Home</NavLink>
