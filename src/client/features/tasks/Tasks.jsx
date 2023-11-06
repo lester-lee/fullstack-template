@@ -1,10 +1,11 @@
 import { useSelector } from "react-redux";
 import { selectToken } from "../auth/authSlice";
+import NewTask from "./NewTask";
 import Task from "./Task";
 import { useGetTasksQuery } from "./taskSlice";
 
-/** Displays list of all tasks for the logged-in user */
-export default function TaskList() {
+/** Main interface for user to interact with their tasks */
+export default function Tasks() {
   const token = useSelector(selectToken);
   const { data: tasks, isLoading } = useGetTasksQuery();
 
@@ -15,6 +16,7 @@ export default function TaskList() {
   return (
     <>
       <h1>Tasks</h1>
+      <NewTask />
       {isLoading && <p>Loading tasks...</p>}
       {tasks && (
         <ul>

@@ -9,14 +9,14 @@ import Root from "./layout/Root.jsx";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import AuthForm from "./features/auth/AuthForm";
-import TaskList from "./features/tasks/TaskList";
+import Tasks from "./features/tasks/Tasks";
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
     children: [
-      { path: "/", element: <TaskList /> },
-      { path: "/tasks", element: <TaskList /> },
+      { path: "/", element: <Tasks /> },
+      { path: "/tasks", element: <Tasks /> },
       { path: "/login", element: <AuthForm /> },
     ],
   },
