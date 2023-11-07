@@ -1,14 +1,14 @@
 import { useState } from "react";
-import { useCreateTaskMutation } from "./taskSlice";
+import { useCreateStudentMutation } from "./studentSlice";
 
 /** Form for creating new tasks */
 export default function NewTask() {
   const [description, setDescription] = useState("");
-  const [createTask] = useCreateTaskMutation();
+  const [createStudent] = useCreateStudentMutation();
 
   const create = async (evt) => {
     evt.preventDefault();
-    createTask({ description });
+    createStudent({ description });
   };
 
   return (
