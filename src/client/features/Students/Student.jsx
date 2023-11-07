@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useDeleteTaskMutation, useEditTaskMutation } from "./taskSlice";
+import { useDeleteTaskMutation, useEditTaskMutation } from "./studentSlice";
 
 /** Allows user to read, update, and delete a task */
 export default function Task({ task }) {
