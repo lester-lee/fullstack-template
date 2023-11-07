@@ -2,15 +2,15 @@ const prisma = require("../prisma");
 
 /** Seeds the database with a user and some tasks */
 const seed = async () => {
-  await prisma.user.create({
+  await prisma.students.create({
     data: {
-      username: "foo",
-      password: "bar",
-      tasks: {
+      students: {
         create: [
-          { description: "task 1" },
-          { description: "task 2" },
-          { description: "task 3" },
+          { firstName: "fName" },
+          { lastName: "lName" },
+          { email: "email@email.com" },
+          { imageUrl: "test.com" },
+          { gpa: 3.7 },
         ],
       },
     },
