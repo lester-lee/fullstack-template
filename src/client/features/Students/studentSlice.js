@@ -1,45 +1,51 @@
 import api from "../../store/api";
 
-const tasksApi = api.injectEndpoints({
+const studentApi = api.injectEndpoints({
   endpoints: (builder) => ({
-    getTasks: builder.query({
-      query: () => "/tasks",
-      providesTags: ["Tasks"],
+    // Should query to get the list off all the students and display at the /students endpoint
+    getStudents: builder.query({
+      query: () => "/students",
+      providesTags: ["Students"],
     }),
-    getTask: builder.query({
-      query: (id) => `/tasks/${id}`,
-      providesTags: ["Tasks"],
+    // Should query to get a specific student by their id
+    getStudent: builder.query({
+      query: (id) => `/students/${id}`,
+      providesTags: ["Students"],
     }),
-    createTask: builder.mutation({
-      query: (task) => ({
-        url: "/tasks",
+    // Should create a student mutate the data and update the list of students
+    createStudent: builder.mutation({
+      query: (student) => ({
+        url: "/students",
         method: "POST",
-        body: task,
+        body: student,
       }),
-      invalidatesTags: ["Tasks"],
+      invalidatesTags: ["Students"],
     }),
-    editTask: builder.mutation({
-      query: (task) => ({
-        url: `/tasks/${task.id}`,
+    // Should update a students information by using their student id
+    editStudent: builder.mutation({
+      query: (student) => ({
+        url: `/students/${student.id}`,
         method: "PUT",
-        body: task,
+        body: student,
       }),
-      invalidatesTags: ["Tasks"],
+      invalidatesTags: ["Students"],
     }),
-    deleteTask: builder.mutation({
+    // Should delete a students information from the database by their student id
+    deleteStudent: builder.mutation({
       query: (id) => ({
-        url: `/tasks/${id}`,
+        url: `/students/${id}`,
         method: "DELETE",
       }),
-      invalidatesTags: ["Tasks"],
+      invalidatesTags: ["Students"],
     }),
   }),
 });
 
+// exported functions should be updated for students and not tasks
 export const {
-  useGetTasksQuery,
-  useGetTaskQuery,
-  useCreateTaskMutation,
-  useEditTaskMutation,
-  useDeleteTaskMutation,
-} = tasksApi;
+  useGetStudentsQuery,
+  useGetStudentQuery,
+  useCreateStudentMutation,
+  useEditStudentMutation,
+  useDeleteStudentMutation,
+} = studentApi;
