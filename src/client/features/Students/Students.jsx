@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux";
 import { selectToken } from "../auth/authSlice";
 import NewTask from "./NewTask";
-import Task from "./Task";
-import { useGetTasksQuery } from "./taskSlice";
+import Task from "./Student";
+import { useGetTasksQuery } from "./studentSlice";
 
 import "./Tasks.less";
 
