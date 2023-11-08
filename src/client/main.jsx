@@ -9,6 +9,7 @@ import store from "./store";
 import AuthForm from "./features/auth/AuthForm";
 import Students from "./features/Students/Students.jsx"
 import Root from "./layout/Root.jsx";
+import Student from "./features/Students/Student.jsx"
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 const router = createBrowserRouter([
@@ -18,7 +19,8 @@ const router = createBrowserRouter([
     children: [
       { path: "/", element: <Students /> },
       { path: "/login", element: <AuthForm /> },
-      { path: "/students", element: <Students />}
+      { path: "/students", element: <Students />},
+      { path: "/students/:studentID", element: <Student />}
     ],
   },
 ]);
