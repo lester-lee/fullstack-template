@@ -7,28 +7,65 @@ import { useGetStudentsQuery } from "./studentSlice";
 import "./Students.less";
 
 /** Main interface for user to interact with their tasks */
-export default function Tasks() {
-  const token = useSelector(selectToken);
-  const { data: tasks, isLoading } = useGetStudentsQuery();
+import React, { useState, useEffect } from 'react';
 
-  if (!token) {
-    return <p>You must be logged in to see your tasks.</p>;
-  }
+function StudentList() {
+  const [students, setStudents] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    // Replace with real api once we get there
+    fetch('https://api.example.com/students')
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setStudents(data);
+        setLoading(false);
+        setError(null);
+      })
+      .catch((error) => {
+        setStudents([]);
+        setLoading(false);
+        setError(error);
+      });
+  }, []); 
 
   return (
-    <div className="tasks">
-      <h1>Tasks</h1>
-      <h2>Add New Task</h2>
-      <NewStudent />
-      <h2>Your Tasks</h2>
-      {isLoading && <p>Loading tasks...</p>}
-      {tasks && (
-        <ul>
-          {tasks.map((task) => (
-            <Student key={task.id} task={task} />
+    <div>
+      <h2>List of Students</h2>
+      {loading && <p>Loading...</p>}
+      {error && <p>Error: {error.message}</p>}
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Image URL</th>
+            <th>GPA</th>
+          </tr>
+        </thead>
+        <tbody>
+          {students.map((student) => (
+            <tr key={student.id}>
+              <td>{student.id}</td>
+              <td>{student.firstName}</td>
+              <td>{student.lastName}</td>
+              <td>{student.email}</td>
+              <td>{student.imageUrl}</td>
+              <td>{student.gpa}</td>
+            </tr>
           ))}
-        </ul>
-      )}
+        </tbody>
+      </table>
     </div>
   );
 }
+
+export default StudentList;
