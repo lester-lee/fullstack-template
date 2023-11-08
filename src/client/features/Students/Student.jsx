@@ -1,46 +1,48 @@
 import { useState } from "react";
-import { useDeleteStudentMutation, useEditStudentMutation } from "./studentSlice";
+import { useDeleteStudentMutation, useEditStudentMutation, useGetStudentQuery } from "./studentSlice";
 
 /** Allows user to read, update, and delete a task */
-export default function Task({ task }) {
+export default function Student() {
+  const {id} = useParams();
+  const { data, isLoading, isError } = useGetStudentQuery(id)
   const [editStudent] = useEditStudentMutation();
   const [deleteStudent] = useDeleteStudentMutation();
 
-  const [description, setDescription] = useState(task.description);
+  // const [description, setDescription] = useState(task.description);
 
+  // Might change and utilize this code to take to an update form
   /** Updates the task's `done` status */
   const toggleStudent = async (evt) => {
     const done = evt.target.checked;
     editStudent({ ...task, done });
   };
 
-  /** Saves the task's description */
-  const save = async (evt) => {
-    evt.preventDefault();
-    editStudent({ ...task, description });
-  };
-
-  /** Deletes the task */
+  /** Deletes the student */
   const onDelete = async (evt) => {
     evt.preventDefault();
-    deleteStudent(task.id);
+    deleteStudent(student.id);
   };
+  
+  if (isLoading) {
+    return <h1>Loading Book ...</h1>;
+  }
+
+  if (isError || !data) {
+    return <h1>Error loading data</h1>;
+  }
+
+  const student = data.student
 
   return (
-    <li>
-      <form onSubmit={save}>
-        <input type="checkbox" checked={task.done} onChange={toggleTask} />
-        <input
-          type="text"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          required
-        />
-        <button>Save</button>
-        <button onClick={onDelete} aria-label="delete">
+    <div>
+      <img src={student.imgUrl} />
+      <h2>{student.firstName} {student.lastName}</h2>
+      <p>Email: {student.email}</p>
+      <p>GPA: {student.gpa}</p>
+      <p>Campus:</p>
+      <button onClick={onDelete} aria-label="delete">
           🞪
-        </button>
-      </form>
-    </li>
+      </button>
+    </div>
   );
 }
