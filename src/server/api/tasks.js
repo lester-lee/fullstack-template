@@ -1,8 +1,20 @@
 const { ServerError } = require("../errors");
 const prisma = require("../prisma");
-
 const router = require("express").Router();
+
 module.exports = router;
+
+
+
+/** Sends all students */
+router.get("/students", async (req, res, next) => {
+  try {
+    const students = await prisma.students.findMany();
+    res.json(students);
+  } catch (err) {
+    next(err);
+  }
+});
 
 /** User must be logged in to access tasks. */
 router.use((req, res, next) => {
