@@ -8,6 +8,13 @@ const mockData = [
     imageUrl: "image.com",
     gpa: 4.0,
   },
+  {
+    firstName: "john",
+    lastName: "smith",
+    email: "smith@Merc.com",
+    imageUrl: "image.com",
+    gpa: 2.0,
+  },
 ];
 
 const seed = async () => {

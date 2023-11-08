@@ -4,8 +4,8 @@ const router = require("express").Router();
 
 module.exports = router;
 
-/** Sends all students */
-router.get("/students", async (req, res, next) => {
+// Sends all students 
+router.get("/", async (req, res, next) => {
   try {
     const students = await prisma.students.findMany();
     res.json(students);
@@ -13,5 +13,3 @@ router.get("/students", async (req, res, next) => {
     next(err);
   }
 });
-
-
