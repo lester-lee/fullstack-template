@@ -1,6 +1,5 @@
 import { useGetStudentsQuery } from "./studentSlice";
 import StudentForm from "./StudentForm";
-import NewStudent from "./NewStudent";
 
 export default function Students() {
   const { data: students, isLoading } = useGetStudentsQuery();
@@ -34,6 +33,7 @@ export default function Students() {
           ))}
         </tbody>
       </table>
+      <StudentForm />
     </div>
   );
 }
