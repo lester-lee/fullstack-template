@@ -44,3 +44,19 @@ router.get("/:id", async (req, res, next) => {
     next(err);
   }
 });
+
+// Update student by their id
+router.put("/:id", async (req, res, next) => {
+  try {
+    const id = +req.params.id;
+    const { firstName, lastName, email, gpa, imageUrl } = req.body;
+
+    const updatedStudent = await prisma.students.update({
+      where: { id },
+      data: { firstName, lastName, email, gpa, imageUrl },
+    });
+    res.json(updatedStudent);
+  } catch (err) {
+    next(err);
+  }
+});
