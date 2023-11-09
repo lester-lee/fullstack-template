@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useCreateStudentMutation } from "./studentSlice";
-
-import { useDispatch } from "react-redux";
+import "./StudentForm.css";
 
 function StudentForm() {
   const [firstName, setFirstName] = useState(" ");
