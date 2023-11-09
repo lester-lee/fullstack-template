@@ -14,7 +14,7 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-// Updates student and sends it
+// Creates student and sends it
 router.post("/", async (req, res, next) => {
   try {
     const { firstName, lastName, email, gpa, imageUrl } = req.body;
@@ -32,3 +32,5 @@ router.post("/", async (req, res, next) => {
     next(err);
   }
 });
+
+router.
