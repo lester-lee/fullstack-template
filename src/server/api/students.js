@@ -15,14 +15,14 @@ router.get("/", async (req, res, next) => {
 });
 
 
-// Route to get student by ID
-router.get('/:id', (req, res) => {
-  const studentId = parseInt(req.params.id);
-  const student = students.find(student => student.id === studentId);
+// Get student by their id
+router.get("/:id", async (req, res, next) => {
+  try {
+    const id = +req.params.id;
 
-  if (student) {
+    const student = await prisma.students.findUnique({ where: { id } });
     res.json(student);
-  } else {
-    res.status(404).json({ error: 'Student not found' });
+  } catch (err) {
+    next(err);
   }
-})
+});

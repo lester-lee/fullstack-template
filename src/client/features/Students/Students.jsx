@@ -1,5 +1,6 @@
 import {useGetStudentsQuery} from "./studentSlice"
 import { Link } from 'react-router-dom';
+import "./pretty.css"
 
 export default function Students(){
   const {data:students, isLoading} = useGetStudentsQuery()
@@ -17,17 +18,22 @@ export default function Students(){
           <th>ID</th>
           <th>First Name</th>
           <th>Last Name</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
         {students.map((student) => (
           <tr key={student.id}>
-            <Link to={`/students/${student.id}`}>
-              {student.id} 
-            </Link>
+            <td>{student.id}</td>
             <td>{student.firstName}</td>
             <td>{student.lastName}</td>
+            <td>
+            <Link to={`/students/${student.id}`}>
+              More Info
+            </Link>
+            </td>
           </tr>
+          
         ))}
       </tbody>
     </table>
