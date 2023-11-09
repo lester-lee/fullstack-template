@@ -1,11 +1,11 @@
 import { useDeleteStudentMutation, useGetStudentQuery } from "./studentSlice";
 import { useParams } from "react-router-dom";
+import UpdateForm from "./UpdateForm";
 
 export default function Student() {
     const {id} = useParams();
     const { data, isLoading, isError } = useGetStudentQuery(id);
     const [deleteStudent] = useDeleteStudentMutation();
-    console.log(data)
 
     const onDelete = async (evt) => {
         evt.preventDefault();
@@ -28,7 +28,9 @@ export default function Student() {
             <h2>{student.firstName} {student.lastName}</h2>
             <p>Email: {student.email}</p>
             <p>GPA: {student.gpa}</p>
-            <button onClick={onDelete} aria-label="delete"></button>
+            <button onClick={onDelete} aria-label="delete"> Delete </button>
+            <br />
+            <UpdateForm />
         </div>
     )
 }
