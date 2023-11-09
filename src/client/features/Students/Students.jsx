@@ -9,20 +9,30 @@ export default function Students(){
 
   return(
     <div>
-      <ul>
-      {
-        students.map((student)=> (
-          <li key={student.id}>
-            {student.firstName}
-            {student.lastName}
-            {student.email}
-            {student.gpa}
-          </li>
-
-        ))
-      }
-      </ul>
-    </div>
+    <h2>List of Students</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>GPA</th>
+        </tr>
+      </thead>
+      <tbody>
+        {students.map((student) => (
+          <tr key={student.id}>
+            <td>{student.id}</td>
+            <td>{student.firstName}</td>
+            <td>{student.lastName}</td>
+            <td>{student.email}</td>
+            <td>{student.gpa}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
 
   )
 } 
