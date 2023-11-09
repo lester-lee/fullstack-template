@@ -2,14 +2,14 @@ import {useGetStudentsQuery} from "./studentSlice"
 import { Link } from 'react-router-dom';
 import "./pretty.css"
 
-export default function Students(){
-  const {data:students, isLoading} = useGetStudentsQuery()
-  console.log(students)
-  if (isLoading){
-    return <p>is loading</p>
+export default function Students() {
+  const { data: students, isLoading } = useGetStudentsQuery();
+  console.log(students);
+  if (isLoading) {
+    return <p>is loading</p>;
   }
 
-  return(
+  return (
     <div>
     <h2>List of Students</h2>
     <table>
