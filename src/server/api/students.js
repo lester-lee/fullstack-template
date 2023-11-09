@@ -14,49 +14,14 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-// Creates student and sends it
-router.post("/", async (req, res, next) => {
-  try {
-    const { firstName, lastName, email, gpa, imageUrl } = req.body;
-    const student = await prisma.students.create({
-      data: {
-        firstName,
-        lastName,
-        email,
-        imageUrl,
-        gpa,
-      },
-    });
+// Route to get student by ID
+router.get('/:id', (req, res) => {
+  const studentId = parseInt(req.params.id);
+  const student = students.find(student => student.id === studentId);
+
+  if (student) {
     res.json(student);
-  } catch (err) {
-    next(err);
+  } else {
+    res.status(404).json({ error: 'Student not found' });
   }
-});
-
-// Get student by their id
-router.get("/:id", async (req, res, next) => {
-  try {
-    const id = +req.params.id;
-
-    const student = await prisma.students.findUnique({ where: { id } });
-    res.json(student);
-  } catch (err) {
-    next(err);
-  }
-});
-
-// Update student by their id
-router.put("/:id", async (req, res, next) => {
-  try {
-    const id = +req.params.id;
-    const { firstName, lastName, email, gpa, imageUrl } = req.body;
-
-    const updatedStudent = await prisma.students.update({
-      where: { id },
-      data: { firstName, lastName, email, gpa, imageUrl },
-    });
-    res.json(updatedStudent);
-  } catch (err) {
-    next(err);
-  }
-});
+})
