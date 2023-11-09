@@ -14,6 +14,9 @@ export default function Students(){
         students.map((student)=> (
           <li key={student.id}>
             {student.firstName}
+            {student.lastName}
+            {student.email}
+            {student.gpa}
           </li>
 
         ))
