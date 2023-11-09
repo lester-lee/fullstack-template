@@ -59,3 +59,16 @@ router.put("/:id", async (req, res, next) => {
     next(err);
   }
 });
+
+// Delete a single student by their id
+router.delete("/:id", async (req, res, next) => {
+  try {
+    const id = +req.params.id;
+    const task = await prisma.task.findUnique({ where: { id } });
+
+    await prisma.task.delete({ where: { id } });
+    res.sendStatus(204);
+  } catch (err) {
+    next(err);
+  }
+});
