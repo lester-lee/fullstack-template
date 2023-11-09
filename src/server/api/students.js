@@ -4,7 +4,7 @@ const router = require("express").Router();
 
 module.exports = router;
 
-// Sends all students 
+// Sends all students
 router.get("/", async (req, res, next) => {
   try {
     const students = await prisma.students.findMany();
@@ -13,7 +13,6 @@ router.get("/", async (req, res, next) => {
     next(err);
   }
 });
-
 
 // Route to get student by ID
 router.get('/:id', (req, res) => {
