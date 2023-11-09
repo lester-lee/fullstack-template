@@ -10,6 +10,7 @@ import AuthForm from "./features/auth/AuthForm";
 import Students from "./features/Students/Students.jsx"
 import Root from "./layout/Root.jsx";
 import Student from "./features/Students/Student.jsx"
+import student from "./features/Students/Student.jsx"
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 const router = createBrowserRouter([
@@ -20,7 +21,7 @@ const router = createBrowserRouter([
       { path: "/", element: <Students /> },
       { path: "/login", element: <AuthForm /> },
       { path: "/students", element: <Students />},
-      { path: `/students/:studentID`, element: <Student />}
+      { path: "/students/:id", element: <Student /> }
     ],
   },
 ]);
@@ -32,5 +33,3 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     </Provider>
   </React.StrictMode>
 );
-
-export default main;
