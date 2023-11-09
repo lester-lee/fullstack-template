@@ -33,4 +33,14 @@ router.post("/", async (req, res, next) => {
   }
 });
 
-router.
+// Get student by their id
+router.get("/:id", async (req, res, next) => {
+  try {
+    const id = +req.params.id;
+
+    const student = await prisma.students.findUnique({ where: { id } });
+    res.json(student);
+  } catch (err) {
+    next(err);
+  }
+});
