@@ -2,8 +2,12 @@ const prisma = require("../prisma");
 
 /** Seeds the database with a user and some tasks */
 const seed = async () => {
-  await prisma.user.create({
-    data: {
+  await prisma.user.upsert({
+    where: {
+      username: "foo",
+    },
+    update: {},
+    create: {
       username: "foo",
       password: "bar",
       tasks: {
