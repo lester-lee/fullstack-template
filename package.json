@@ -3,10 +3,14 @@
   "private": true,
   "version": "0.0.0",
   "main": "src/server/index.js",
+  "engines": {
+    "node": ">=18.16.0"
+  },
   "scripts": {
     "dev": "nodemon src/server/index.js",
     "build": "vite build",
-    "start": "node src/server"
+    "start": "node src/server",
+    "deploy": "prisma migrate deploy && prisma db seed"
   },
   "prisma": {
     "schema": "src/server/prisma/schema.prisma",
