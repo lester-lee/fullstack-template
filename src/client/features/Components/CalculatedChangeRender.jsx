@@ -1,4 +1,4 @@
-import react, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 const calculatedChange = {
   twenties: 2,
@@ -14,9 +14,6 @@ const calculatedChange = {
 export default function CalculatedChangeRender() {
   const [index, setIndex] = useState(0);
 
-  let renderedValue = null;
-  let renderedKey = null;
-
   const keys = Object.keys(calculatedChange);
   const values = Object.values(calculatedChange);
 
@@ -31,16 +28,19 @@ export default function CalculatedChangeRender() {
     }
   });
 
-  const handleClick = () => {
-    setIndex((index += 1));
-  };
+  let renderedKey = keys[valueIndeces[index]];
+  let renderedValue = valueQueue[index];
 
-  renderedValue = valueQueue[index];
-  renderedKey = keys[valueIndeces[index]];
+  const handleClick = () => {
+    if (index + 1 >= valueQueue.length) {
+      // navigate to finish page?
+      // or if index +1 > value.length, change button text to "Finish," and then navigate
+    }
+    setIndex(index + 1);
+  };
 
   return (
     <>
-      <p>This is rendering</p>
       <p>{renderedKey}</p>
       <p>{renderedValue}</p>
       <button onClick={handleClick}>Next</button>
