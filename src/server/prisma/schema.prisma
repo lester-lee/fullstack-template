@@ -7,17 +7,30 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id       Int    @id @default(autoincrement())
-  username String @unique
+model Store {
+  id       Int       @id @default(autoincrement())
+  username String    @unique
   password String
-  tasks    Task[]
+  products Product[]
 }
 
-model Task {
-  id          Int     @id @default(autoincrement())
-  description String
-  done        Boolean @default(false)
-  userId      Int
-  user        User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+model Product {
+  id       Int     @id @default(autoincrement())
+  name     String
+  price    Float
+  imgUrl   String
+  category String
+  storeId  Int
+  store    Store   @relation(fields: [storeId], references: [id], onDelete: Cascade)
+  addons   Addon[]
+}
+
+model Addon {
+  id        Int     @id @default(autoincrement())
+  name      String
+  price     Float
+  imgUrl    String
+  prompt    String
+  productId Int
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
 }
