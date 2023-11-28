@@ -6,6 +6,9 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
  * If available, an auth token is added to all request headers.
  */
 const api = createApi({
+  baseQuery: fetchBaseQuery({
+    baseUrl: "http://localhost:3000/api",
+  }),
   endpoints: () => ({}),
 });
 

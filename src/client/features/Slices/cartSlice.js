@@ -15,7 +15,7 @@ const cartSlice = createSlice({
       state.cartItems.push(product);
       state.totalPrice += product.price;
     },
-    removefromCart: (state, action) => {
+    removeFromCart: (state, action) => {
       const { product } = action.payload;
       const cartIndex = state.cartItems.findIndex(product);
       state.cartItems.splice(cartIndex, 1);
@@ -24,6 +24,6 @@ const cartSlice = createSlice({
   },
 });
 
-export const { addToCart, removefromCart } = cartSlice.actions;
+export const { addToCart, removeFromCart } = cartSlice.actions;
 
 export default cartSlice.reducer;

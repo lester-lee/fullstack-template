@@ -4,7 +4,9 @@ import ReactDOM from "react-dom/client";
 import "./index.less";
 
 import { Provider } from "react-redux";
-import store from "./store";
+//import store from "./store";
+
+//import AuthForm from "./features/auth/AuthForm";
 
 import Root from "./layout/Root.jsx";
 import CalculatedChangeRender from "./features/Components/CalculatedChangeRender.jsx";
@@ -16,8 +18,8 @@ const router = createBrowserRouter([
     path: "/",
     element: <Root />,
     children: [
-      { path: "/", element: <Root /> },
-      { path: "/renderingTest", element: <CalculatedChangeRender /> },
+      { path: "/products", element: <CashRegister /> },
+      { path: "/products/:id", element: <SingleProduct /> },
     ],
   },
 ]);

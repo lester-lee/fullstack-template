@@ -3,8 +3,10 @@ import CalculatedChangeRender from "../features/Components/CalculatedChangeRende
 export default function Root() {
   return (
     <>
-      <p>This is the Root</p>
-      <CalculatedChangeRender />
+      {/* <Navbar /> */}
+      <main>
+        <Outlet />
+      </main>
     </>
   );
 }
