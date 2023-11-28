@@ -87,4 +87,7 @@ function calculateChange(value) {
     calculatePennies(value);
     value -= changeCalculated.pennies * 0.01;
   }
+  return changeCalculated;
 }
+
+module.exports = calculateChange;
