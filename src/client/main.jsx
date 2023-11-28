@@ -7,16 +7,17 @@ import { Provider } from "react-redux";
 import store from "./store";
 
 import Root from "./layout/Root.jsx";
+import CalculatedChangeRender from "./features/Components/CalculatedChangeRender.jsx";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
     children: [
-      { path: "/", element: <CashRegister /> },
-      { path: "/change", element: <Tasks /> },
-      { path: "/login", element: <AuthForm /> },
+      { path: "/", element: <Root /> },
+      { path: "/renderingTest", element: <CalculatedChangeRender /> },
     ],
   },
 ]);
