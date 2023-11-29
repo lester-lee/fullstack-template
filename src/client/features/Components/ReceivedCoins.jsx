@@ -10,12 +10,31 @@
 // next button to CalculatedChangeRender.jsx
 
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addTotalReceived } from "../slices/cartSlice";
 
 export default function ReceivedCoins() {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   return (
     <>
       <h1>Received Coins page</h1>
+      <button onClick={() => dispatch(addTotalReceived({ value: 0.25 }))}>
+        .25
+      </button>
+      <br />
+      <button onClick={() => dispatch(addTotalReceived({ value: 0.1 }))}>
+        .10
+      </button>
+      <br />
+      <button onClick={() => dispatch(addTotalReceived({ value: 0.05 }))}>
+        .05
+      </button>
+      <br />
+      <button onClick={() => dispatch(addTotalReceived({ value: 0.01 }))}>
+        .01
+      </button>
+      <br />
       <button onClick={() => navigate("/change")}>Next</button>
     </>
   );
