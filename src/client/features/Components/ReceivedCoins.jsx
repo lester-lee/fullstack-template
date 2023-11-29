@@ -1,2 +1,7 @@
-// onClick for "next" button, runs this function with value from cart(from store)
-const calculateChange = require("../changeCalculation.js");
+//pictures associated with values
+
+// onClick the picture, it adds value to total received (connected to navBar (shared state))
+
+// a delete button
+
+// next button
