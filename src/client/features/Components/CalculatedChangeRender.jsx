@@ -2,18 +2,20 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-const calculatedChange = {
-  twenties: 2,
-  tens: 3,
-  fives: 1,
-  singles: 0,
-  quarters: 2,
-  dimes: 0,
-  nickels: 4,
-  pennies: 0,
-};
+// const calculatedChange = {
+//   twenties: 2,
+//   tens: 3,
+//   fives: 1,
+//   singles: 0,
+//   quarters: 2,
+//   dimes: 0,
+//   nickels: 4,
+//   pennies: 0,
+// };
 
 export default function CalculatedChangeRender() {
+  const calculatedChange = useSelector((state) => state.cart.calculatedChange);
+
   const navigate = useNavigate();
   const [index, setIndex] = useState(0);
 

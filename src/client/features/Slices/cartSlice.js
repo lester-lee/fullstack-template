@@ -27,10 +27,18 @@ const cartSlice = createSlice({
       const { value } = action.payload;
       state.totalReceived += value;
     },
+    addCalculatedChange: (state, action) => {
+      const { changeObject } = action.payload;
+      state.calculatedChange = changeObject;
+    },
   },
 });
 
-export const { addToCart, removeFromCart, addTotalReceived } =
-  cartSlice.actions;
+export const {
+  addToCart,
+  removeFromCart,
+  addTotalReceived,
+  addCalculatedChange,
+} = cartSlice.actions;
 
 export default cartSlice.reducer;

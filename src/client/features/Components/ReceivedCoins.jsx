@@ -10,12 +10,26 @@
 // next button to CalculatedChangeRender.jsx
 
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { addTotalReceived } from "../slices/cartSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { addTotalReceived, addCalculatedChange } from "../slices/cartSlice";
+
+import calculateChange from "../changeCalculation";
 
 export default function ReceivedCoins() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const totalPrice = useSelector((state) => state.cart.totalPrice);
+
+  const totalReceived = useSelector((state) => state.cart.totalReceived);
+
+  const changeToGive = totalPrice - totalReceived;
+
+  const handleClick = () => {
+    const result = calculateChange(35.35);
+    dispatch(addCalculatedChange({ changeObject: result }));
+    navigate("/change");
+  };
   return (
     <>
       <h1>Received Coins page</h1>
@@ -35,7 +49,7 @@ export default function ReceivedCoins() {
         .01
       </button>
       <br />
-      <button onClick={() => navigate("/change")}>Next</button>
+      <button onClick={handleClick}>Next</button>
     </>
   );
 }
