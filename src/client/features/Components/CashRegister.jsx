@@ -1,30 +1,38 @@
-import { useSelector, useDispatch } from "react-redux";
-import { addToCart, removeFromCart } from "../Slices/cartSlice";
+import { useSelector } from "react-redux";
+import { useGetProductsQuery } from "../../store/productsSlice";
 import { useNavigate } from "react-router-dom";
 
 const CashRegister = () => {
+  const { data: products, isLoading } = useGetProductsQuery();
+
   const navigate = useNavigate();
 
   const total = useSelector((state) => state.cart.totalPrice);
   console.log("total", total);
-  const dispatch = useDispatch();
 
-  const handleAddToCart = (product) => {
-    dispatch(addToCart(product));
-  };
+  const cartItems = useSelector((state) => state.cart.cartItems);
+  console.log("cart items", cartItems);
 
-  const handleRemoveFromCart = (product) => {
-    dispatch(removeFromCart(product));
-  };
-
-  return (
+  return isLoading ? (
+    <h2>Loading...</h2>
+  ) : (
     <div>
-      <h1>This is the cash register component</h1>
-      <button onClick={() => navigate("/received-bills")}>Checkout</button>
-      <div className="product-list">
-        <div className="product-card"></div>
+      <div className="product-container">
+        <ul className="product-list">
+          {products.map((product) => {
+            <ProductCard key={product.id} product={product} />;
+          })}
+        </ul>
       </div>
-      <div className="cart"></div>
+      <div className="cart">
+        <ul className="cart-list">
+          {cartItems.map((product) => {
+            <CartCard key={product.id} item={product} />;
+          })}
+        </ul>
+        <h2>Total: {total}</h2>
+      </div>
+      <button onClick={() => navigate("/received-bills")}>Checkout</button>
     </div>
   );
 };

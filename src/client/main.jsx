@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-
 import "./index.less";
 
 import { Provider } from "react-redux";
@@ -28,7 +27,11 @@ const router = createBrowserRouter([
       { path: "/", element: <StartScreen /> },
       { path: "/products", element: <CashRegister /> },
       { path: "/start", element: <StartScreen /> },
-      { path: "/", element: <StartScreen /> },
+      { path: "/received-bills", element: <ReceivedBills /> },
+      { path: "/received-coins", element: <ReceivedCoins /> },
+      { path: "/change", element: <CalculatedChangeRender /> },
+      { path: "/total-change", element: <TotalChange /> },
+      { path: "/completed", element: <Completed /> },
     ],
   },
 ]);

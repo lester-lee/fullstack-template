@@ -14,8 +14,23 @@ const cartSlice = createSlice({
     addToCart: (state, action) => {
       //product object for use in price calculation and cart cards
       const { product } = action.payload;
-      state.cartItems.push(product);
-      state.totalPrice += product.price;
+
+      // Check if the product is a duplicate of an item already in the cart
+      const existingCartItem = state.cartItems.find(
+        (cartItem) => cartItem.productId === product.id
+      );
+      // If product already exists in the cart update quantity and total price
+      if (existingCartItem) {
+        existingCartItem.quantity++;
+        console.log(
+          `${existingCartItem.name} quantity updated to ${existingCartItem.quantity}`
+        );
+        state.totalPrice += product.price;
+      } else {
+        // If product not already in cart, add to cart and give quantity of 1
+        state.cartItems.push({ ...product, quantity: 1 });
+        state.totalPrice += product.price;
+      }
     },
     removeFromCart: (state, action) => {
       const { product } = action.payload;
