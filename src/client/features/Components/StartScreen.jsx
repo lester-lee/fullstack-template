@@ -1,11 +1,13 @@
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function StartScreen() {
-  const navigate = useNavigate();
-  return (
-    <>
-      <h1>This is the start screen</h1>
-      <button onClick={() => navigate("products")}>Start</button>
-    </>
-  );
+   return (
+   <>
+   <div>
+   <Link className="start-button" to={'/products'}> Start </Link>
+   </div>
+   <div>
+   <Link className="setup-button" to={'/login'}> Setup </Link>
+   </div>   </>
+   )
 }

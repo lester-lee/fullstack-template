@@ -1,5 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import StartScreen from "./features/Components/StartScreen.jsx";
+import CashRegister from "./features/Components/CashRegister.jsx";
+
 
 import "./index.less";
 
@@ -26,11 +29,8 @@ const router = createBrowserRouter([
     children: [
       { path: "/", element: <StartScreen /> },
       { path: "/products", element: <CashRegister /> },
-      { path: "/received-bills", element: <ReceivedBills /> },
-      { path: "/received-coins", element: <ReceivedCoins /> },
-      { path: "/change", element: <CalculatedChangeRender /> },
-      { path: "/total-change", element: <TotalChange /> },
-      { path: "/completed", element: <Completed /> },
+      { path: "/start", element: <StartScreen /> },
+      { path: "/", element: <StartScreen /> },
     ],
   },
 ]);
