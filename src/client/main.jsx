@@ -9,8 +9,10 @@ import { Provider } from "react-redux";
 //import AuthForm from "./features/auth/AuthForm";
 
 import Root from "./layout/Root.jsx";
+import CalculatedChangeRender from "./features/Components/CalculatedChangeRender.jsx";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
 const router = createBrowserRouter([
   {
     path: "/",
