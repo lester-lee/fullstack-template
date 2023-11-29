@@ -1,10 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import StartScreen from "./features/Components/StartScreen.jsx";
+import CashRegister from "./features/Components/CashRegister.jsx";
+
 
 import "./index.less";
 
 import { Provider } from "react-redux";
-//import store from "./store";
+import store from "./store";
 
 //import AuthForm from "./features/auth/AuthForm";
 
@@ -19,7 +22,8 @@ const router = createBrowserRouter([
     element: <Root />,
     children: [
       { path: "/products", element: <CashRegister /> },
-      { path: "/products/:id", element: <SingleProduct /> },
+      { path: "/start", element: <StartScreen /> },
+      { path: "/", element: <StartScreen /> },
     ],
   },
 ]);
