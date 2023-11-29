@@ -8,13 +8,17 @@
 
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { addTotalReceived } from "../slices/cartSlice";
+import { addTotalReceived } from "../Slices/cartSlice";
+import Totalbar from "../../layout/Totals_Navbar";
 
 export default function ReceivedBills() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   return (
     <>
+      <div className="totalbar">
+      <Totalbar />
+      </div>
       <h1>Received Bills page</h1>
       <button onClick={() => dispatch(addTotalReceived({ value: 20 }))}>
         20

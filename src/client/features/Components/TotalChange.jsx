@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import Totalbar from "../../layout/Totals_Navbar";
 //dummydata
 // const calculatedChange = {
 //   twenties: 2,
@@ -36,6 +37,9 @@ export default function TotalChange() {
 
   return (
     <div>
+      <div className="totalbar">
+      <Totalbar />
+      </div>
       <h1>This will show the full amount of change</h1>
       {usableKeys.map((key) => (
         <p key={key}>{key}</p>
