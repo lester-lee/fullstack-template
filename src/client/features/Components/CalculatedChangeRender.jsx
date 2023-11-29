@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Totalbar from "../../layout/Totals_Navbar";
 
 const calculatedChange = {
   twenties: 2,

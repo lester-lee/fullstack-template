@@ -1,21 +1,13 @@
-//button displays prompt then navigates to /products
-// function popup(mylink, windowname) { 
-//     if (! window.focus)return true; 
-//     let href; 
-//     if (typeof(mylink) == 'string') href=mylink; 
-//     else href=mylink.href; 
-//     window.open(href, windowname, 'width=400,height=200,scrollbars=yes'); 
-//     return false; 
-// }
+import { Link } from "react-router-dom";
+
 export default function StartScreen() {
    return (
    <>
-    <button className="startButton">Start</button>
-   <button className="startButton">Setup</button>
-   </>
+   <div>
+   <Link className="start-button" to={'/products'}> Start </Link>
+   </div>
+   <div>
+   <Link className="setup-button" to={'/login'}> Setup </Link>
+   </div>   </>
    )
 }
-
-
-
-//button navigates to /login
