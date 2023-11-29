@@ -12,7 +12,13 @@ import store from "./store";
 //import AuthForm from "./features/auth/AuthForm";
 
 import Root from "./layout/Root.jsx";
+import StartScreen from "./features/Components/StartScreen";
 import CalculatedChangeRender from "./features/Components/CalculatedChangeRender.jsx";
+import CashRegister from "./features/Components/CashRegister";
+import ReceivedBills from "./features/Components/ReceivedBills";
+import ReceivedCoins from "./features/Components/ReceivedCoins";
+import TotalChange from "./features/Components/TotalChange";
+import Completed from "./features/Components/Completed";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
@@ -21,6 +27,7 @@ const router = createBrowserRouter([
     path: "/",
     element: <Root />,
     children: [
+      { path: "/", element: <StartScreen /> },
       { path: "/products", element: <CashRegister /> },
       { path: "/start", element: <StartScreen /> },
       { path: "/", element: <StartScreen /> },
