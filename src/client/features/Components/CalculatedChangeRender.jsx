@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const calculatedChange = {
   twenties: 2,
@@ -12,6 +13,7 @@ const calculatedChange = {
 };
 
 export default function CalculatedChangeRender() {
+  const navigate = useNavigate();
   const [index, setIndex] = useState(0);
 
   const keys = Object.keys(calculatedChange);
@@ -44,6 +46,9 @@ export default function CalculatedChangeRender() {
       <p>{renderedKey}</p>
       <p>{renderedValue}</p>
       <button onClick={handleClick}>Next</button>
+      <button onClick={() => navigate("/total-change")}>
+        View total change
+      </button>
     </>
   );
 }
