@@ -1,7 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import StartScreen from "./features/Components/StartScreen.jsx";
-import CashRegister from "./features/Components/CashRegister.jsx";
 
 
 import "./index.less";
