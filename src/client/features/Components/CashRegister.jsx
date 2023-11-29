@@ -1,8 +1,11 @@
 import { useSelector } from "react-redux";
 import { useGetProductsQuery } from "../../store/productsSlice";
+import { useNavigate } from "react-router-dom";
 
 const CashRegister = () => {
   const { data: products, isLoading } = useGetProductsQuery();
+
+  const navigate = useNavigate();
 
   const total = useSelector((state) => state.cart.totalPrice);
   console.log("total", total);
@@ -29,6 +32,7 @@ const CashRegister = () => {
         </ul>
         <h2>Total: {total}</h2>
       </div>
+      <button onClick={() => navigate("/received-bills")}>Checkout</button>
     </div>
   );
 };

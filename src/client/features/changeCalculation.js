@@ -41,7 +41,7 @@ function calculatePennies(value) {
   calculatedChange.pennies = Math.floor(value / 0.01);
 }
 
-function calculateChange(value) {
+export default function calculateChange(value) {
   if (value >= 20) {
     calculateTwenties(value);
     value -= calculatedChange.twenties * 20;
@@ -89,5 +89,3 @@ function calculateChange(value) {
   }
   return calculatedChange;
 }
-
-module.exports = calculateChange;
