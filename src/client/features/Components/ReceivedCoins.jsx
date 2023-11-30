@@ -15,12 +15,13 @@ import {
   addTotalReceived,
   subtractTotalReceived,
   addCalculatedChange,
-} from "../slices/cartSlice";
+} from "../Slices/cartSlice";
 import { useState } from "react";
 
 import calculateChange from "../changeCalculation";
 import "../../../images/images.css";
 import Totalbar from "../../layout/Totals_Navbar";
+import Popup from "./Popup";
 
 export default function ReceivedCoins() {
   const dispatch = useDispatch();
@@ -43,6 +44,9 @@ export default function ReceivedCoins() {
     dispatch(addCalculatedChange({ changeObject: result }));
     navigate("/change");
   };
+  //Popup:
+  const [buttonPopup, setButtonPopup] = useState(false);
+
   return (
     <>
       <div className="totalbar">
@@ -174,7 +178,12 @@ export default function ReceivedCoins() {
         </>
       ) : null}
       <br />
-      <button onClick={handleClick}>Next</button>
+      <button onClick={() => { setButtonPopup(true); handleClick}}>Next</button>
+      {/* Popup: */}
+      <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
+      <h1 className="popup-header">Tell the customer:</h1>
+      <p className="popup-para">It looks like the cost is more than what you paid, please provide more cash. Thanks!</p>
+      </Popup>
     </>
   );
 }
