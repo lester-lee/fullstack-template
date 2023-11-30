@@ -4,7 +4,7 @@ import cartSlice from "../features/Slices/cartSlice";
 
 const store = configureStore({
   reducer: {
-    // [api.reducerPath]: api.reducer,
+  [api.reducerPath]: api.reducer,
     // auth: authReducer,
     cart: cartSlice,
   },
