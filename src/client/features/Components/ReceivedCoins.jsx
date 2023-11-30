@@ -1,4 +1,3 @@
-import Totalbar from "../../layout/Totals_Navbar";
 //pictures associated with values
 
 // onClick the picture, it adds value to total received (connected to navBar (shared state))
@@ -21,6 +20,7 @@ import { useState } from "react";
 
 import calculateChange from "../changeCalculation";
 import "../../../images/images.css";
+import Totalbar from "../../layout/Totals_Navbar";
 
 export default function ReceivedCoins() {
   const dispatch = useDispatch();
@@ -45,6 +45,9 @@ export default function ReceivedCoins() {
   };
   return (
     <>
+      <div className="totalbar">
+      <Totalbar />
+      </div>
       <h1>Received Coins page</h1>
       {/* dollar coins */}
       <img

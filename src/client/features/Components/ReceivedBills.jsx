@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addTotalReceived, subtractTotalReceived } from "../slices/cartSlice";
 import { useState } from "react";
+import Totalbar from "../../layout/Totals_Navbar";
 
 export default function ReceivedBills() {
   const dispatch = useDispatch();
@@ -25,6 +26,9 @@ export default function ReceivedBills() {
 
   return (
     <>
+      <div className="totalbar">
+      <Totalbar />
+      </div>
       <h1>Received Bills page</h1>
       {/* hundreds */}
       <img

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import Totalbar from "../../layout/Totals_Navbar";
 
 import "../../../images/images.css";
 
@@ -50,6 +51,10 @@ export default function CalculatedChangeRender() {
 
   return (
     <>
+    <div className="totalbar">
+      <Totalbar />
+      </div>
+    
       <p>{renderedValue}</p>
       <p>{renderedKey}</p>
       {renderedKey === "twenties" ? (
