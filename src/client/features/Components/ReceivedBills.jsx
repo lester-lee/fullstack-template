@@ -9,7 +9,7 @@ import "../../../images/images.css";
 
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { addTotalReceived } from "../slices/cartSlice";
+import { addTotalReceived, subtractTotalReceived } from "../slices/cartSlice";
 import { useState } from "react";
 
 export default function ReceivedBills() {
@@ -35,7 +35,20 @@ export default function ReceivedBills() {
           setHundreds(hundreds + 1);
         }}
       />
-      {hundreds > 0 ? <p>x {hundreds}</p> : null}
+      {hundreds > 0 ? (
+        <>
+          <p>x {hundreds}</p>
+          <button
+            className="minus-button"
+            onClick={() => {
+              setHundreds(hundreds - 1);
+              dispatch(subtractTotalReceived({ value: 100 }));
+            }}
+          >
+            -
+          </button>
+        </>
+      ) : null}
       <br />
       <img
         src="src/images/fifty-dollar-bill.jpeg"
@@ -46,7 +59,20 @@ export default function ReceivedBills() {
           setFifties(fifties + 1);
         }}
       />
-      {fifties > 0 ? <p>x {fifties}</p> : null}
+      {fifties > 0 ? (
+        <>
+          <p>x {fifties}</p>
+          <button
+            className="minus-button"
+            onClick={() => {
+              setFifties(fifties - 1);
+              dispatch(subtractTotalReceived({ value: 50 }));
+            }}
+          >
+            -
+          </button>
+        </>
+      ) : null}
       <br />
       <img
         src="src/images/twenty-dollar-bill.jpeg"
@@ -57,7 +83,20 @@ export default function ReceivedBills() {
           setTwenties(twenties + 1);
         }}
       />
-      {twenties > 0 ? <p>x {twenties}</p> : null}
+      {twenties > 0 ? (
+        <>
+          <p>x {twenties}</p>
+          <button
+            className="minus-button"
+            onClick={() => {
+              setTwenties(twenties - 1);
+              dispatch(subtractTotalReceived({ value: 20 }));
+            }}
+          >
+            -
+          </button>
+        </>
+      ) : null}
       <br />
       <img
         src="src/images/ten-dollar-bill.jpg"
@@ -68,7 +107,20 @@ export default function ReceivedBills() {
           setTens(tens + 1);
         }}
       />
-      {tens > 0 ? <p>x {tens}</p> : null}
+      {tens > 0 ? (
+        <>
+          <p>x {tens}</p>
+          <button
+            className="minus-button"
+            onClick={() => {
+              setTens(tens - 1);
+              dispatch(subtractTotalReceived({ value: 10 }));
+            }}
+          >
+            -
+          </button>
+        </>
+      ) : null}
       <br />
       <img
         src="src/images/five-dollar-bill.jpg"
@@ -79,7 +131,20 @@ export default function ReceivedBills() {
           setFives(fives + 1);
         }}
       />
-      {fives > 0 ? <p>x {fives}</p> : null}
+      {fives > 0 ? (
+        <>
+          <p>x {fives}</p>
+          <button
+            className="minus-button"
+            onClick={() => {
+              setFives(fives - 1);
+              dispatch(subtractTotalReceived({ value: 5 }));
+            }}
+          >
+            -
+          </button>
+        </>
+      ) : null}
       <br />
       <img
         src="src/images/one-dollar-bill.jpg"
@@ -90,7 +155,20 @@ export default function ReceivedBills() {
           setOnes(ones + 1);
         }}
       />
-      {ones > 0 ? <p>x {ones}</p> : null}
+      {ones > 0 ? (
+        <>
+          <p>x {ones}</p>
+          <button
+            className="minus-button"
+            onClick={() => {
+              setOnes(ones - 1);
+              dispatch(subtractTotalReceived({ value: 1 }));
+            }}
+          >
+            -
+          </button>
+        </>
+      ) : null}
       <br />
       <button onClick={() => navigate("/received-coins")}>Next</button>
     </>
