@@ -1,4 +1,3 @@
-import Totalbar from "../../layout/Totals_Navbar";
 //pictures associated with values
 
 // onClick the picture, it adds value to total received (connected to navBar (shared state))
@@ -12,9 +11,10 @@ import Totalbar from "../../layout/Totals_Navbar";
 
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { addTotalReceived, addCalculatedChange } from "../slices/cartSlice";
+import { addTotalReceived, addCalculatedChange } from "../Slices/cartSlice";
 
 import calculateChange from "../changeCalculation";
+import Totalbar from "../../layout/Totals_Navbar";
 
 export default function ReceivedCoins() {
   const dispatch = useDispatch();
@@ -33,6 +33,9 @@ export default function ReceivedCoins() {
   };
   return (
     <>
+      <div className="totalbar">
+      <Totalbar />
+      </div>
       <h1>Received Coins page</h1>
       <button onClick={() => dispatch(addTotalReceived({ value: 0.25 }))}>
         .25

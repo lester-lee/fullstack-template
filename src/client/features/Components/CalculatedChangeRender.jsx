@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import Totalbar from "../../layout/Totals_Navbar";
 
 // const calculatedChange = {
 //   twenties: 2,
@@ -46,6 +47,9 @@ export default function CalculatedChangeRender() {
 
   return (
     <>
+    <div className="totalbar">
+      <Totalbar />
+      </div>
       <p>{renderedKey}</p>
       <p>{renderedValue}</p>
       <button onClick={handleClick}>Next</button>
