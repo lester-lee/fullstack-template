@@ -9,6 +9,7 @@ import Popup from "./Popup";
 const CashRegister = () => {
   const { data: products, isLoading } = useGetProductsQuery();
 console.log("products", products);
+console.log("isLoading", isLoading);
 
   const navigate = useNavigate();
 
