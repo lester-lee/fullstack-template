@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import { useGetProductsQuery } from "../../store/productsSlice";
 import { useNavigate } from "react-router-dom";
+import Popup from "./popup";
 
 const CashRegister = () => {
   const { data: products, isLoading } = useGetProductsQuery();
@@ -33,6 +34,10 @@ const CashRegister = () => {
         <h2>Total: {total}</h2>
       </div>
       <button onClick={() => navigate("/received-bills")}>Checkout</button>
+    <Popup trigger={false}>
+          <h1>Greet the customer:</h1>
+          <p>Hello, what would you like today?</p>
+    </Popup>
     </div>
   );
 };
