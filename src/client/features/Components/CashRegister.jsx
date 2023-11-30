@@ -40,7 +40,7 @@ console.log("isLoading", isLoading);
       <div className="cart">
         <ul className="cart-list">
           {cartItems.map((product) => (
-            <CartCard key={product.id} item={product} />
+            <CartCard key={product.id} product={product} />
           ))}
         </ul>
         <h2>Total: {total}</h2>
