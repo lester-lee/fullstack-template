@@ -1,47 +1,47 @@
-const calculatedChange = {
-  twenties: 0,
-  tens: 0,
-  fives: 0,
-  singles: 0,
-  quarters: 0,
-  dimes: 0,
-  nickels: 0,
-  pennies: 0,
-};
-
-function calculateTwenties(value) {
-  calculatedChange.twenties = Math.floor(value / 20);
-}
-
-function calculateTens(value) {
-  calculatedChange.tens = Math.floor(value / 10);
-}
-
-function calculateFives(value) {
-  calculatedChange.fives = Math.floor(value / 5);
-}
-
-function calculateSingles(value) {
-  calculatedChange.singles = Math.floor(value / 1);
-}
-
-function calculateQuarters(value) {
-  calculatedChange.quarters = Math.floor(value / 0.25);
-}
-
-function calculateDimes(value) {
-  calculatedChange.dimes = Math.floor(value / 0.1);
-}
-
-function calculateNickels(value) {
-  calculatedChange.nickels = Math.floor(value / 0.05);
-}
-
-function calculatePennies(value) {
-  calculatedChange.pennies = Math.floor(value / 0.01);
-}
-
 export default function calculateChange(value) {
+  const calculatedChange = {
+    twenties: 0,
+    tens: 0,
+    fives: 0,
+    singles: 0,
+    quarters: 0,
+    dimes: 0,
+    nickels: 0,
+    pennies: 0,
+  };
+
+  function calculateTwenties(value) {
+    calculatedChange.twenties = Math.floor(value / 20);
+  }
+
+  function calculateTens(value) {
+    calculatedChange.tens = Math.floor(value / 10);
+  }
+
+  function calculateFives(value) {
+    calculatedChange.fives = Math.floor(value / 5);
+  }
+
+  function calculateSingles(value) {
+    calculatedChange.singles = Math.floor(value / 1);
+  }
+
+  function calculateQuarters(value) {
+    calculatedChange.quarters = Math.floor(value / 0.25);
+  }
+
+  function calculateDimes(value) {
+    calculatedChange.dimes = Math.floor(value / 0.1);
+  }
+
+  function calculateNickels(value) {
+    calculatedChange.nickels = Math.floor(value / 0.05);
+  }
+
+  function calculatePennies(value) {
+    calculatedChange.pennies = Math.floor(value / 0.01);
+  }
+
   if (value >= 20) {
     calculateTwenties(value);
     value -= calculatedChange.twenties * 20;
