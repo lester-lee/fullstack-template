@@ -1,17 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  totalPrice: 10,
+  totalPrice: 0,
   totalReceived: 0,
   calculatedChange: {},
-  cartItems: [{
-    "id": 1,
-    "name": "coffee",
-    "price": 5.25,
-    "imgUrl": "https://t4.ftcdn.net/jpg/00/43/99/81/360_F_43998133_4Pf0crjj0nPE7i7E1xC2ztzAU71aHsYB.jpg",
-    "category": "drinks",
-    "storeId": 1
-    }],
+  cartItems: [],
 };
 
 const cartSlice = createSlice({
@@ -20,7 +13,7 @@ const cartSlice = createSlice({
   reducers: {
     addToCart: (state, action) => {
       //product object for use in price calculation and cart cards
-      const { product } = action.payload;
+      const product = action.payload;
 
       // Check if the product is a duplicate of an item already in the cart
       const existingCartItem = state.cartItems.find(
@@ -36,12 +29,15 @@ const cartSlice = createSlice({
       } else {
         // If product not already in cart, add to cart and give quantity of 1
         state.cartItems.push({ ...product, quantity: 1 });
+        console.log("product", product);
         state.totalPrice += product.price;
       }
     },
     removeFromCart: (state, action) => {
-      const { product } = action.payload;
-      const cartIndex = state.cartItems.findIndex(product);
+      const product = action.payload;
+      const cartIndex = state.cartItems.indexOf(
+        (cartItem) => cartItem.id === product.id
+      );
       state.cartItems.splice(cartIndex, 1);
       state.totalPrice -= product.price;
     },
