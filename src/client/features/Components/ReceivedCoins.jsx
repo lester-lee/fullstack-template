@@ -15,6 +15,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addTotalReceived, addCalculatedChange } from "../slices/cartSlice";
 
 import calculateChange from "../changeCalculation";
+import "../../../images/images.css";
 
 export default function ReceivedCoins() {
   const dispatch = useDispatch();
@@ -34,21 +35,40 @@ export default function ReceivedCoins() {
   return (
     <>
       <h1>Received Coins page</h1>
-      <button onClick={() => dispatch(addTotalReceived({ value: 0.25 }))}>
-        .25
-      </button>
+      <img
+        src="src/images/dollar-coin.jpeg"
+        alt="dollar-coin"
+        className="coins dollar-coin"
+        onClick={() => dispatch(addTotalReceived({ value: 1 }))}
+      />
       <br />
-      <button onClick={() => dispatch(addTotalReceived({ value: 0.1 }))}>
-        .10
-      </button>
+      <img
+        src="src/images/quarter.jpeg"
+        alt="quarter"
+        className="coins quarter"
+        onClick={() => dispatch(addTotalReceived({ value: 0.25 }))}
+      />
       <br />
-      <button onClick={() => dispatch(addTotalReceived({ value: 0.05 }))}>
-        .05
-      </button>
+      <img
+        src="src/images/dime.jpeg"
+        alt="dime"
+        className="coins dime"
+        onClick={() => dispatch(addTotalReceived({ value: 0.1 }))}
+      />
       <br />
-      <button onClick={() => dispatch(addTotalReceived({ value: 0.01 }))}>
-        .01
-      </button>
+      <img
+        src="src/images/nickel.jpeg"
+        alt="nickel"
+        className="coins nickel"
+        onClick={() => dispatch(addTotalReceived({ value: 0.05 }))}
+      />
+      <br />
+      <img
+        src="src/images/penny.jpeg"
+        alt="penny"
+        className="coins penny"
+        onClick={() => dispatch(addTotalReceived({ value: 0.01 }))}
+      />
       <br />
       <button onClick={handleClick}>Next</button>
     </>

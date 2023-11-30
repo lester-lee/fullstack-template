@@ -2,3 +2,27 @@
   aspect-ratio: fixed;
   width: 300px;
 }
+
+.coins {
+  aspect-ratio: fixed;
+}
+
+.dollar-coin {
+  width: 200px;
+}
+
+.quarter {
+  width: 184px;
+}
+
+.dime {
+  width: 134px;
+}
+
+.nickel {
+  width: 160px;
+}
+
+.penny {
+  width: 144px;
+}
