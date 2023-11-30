@@ -1,7 +1,8 @@
 import { useSelector } from "react-redux";
 import { useGetProductsQuery } from "../../store/productsSlice";
 import { useNavigate } from "react-router-dom";
-import Popup from "./popup";
+import { useState, useEffect } from "react";
+import Popup from "./Popup";
 
 const CashRegister = () => {
   const { data: products, isLoading } = useGetProductsQuery();
