@@ -13,7 +13,14 @@ const CashRegister = () => {
 
   const cartItems = useSelector((state) => state.cart.cartItems);
   console.log("cart items", cartItems);
+  //useState and useEffect for Popup function
+  const [timedPopup, setTimedPopup] = useState(false);
 
+  useEffect(() => {
+    setTimeout(() => {
+      setTimedPopup(true);
+    }, 1000);
+  }, []);
   return isLoading ? (
     <h2>Loading...</h2>
   ) : (
@@ -34,10 +41,10 @@ const CashRegister = () => {
         <h2>Total: {total}</h2>
       </div>
       <button onClick={() => navigate("/received-bills")}>Checkout</button>
-    <Popup trigger={false}>
-          <h1>Greet the customer:</h1>
-          <p>Hello, what would you like today?</p>
-    </Popup>
+      <Popup trigger={timedPopup} setTrigger={setTimedPopup}>
+        <h1>Greet the customer:</h1>
+        <p>Hello, what would you like today?</p>
+      </Popup>
     </div>
   );
 };
