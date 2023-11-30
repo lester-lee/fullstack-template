@@ -36,17 +36,20 @@ export default function ReceivedCoins() {
 
   const totalReceived = useSelector((state) => state.cart.totalReceived);
 
-  const changeToGive = totalPrice - totalReceived;
+  const changeToGive = totalReceived - totalPrice;
+
+  console.log("change to give: ", changeToGive);
 
   const handleClick = () => {
     const result = calculateChange(changeToGive);
     dispatch(addCalculatedChange({ changeObject: result }));
     navigate("/change");
+    console.log("result object: ", result);
   };
   return (
     <>
       <div className="totalbar">
-      <Totalbar />
+        <Totalbar />
       </div>
       <h1>Received Coins page</h1>
       {/* dollar coins */}
