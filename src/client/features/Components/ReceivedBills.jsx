@@ -26,6 +26,7 @@ export default function ReceivedBills() {
   return (
     <>
       <h1>Received Bills page</h1>
+      {/* hundreds */}
       <img
         src="src/images/hundred-dollar-bill.jpeg"
         alt="hundred-dollar-bill"
@@ -50,6 +51,7 @@ export default function ReceivedBills() {
         </>
       ) : null}
       <br />
+      {/* fifties */}
       <img
         src="src/images/fifty-dollar-bill.jpeg"
         alt="fifty-dollar-bill"
@@ -74,6 +76,7 @@ export default function ReceivedBills() {
         </>
       ) : null}
       <br />
+      {/* twenties */}
       <img
         src="src/images/twenty-dollar-bill.jpeg"
         alt="twenty-dollar-bill"
@@ -98,6 +101,7 @@ export default function ReceivedBills() {
         </>
       ) : null}
       <br />
+      {/* tens */}
       <img
         src="src/images/ten-dollar-bill.jpg"
         alt="ten-dollar-bill"
@@ -122,6 +126,7 @@ export default function ReceivedBills() {
         </>
       ) : null}
       <br />
+      {/* fives */}
       <img
         src="src/images/five-dollar-bill.jpg"
         alt="five-dollar-bill"
@@ -146,6 +151,7 @@ export default function ReceivedBills() {
         </>
       ) : null}
       <br />
+      {/* singles */}
       <img
         src="src/images/one-dollar-bill.jpg"
         alt="one-dollar-bill"
