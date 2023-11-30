@@ -35,11 +35,17 @@ const cartSlice = createSlice({
     },
     removeFromCart: (state, action) => {
       const product = action.payload;
-      const cartIndex = state.cartItems.indexOf(
+      const cartIndex = state.cartItems.findIndex(
         (cartItem) => cartItem.id === product.id
       );
-      state.cartItems.splice(cartIndex, 1);
-      state.totalPrice -= product.price;
+      console.log("product to find", product);
+      console.log("Cart Index", cartIndex);
+      if (cartIndex !== -1) {
+        state.cartItems.splice(cartIndex, 1);
+        state.totalPrice -= product.price;
+      } else {
+        console.log("cannot remove, item not found in cart");
+      }
     },
     addTotalReceived: (state, action) => {
       const { value } = action.payload;
