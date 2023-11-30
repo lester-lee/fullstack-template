@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import { useGetProductsQuery } from "../../store/productsSlice";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
+import ProductCard from "./ProductCard";
 import Popup from "./Popup";
 
 const CashRegister = () => {
