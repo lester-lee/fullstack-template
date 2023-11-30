@@ -3,10 +3,12 @@ import { useGetProductsQuery } from "../../store/productsSlice";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import ProductCard from "./ProductCard";
+import CartCard from "./CartCard";
 import Popup from "./Popup";
 
 const CashRegister = () => {
   const { data: products, isLoading } = useGetProductsQuery();
+console.log("products", products);
 
   const navigate = useNavigate();
 
@@ -29,16 +31,16 @@ const CashRegister = () => {
     <div>
       <div className="product-container">
         <ul className="product-list">
-          {products.map((product) => {
-            <ProductCard key={product.id} product={product} />;
-          })}
+          {products.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
         </ul>
       </div>
       <div className="cart">
         <ul className="cart-list">
-          {cartItems.map((product) => {
-            <CartCard key={product.id} item={product} />;
-          })}
+          {cartItems.map((product) => (
+            <CartCard key={product.id} item={product} />
+          ))}
         </ul>
         <h2>Total: {total}</h2>
       </div>

@@ -1,10 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  totalPrice: 0,
+  totalPrice: 10,
   totalReceived: 0,
   calculatedChange: {},
-  cartItems: [],
+  cartItems: [{
+    "id": 1,
+    "name": "coffee",
+    "price": 5.25,
+    "imgUrl": "https://t4.ftcdn.net/jpg/00/43/99/81/360_F_43998133_4Pf0crjj0nPE7i7E1xC2ztzAU71aHsYB.jpg",
+    "category": "drinks",
+    "storeId": 1
+    }],
 };
 
 const cartSlice = createSlice({
