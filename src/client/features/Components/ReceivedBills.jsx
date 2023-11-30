@@ -9,9 +9,14 @@ import "../../../images/images.css";
 
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { addTotalReceived, subtractTotalReceived } from "../slices/cartSlice";
+import { addTotalReceived, subtractTotalReceived } from "../Slices/cartSlice";
 import { useState } from "react";
 import Totalbar from "../../layout/Totals_Navbar";
+//popup and import show the total in the popup
+import Popup from "./Popup";
+import { useEffect } from "react";
+import { useSelector } from 'react-redux';
+
 
 export default function ReceivedBills() {
   const dispatch = useDispatch();
@@ -24,8 +29,22 @@ export default function ReceivedBills() {
   const [fives, setFives] = useState(0);
   const [ones, setOnes] = useState(0);
 
+  //Popup: to show the total in the popup
+  const { totalPrice } = useSelector((state) => state.cart);
+  //Popup: useState and useEffect for Popup function
+  const [timedPopup, setTimedPopup] = useState(false);
+  useEffect(() => {
+    setTimeout(() => {
+      setTimedPopup(true);
+    }, 200);
+  }, []);
+
   return (
     <>
+    <Popup trigger={timedPopup} setTrigger={setTimedPopup}>
+        <h1 className="popup-header">Tell the customer:</h1>
+        <p className="popup-para">Your total today is ${totalPrice}</p>
+      </Popup>
       <div className="totalbar">
       <Totalbar />
       </div>

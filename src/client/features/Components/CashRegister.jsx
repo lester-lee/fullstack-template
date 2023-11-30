@@ -1,10 +1,12 @@
 import { useSelector } from "react-redux";
 import { useGetProductsQuery } from "../../store/productsSlice";
 import { useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
 import ProductCard from "./ProductCard";
 import CartCard from "./CartCard";
+//Popup:
 import Popup from "./Popup";
+import { useState, useEffect } from "react";
+
 
 const CashRegister = () => {
   const { data: products, isLoading } = useGetProductsQuery();
@@ -18,14 +20,15 @@ console.log("isLoading", isLoading);
 
   const cartItems = useSelector((state) => state.cart.cartItems);
   console.log("cart items", cartItems);
-  //useState and useEffect for Popup function
+  
+  //Popup: useState and useEffect for Popup function
   const [timedPopup, setTimedPopup] = useState(false);
-
   useEffect(() => {
     setTimeout(() => {
       setTimedPopup(true);
-    }, 1000);
+    }, 200);
   }, []);
+
   return isLoading ? (
     <h2>Loading...</h2>
   ) : (
@@ -47,8 +50,8 @@ console.log("isLoading", isLoading);
       </div>
       <button onClick={() => navigate("/received-bills")}>Checkout</button>
       <Popup trigger={timedPopup} setTrigger={setTimedPopup}>
-        <h1>Greet the customer:</h1>
-        <p>Hello, what would you like today?</p>
+        <h1 className="popup-header">Greet the customer:</h1>
+        <p className="popup-para">Hello, how can I help you today?</p>
       </Popup>
     </div>
   );
