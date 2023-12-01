@@ -18,35 +18,37 @@ export default function TotalChange() {
   const calculatedChange = useSelector((state) => state.cart.calculatedChange);
   const navigate = useNavigate();
 
-  const keys = Object.keys(calculatedChange);
-  const values = Object.values(calculatedChange);
+  const findValue = (key) => {
+    let value = calculatedChange[key];
+    return value;
+  };
+
   const usableKeys = [];
 
   const valuesQueue = [];
-  const valueIndeces = [];
 
-  values.forEach((num, index) => {
-    if (num > 0) {
-      valuesQueue.push(num);
-      valueIndeces.push(index);
+  for (const key in calculatedChange) {
+    const value = calculatedChange[key];
+    if (value > 0) {
+      usableKeys.push(key);
+      valuesQueue.push(value);
     }
-  });
-
-  for (let i = 0; i < valuesQueue.length; i++) {
-    usableKeys.push(keys[valueIndeces[i]]);
   }
 
   return (
     <div>
       <div className="totalbar">
-      <Totalbar />
+        <Totalbar />
       </div>
       <h1>This will show the full amount of change</h1>
       {usableKeys.map((key) => (
         <>
+          <p>{findValue(key)}</p>
           <p key={key}>{key}</p>
           {key === "twenties" ? (
-            <img className="bills" src="src/images/twenty-dollar-bill.jpeg" />
+            <>
+              <img className="bills" src="src/images/twenty-dollar-bill.jpeg" />
+            </>
           ) : null}
           {key === "tens" ? (
             <img className="bills" src="src/images/ten-dollar-bill.jpg" />
@@ -71,10 +73,7 @@ export default function TotalChange() {
           ) : null}
         </>
       ))}
-      {valuesQueue.map((value) => (
-        <p key={Math.random(100)}>{value}</p>
-      ))}
-      <button onClick={() => navigate("/completed")}>Finish</button>
+      <button onClick={() => navigate("/")}>Return Home </button>
     </div>
   );
 }

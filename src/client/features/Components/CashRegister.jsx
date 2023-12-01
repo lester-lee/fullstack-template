@@ -3,23 +3,17 @@ import { useGetProductsQuery } from "../../store/productsSlice";
 import { useNavigate } from "react-router-dom";
 import ProductCard from "./ProductCard";
 import CartCard from "./CartCard";
-//Popup:
-import Popup from "./Popup";
+import Popup from "./popup";
 import { useState, useEffect } from "react";
 
 
 const CashRegister = () => {
   const { data: products, isLoading } = useGetProductsQuery();
-console.log("products", products);
-console.log("isLoading", isLoading);
-
   const navigate = useNavigate();
 
-  const total = useSelector((state) => state.cart.totalPrice);
-  console.log("total", total);
-
+  let total = useSelector((state) => state.cart.totalPrice);
+  total = Math.abs(total.toFixed(2));
   const cartItems = useSelector((state) => state.cart.cartItems);
-  console.log("cart items", cartItems);
   
   //Popup: useState and useEffect for Popup function
   const [timedPopup, setTimedPopup] = useState(false);

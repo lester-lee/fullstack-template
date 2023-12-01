@@ -5,8 +5,8 @@ const CartCard = ({ product }) => {
   const { id, name, price, quantity } = product;
   const dispatch = useDispatch();
 
-  const handleRemoveFromCart = (id) => {
-    dispatch(removeFromCart(id));
+  const handleRemoveFromCart = (product) => {
+    dispatch(removeFromCart(product));
   };
 
   return (
@@ -14,7 +14,7 @@ const CartCard = ({ product }) => {
       <h3>{name}</h3>
       <p>{quantity}</p>
       <p>${price}</p>
-      <button onClick={() => handleRemoveFromCart(id)}>-</button>
+      <button onClick={() => handleRemoveFromCart(product)}>-</button>
     </li>
   );
 };
