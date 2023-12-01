@@ -1,0 +1,25 @@
+.product {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid lightgray;
+    border-radius: 20px;
+    box-shadow: 0 5px 0 lightgray    ;
+    background-color: white;
+    img {
+        padding: 10px;
+        width: 150px;
+    }
+    margin: 5px;
+
+    .product-name {
+        align-items: flex-end;
+        text-align: center;
+        padding: 2px;
+    }
+}
+
+.product:active {
+    box-shadow: none;
+    transform: translateY(5px);
+}
