@@ -21,7 +21,7 @@ import { useState } from "react";
 import calculateChange from "../changeCalculation";
 import "../../../images/images.css";
 import Totalbar from "../../layout/Totals_Navbar";
-import Popup from "./Popup";
+import Popup from "./popup";
 
 export default function ReceivedCoins() {
   const dispatch = useDispatch();
@@ -44,7 +44,11 @@ export default function ReceivedCoins() {
   const handleClick = () => {
     const result = calculateChange(changeToGive);
     dispatch(addCalculatedChange({ changeObject: result }));
-    navigate("/change");
+    if (changeToGive < 0) {
+      setButtonPopup(true);
+    } else {
+      navigate("/change");
+    }
   };
   //Popup:
   const [buttonPopup, setButtonPopup] = useState(false);
@@ -180,11 +184,14 @@ export default function ReceivedCoins() {
         </>
       ) : null}
       <br />
-      <button onClick={() => { setButtonPopup(true); handleClick}}>Next</button>
+      <button onClick={handleClick}>Next</button>
       {/* Popup: */}
       <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
-      <h1 className="popup-header">Tell the customer:</h1>
-      <p className="popup-para">It looks like the cost is more than what you paid, please provide more cash. Thanks!</p>
+        <h1 className="popup-header">Tell the customer:</h1>
+        <p className="popup-para">
+          It looks like the cost is more than what you paid, please provide more
+          cash. Thanks!
+        </p>
       </Popup>
     </>
   );
