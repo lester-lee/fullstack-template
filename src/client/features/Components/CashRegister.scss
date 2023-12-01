@@ -1,0 +1,30 @@
+.main-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
+
+    .product-container {
+        height: 90vh;
+        padding: 10px;
+        flex-grow: 1;
+        .product-list {
+            display: flex;
+            flex-flow: row wrap;
+        }
+    }
+
+    .cart-container {
+        height: 90vh;
+        width: 30vw;
+        border: 1px solid gray;
+        border-radius: 20px;
+        padding: 10px;
+        margin: 10px;
+        .total-price {
+            text-align: right;
+            border-top: 1px solid gray
+        }
+    }
+    
+}
