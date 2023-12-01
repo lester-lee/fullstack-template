@@ -4,8 +4,11 @@ export default function Completed() {
   const navigate = useNavigate();
   return (
     <>
-      <h1>Transaction Completed page</h1>
-      <button onClick={() => navigate("/")}>Return home</button>
+      <h1 className="finished_h1">Finished!</h1>
+      <h2 className="finished_h2">Tell the customer: Have a great day!</h2>
+      <button className="done" onClick={() => navigate("/")}>
+        Done
+      </button>
     </>
   );
 }
