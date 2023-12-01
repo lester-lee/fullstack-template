@@ -1,19 +1,24 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import Totalbar from "../../layout/Totals_Navbar";
 
+import "../../../images/images.css";
+
+// dummyData - comment this to use store
 // const calculatedChange = {
 //   twenties: 2,
 //   tens: 3,
 //   fives: 1,
-//   singles: 0,
+//   singles: 2,
 //   quarters: 2,
-//   dimes: 0,
+//   dimes: 1,
 //   nickels: 4,
-//   pennies: 0,
+//   pennies: 3,
 // };
 
 export default function CalculatedChangeRender() {
+  // uncomment this to use store
   const calculatedChange = useSelector((state) => state.cart.calculatedChange);
 
   const navigate = useNavigate();
@@ -46,9 +51,40 @@ export default function CalculatedChangeRender() {
 
   return (
     <>
-      <p>{renderedKey}</p>
+    <div className="totalbar">
+      <Totalbar />
+      </div>
+    
       <p>{renderedValue}</p>
+      <p>{renderedKey}</p>
+      {renderedKey === "twenties" ? (
+        <img className="bills" src="src/images/twenty-dollar-bill.jpeg" />
+      ) : null}
+      {renderedKey === "tens" ? (
+        <img className="bills" src="src/images/ten-dollar-bill.jpg" />
+      ) : null}
+      {renderedKey === "fives" ? (
+        <img className="bills" src="src/images/five-dollar-bill.jpg" />
+      ) : null}
+      {renderedKey === "singles" ? (
+        <img className="bills" src="src/images/one-dollar-bill.jpg" />
+      ) : null}
+      {renderedKey === "quarters" ? (
+        <img className="coins quarter" src="src/images/quarter.jpeg" />
+      ) : null}
+      {renderedKey === "dimes" ? (
+        <img className="coins dime" src="src/images/dime.jpeg" />
+      ) : null}
+      {renderedKey === "nickels" ? (
+        <img className="coins nickel" src="src/images/Nickel.jpeg" />
+      ) : null}
+      {renderedKey === "pennies" ? (
+        <img className="coins penny" src="src/images/penny.jpeg" />
+      ) : null}
+
+      <br />
       <button onClick={handleClick}>Next</button>
+      <br />
       <button onClick={() => navigate("/total-change")}>
         View total change
       </button>
