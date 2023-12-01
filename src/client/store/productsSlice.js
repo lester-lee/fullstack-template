@@ -10,6 +10,13 @@ const productsApi = api.injectEndpoints({
       query: (id) => `/products/${id}`,
       providesTags: ["Products"],
     }),
+    // register: builder.mutation({
+    //   query: (credentials) => ({
+    //     url: "/register",
+    //     method: "POST",
+    //     body: credentials,
+    //   }),
+    // }),
   }),
 });
 
