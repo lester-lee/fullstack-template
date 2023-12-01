@@ -10,7 +10,8 @@ const CashRegister = () => {
   const { data: products, isLoading } = useGetProductsQuery();
   const navigate = useNavigate();
 
-  const total = useSelector((state) => state.cart.totalPrice);
+  let total = useSelector((state) => state.cart.totalPrice);
+  total = Math.abs(total.toFixed(2));
   const cartItems = useSelector((state) => state.cart.cartItems);
 
   //useState and useEffect for Popup function

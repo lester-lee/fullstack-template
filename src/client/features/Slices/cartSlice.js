@@ -26,7 +26,6 @@ const cartSlice = createSlice({
           `${existingCartItem.name} quantity updated to ${existingCartItem.quantity}`
         );
         state.totalPrice += product.price;
-        console.log(product.name, "quantity updated");
       } else {
         // If product not already in cart, add to cart and give quantity of 1
         state.cartItems.push({ ...product, quantity: 1 });
