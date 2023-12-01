@@ -11,6 +11,7 @@ import store from "./store";
 import Root from "./layout/Root.jsx";
 import StartScreen from "./features/Components/StartScreen";
 import Login from "./features/Components/Login";
+import Register from "./features/Components/Register";
 import CalculatedChangeRender from "./features/Components/CalculatedChangeRender.jsx";
 import CashRegister from "./features/Components/CashRegister";
 import ReceivedBills from "./features/Components/ReceivedBills";
@@ -29,6 +30,7 @@ const router = createBrowserRouter([
       { path: "/products", element: <CashRegister /> },
       { path: "/start", element: <StartScreen /> },
       { path: "/login", element: <Login /> },
+      { path: "/register", element: <Register /> },
       { path: "/received-bills", element: <ReceivedBills /> },
       { path: "/received-coins", element: <ReceivedCoins /> },
       { path: "/change", element: <CalculatedChangeRender /> },

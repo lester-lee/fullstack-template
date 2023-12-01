@@ -1,12 +1,12 @@
 import { useState } from "react";
 
-export default function Login() {
+export default function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   return (
     <>
-      <h1>Login Page</h1>
+      <h1>Register Page</h1>
       <form className="login-form">
         <label className="form-labels">Email: </label>
         <input
@@ -22,7 +22,7 @@ export default function Login() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button className="form-button">Log In</button>
+        <button className="form-button">Register</button>
       </form>
     </>
   );
