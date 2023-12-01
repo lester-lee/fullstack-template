@@ -5,14 +5,21 @@ export default function Register() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = () => {
-    //
+  const [register] = useRegisterMutation();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await register({ username, password });
+    } catch (error) {
+      console.error("Error: ", error);
+    }
   };
 
   return (
     <>
       <h1>Register Page</h1>
-      <form className="login-form">
+      <form className="login-form" onSubmit={handleSubmit}>
         <label className="form-labels">Username: </label>
         <input
           className="form-inputs"
