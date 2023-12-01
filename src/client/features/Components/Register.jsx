@@ -1,8 +1,13 @@
 import { useState } from "react";
+import { useRegisterMutation } from "../../store/authSlice";
 
 export default function Register() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
+  const handleSubmit = () => {
+    //
+  };
 
   return (
     <>
