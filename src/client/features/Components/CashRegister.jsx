@@ -8,16 +8,12 @@ import Popup from "./Popup";
 
 const CashRegister = () => {
   const { data: products, isLoading } = useGetProductsQuery();
-console.log("products", products);
-console.log("isLoading", isLoading);
-
   const navigate = useNavigate();
 
-  const total = useSelector((state) => state.cart.totalPrice);
-  console.log("total", total);
-
+  let total = useSelector((state) => state.cart.totalPrice);
+  total = Math.abs(total.toFixed(2));
   const cartItems = useSelector((state) => state.cart.cartItems);
-  console.log("cart items", cartItems);
+
   //useState and useEffect for Popup function
   const [timedPopup, setTimedPopup] = useState(false);
 

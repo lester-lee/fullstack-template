@@ -1,17 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  totalPrice: 10,
+  totalPrice: 0,
   totalReceived: 0,
   calculatedChange: {},
-  cartItems: [{
-    "id": 1,
-    "name": "coffee",
-    "price": 5.25,
-    "imgUrl": "https://t4.ftcdn.net/jpg/00/43/99/81/360_F_43998133_4Pf0crjj0nPE7i7E1xC2ztzAU71aHsYB.jpg",
-    "category": "drinks",
-    "storeId": 1
-    }],
+  cartItems: [],
 };
 
 const cartSlice = createSlice({
@@ -20,11 +13,11 @@ const cartSlice = createSlice({
   reducers: {
     addToCart: (state, action) => {
       //product object for use in price calculation and cart cards
-      const { product } = action.payload;
+      const product = action.payload;
 
       // Check if the product is a duplicate of an item already in the cart
       const existingCartItem = state.cartItems.find(
-        (cartItem) => cartItem.productId === product.id
+        (cartItem) => cartItem.id === product.id
       );
       // If product already exists in the cart update quantity and total price
       if (existingCartItem) {
@@ -37,13 +30,34 @@ const cartSlice = createSlice({
         // If product not already in cart, add to cart and give quantity of 1
         state.cartItems.push({ ...product, quantity: 1 });
         state.totalPrice += product.price;
+        console.log(product.name, "added to cart");
       }
     },
     removeFromCart: (state, action) => {
-      const { product } = action.payload;
-      const cartIndex = state.cartItems.findIndex(product);
-      state.cartItems.splice(cartIndex, 1);
-      state.totalPrice -= product.price;
+      const product = action.payload;
+      const cartIndex = state.cartItems.findIndex(
+        (cartItem) => cartItem.id === product.id
+      );
+      const cartItem = state.cartItems[cartIndex];
+
+      if (cartIndex !== -1) {
+        if (cartItem.quantity > 1) {
+          cartItem.quantity--;
+          console.log(
+            `${cartItem.name} quantity updated to ${cartItem.quantity}`
+          );
+          state.totalPrice -= product.price;
+          console.log(cartItem.name, "quantity updated");
+        } else {
+          state.cartItems.splice(cartIndex, 1);
+          console.log(
+            `${product.price} deducted from total of ${state.totalPrice} for ${product.name}`
+          );
+          state.totalPrice -= product.price;
+        }
+      } else {
+        console.log("cannot remove, item not found in cart");
+      }
     },
     addTotalReceived: (state, action) => {
       const { value } = action.payload;
