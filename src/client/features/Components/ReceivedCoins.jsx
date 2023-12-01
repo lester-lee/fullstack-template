@@ -180,11 +180,14 @@ export default function ReceivedCoins() {
         </>
       ) : null}
       <br />
-      <button onClick={() => { setButtonPopup(true); handleClick}}>Next</button>
+      <button onClick={handleClick}>Next</button>
       {/* Popup: */}
       <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
-      <h1 className="popup-header">Tell the customer:</h1>
-      <p className="popup-para">It looks like the cost is more than what you paid, please provide more cash. Thanks!</p>
+        <h1 className="popup-header">Tell the customer:</h1>
+        <p className="popup-para">
+          It looks like the cost is more than what you paid, please provide more
+          cash. Thanks!
+        </p>
       </Popup>
     </>
   );
