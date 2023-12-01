@@ -44,7 +44,6 @@ export default function ReceivedCoins() {
     const result = calculateChange(changeToGive);
     dispatch(addCalculatedChange({ changeObject: result }));
     navigate("/change");
-    console.log("result object: ", result);
   };
   return (
     <>
