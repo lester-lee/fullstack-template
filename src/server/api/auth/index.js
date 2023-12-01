@@ -6,12 +6,39 @@ module.exports = router;
 
 router.post("/register", async (req, res, next) => {
   try {
-    // add findUnique to check if user exists
     const { username, password } = req.body;
+    const checkStoreAvailable = await prisma.store.findUnique({
+      where: {
+        username: username,
+      },
+    });
+
+    if (checkStoreAvailable) {
+      return res.status(400).send("A store with that name already exists");
+    }
+
     const newStore = await prisma.store.create({
       data: { username, password },
     });
     res.json(newStore);
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.post("/login", async (req, res, next) => {
+  const { username, password } = req.body;
+  try {
+    const foundUsername = await prisma.store.findFirst({
+      where: { username: username },
+    });
+
+    if (foundUsername) {
+      if (password === foundUsername.password) {
+        return res.json(foundUsername.id);
+      }
+    }
+    res.status(401).send("incorrect username or password");
   } catch (err) {
     next(err);
   }
