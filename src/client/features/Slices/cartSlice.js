@@ -17,7 +17,7 @@ const cartSlice = createSlice({
 
       // Check if the product is a duplicate of an item already in the cart
       const existingCartItem = state.cartItems.find(
-        (cartItem) => cartItem.productId === product.id
+        (cartItem) => cartItem.id === product.id
       );
       // If product already exists in the cart update quantity and total price
       if (existingCartItem) {
@@ -26,11 +26,12 @@ const cartSlice = createSlice({
           `${existingCartItem.name} quantity updated to ${existingCartItem.quantity}`
         );
         state.totalPrice += product.price;
+        console.log(product.name, "quantity updated");
       } else {
         // If product not already in cart, add to cart and give quantity of 1
         state.cartItems.push({ ...product, quantity: 1 });
-        console.log("product", product);
         state.totalPrice += product.price;
+        console.log(product.name, "added to cart");
       }
     },
     removeFromCart: (state, action) => {
@@ -38,11 +39,23 @@ const cartSlice = createSlice({
       const cartIndex = state.cartItems.findIndex(
         (cartItem) => cartItem.id === product.id
       );
-      console.log("product to find", product);
-      console.log("Cart Index", cartIndex);
+      const cartItem = state.cartItems[cartIndex];
+
       if (cartIndex !== -1) {
-        state.cartItems.splice(cartIndex, 1);
-        state.totalPrice -= product.price;
+        if (cartItem.quantity > 1) {
+          cartItem.quantity--;
+          console.log(
+            `${cartItem.name} quantity updated to ${cartItem.quantity}`
+          );
+          state.totalPrice -= product.price;
+          console.log(cartItem.name, "quantity updated");
+        } else {
+          state.cartItems.splice(cartIndex, 1);
+          console.log(
+            `${product.price} deducted from total of ${state.totalPrice} for ${product.name}`
+          );
+          state.totalPrice -= product.price;
+        }
       } else {
         console.log("cannot remove, item not found in cart");
       }
