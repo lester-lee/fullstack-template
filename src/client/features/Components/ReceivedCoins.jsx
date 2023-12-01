@@ -21,7 +21,7 @@ import { useState } from "react";
 import calculateChange from "../changeCalculation";
 import "../../../images/images.css";
 import Totalbar from "../../layout/Totals_Navbar";
-import Popup from "./Popup";
+import Popup from "./popup";
 
 export default function ReceivedCoins() {
   const dispatch = useDispatch();
@@ -44,7 +44,11 @@ export default function ReceivedCoins() {
   const handleClick = () => {
     const result = calculateChange(changeToGive);
     dispatch(addCalculatedChange({ changeObject: result }));
-    navigate("/change");
+    if (changeToGive < 0) {
+      setButtonPopup(true);
+    } else {
+      navigate("/change");
+    }
   };
   //Popup:
   const [buttonPopup, setButtonPopup] = useState(false);

@@ -5,20 +5,7 @@ import Totalbar from "../../layout/Totals_Navbar";
 
 import "../../../images/images.css";
 
-// dummyData - comment this to use store
-// const calculatedChange = {
-//   twenties: 2,
-//   tens: 3,
-//   fives: 1,
-//   singles: 2,
-//   quarters: 2,
-//   dimes: 1,
-//   nickels: 4,
-//   pennies: 3,
-// };
-
 export default function CalculatedChangeRender() {
-  // uncomment this to use store
   const calculatedChange = useSelector((state) => state.cart.calculatedChange);
 
   const navigate = useNavigate();
@@ -47,6 +34,7 @@ export default function CalculatedChangeRender() {
   const handleClick = () => {
     if (index + 1 >= valueQueue.length) {
       // navigate to finish page?
+      navigate("/total-change");
       // or if index +1 > value.length, change button text to "Finish," and then navigate
     }
     setIndex(index + 1);
@@ -57,6 +45,7 @@ export default function CalculatedChangeRender() {
       <div className="totalbar">
         <Totalbar />
       </div>
+    
       <p>{renderedKey}: </p>
       <p>{renderedValue}</p>
 

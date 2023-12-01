@@ -59,7 +59,7 @@ export default function TotalChange() {
           ) : null}
         </>
       ))}
-      <button onClick={() => navigate("/")}>Return Home </button>
+      <button onClick={() => navigate("/completed")}>Next</button>
     </div>
   );
 }
