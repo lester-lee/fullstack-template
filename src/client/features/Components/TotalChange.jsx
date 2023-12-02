@@ -2,17 +2,6 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import "../../../images/images.css";
 import Totalbar from "../../layout/Totals_Navbar";
-//dummydata
-// const calculatedChange = {
-//   twenties: 2,
-//   tens: 3,
-//   fives: 1,
-//   singles: 1,
-//   quarters: 1,
-//   dimes: 1,
-//   nickels: 1,
-//   pennies: 1,
-// };
 
 export default function TotalChange() {
   const calculatedChange = useSelector((state) => state.cart.calculatedChange);
@@ -40,40 +29,37 @@ export default function TotalChange() {
       <div className="totalbar">
         <Totalbar />
       </div>
-      <h1>This will show the full amount of change</h1>
       {usableKeys.map((key) => (
         <>
+          <p key={key}>{key}:</p>
           <p>{findValue(key)}</p>
-          <p key={key}>{key}</p>
-          {key === "twenties" ? (
-            <>
-              <img className="bills" src="src/images/twenty-dollar-bill.jpeg" />
-            </>
+          {key === "Twenties" ? (
+            <img className="bills" src="src/images/twenty-dollar-bill.jpeg" />
           ) : null}
-          {key === "tens" ? (
+          {key === "Tens" ? (
             <img className="bills" src="src/images/ten-dollar-bill.jpg" />
           ) : null}
-          {key === "fives" ? (
+          {key === "Fives" ? (
             <img className="bills" src="src/images/five-dollar-bill.jpg" />
           ) : null}
-          {key === "singles" ? (
+          {key === "Singles" ? (
             <img className="bills" src="src/images/one-dollar-bill.jpg" />
           ) : null}
-          {key === "quarters" ? (
+          {key === "Quarters" ? (
             <img className="coins quarter" src="src/images/quarter.jpeg" />
           ) : null}
-          {key === "dimes" ? (
+          {key === "Dimes" ? (
             <img className="coins dime" src="src/images/dime.jpeg" />
           ) : null}
-          {key === "nickels" ? (
+          {key === "Nickels" ? (
             <img className="coins nickel" src="src/images/nickel.jpeg" />
           ) : null}
-          {key === "pennies" ? (
+          {key === "Pennies" ? (
             <img className="coins penny" src="src/images/penny.jpeg" />
           ) : null}
         </>
       ))}
-      <button onClick={() => navigate("/")}>Return Home </button>
+      <button onClick={() => navigate("/completed")}>Next</button>
     </div>
   );
 }

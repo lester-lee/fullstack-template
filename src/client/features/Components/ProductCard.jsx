@@ -1,5 +1,6 @@
 import { useDispatch } from "react-redux";
 import { addToCart } from "../Slices/cartSlice";
+import "./ProductCard.scss";
 
 const ProductCard = ({ product }) => {
   const { name, imgUrl } = product;
@@ -12,7 +13,7 @@ const ProductCard = ({ product }) => {
   return (
     <li className="product" onClick={() => handleAddToCart(product)}>
       <img src={imgUrl} />
-      <h3>{name}</h3>
+      <h3 className="product-name">{name}</h3>
     </li>
   );
 };
