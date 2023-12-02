@@ -1,13 +1,25 @@
 import { useState } from "react";
+import { useLoginMutation } from "../../store/authslice.js";
 
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
+  const [login] = useLoginMutation();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await login({ username, password });
+    } catch (err) {
+      next(err);
+    }
+  };
+
   return (
     <>
       <h1>Login Page</h1>
-      <form className="login-form">
+      <form className="login-form" onSubmit={handleSubmit}>
         <label className="form-labels">Username: </label>
         <input
           className="form-inputs"
