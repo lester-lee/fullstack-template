@@ -1,17 +1,6 @@
-
-  
 const calculateChange = (value) => {
   // object used to render change amounts
-  const calculatedChange = {
-    Twenties: 0,
-    Tens: 0,
-    Fives: 0,
-    Singles: 0,
-    Quarters: 0,
-    Dimes: 0,
-    Nickels: 0,
-    Pennies: 0,
-  };
+  const calculatedChange = {};
 
   // cycle through value, and determine bills needed, large to small
 
@@ -65,6 +54,6 @@ const calculateChange = (value) => {
     value -= calculatedChange.Pennies * 0.01;
   }
   return calculatedChange;
-}
+};
 
 export default calculateChange;
