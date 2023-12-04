@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-export default function Totalbar() {
+const Totalbar = () => {
   const { totalPrice, totalReceived } = useSelector((state) => state.cart);
   return (
     <>
@@ -14,3 +14,5 @@ export default function Totalbar() {
     </>
   );
 }
+
+export default Totalbar;

@@ -21,9 +21,9 @@ import { useState } from "react";
 import calculateChange from "../changeCalculation";
 import "../../../images/images.css";
 import Totalbar from "../../layout/Totals_Navbar";
-import Popup from "./popup";
+import Popup from "./Popup";
 
-export default function ReceivedCoins() {
+const ReceivedCoins = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -196,3 +196,5 @@ export default function ReceivedCoins() {
     </>
   );
 }
+
+export default ReceivedCoins;

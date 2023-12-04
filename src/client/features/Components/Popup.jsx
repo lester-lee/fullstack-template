@@ -20,7 +20,7 @@ import "./popup.css"
         <p className="popup-para">Hello, how can I help you today?</p>
       </Popup> */}
 
-function Popup(props) {
+const Popup = (props) => {
 
   return props.trigger ? (
     <div className="popup">

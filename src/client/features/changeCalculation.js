@@ -1,4 +1,6 @@
-export default function calculateChange(value) {
+
+  
+const calculateChange = (value) => {
   // object used to render change amounts
   const calculatedChange = {
     Twenties: 0,
@@ -64,3 +66,5 @@ export default function calculateChange(value) {
   }
   return calculatedChange;
 }
+
+export default calculateChange;
