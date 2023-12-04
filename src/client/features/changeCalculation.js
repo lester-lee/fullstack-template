@@ -1,4 +1,5 @@
 export default function calculateChange(value) {
+  // object used to render change amounts
   const calculatedChange = {
     Twenties: 0,
     Tens: 0,
@@ -9,6 +10,12 @@ export default function calculateChange(value) {
     Nickels: 0,
     Pennies: 0,
   };
+
+  // cycle through value, and determine bills needed, large to small
+
+  //If value is greater than bill denomination, we know that bill will be used. Divide value by bill-value to determine qty of bill used.
+
+  //Then reduce the value by (qty * bill-value), to then look for the next denomination
 
   if (value >= 20) {
     calculatedChange.Twenties = Math.floor(value / 20);
