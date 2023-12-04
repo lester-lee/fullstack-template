@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Totalbar from "../../layout/Totals_Navbar";
+import DenominationCard from "./DenominationCard";
 
 import "../../../images/images.css";
 
@@ -9,50 +10,69 @@ const CalculatedChangeRender = () => {
   const navigate = useNavigate();
   // will use index to iterate through valueQueue and valueIndeces
   const [index, setIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
+  let renderedDenomination = null;
+  let renderedValue = null;
 
   //gets calculatedChange object from redux store
   const calculatedChange = useSelector((state) => state.cart.calculatedChange);
 
   //puts all keys in an array
-  const keys = Object.keys(calculatedChange);
+  // const keys = Object.keys(calculatedChange);
 
   // puts all values in another array
-  const values = Object.values(calculatedChange);
+  // const values = Object.values(calculatedChange);
 
   // find values greater than 0, and puts them in valueQueue
   // puts the index of the value > 0 in valueIndeces array
-  const valueQueue = [];
-  const valueIndeces = [];
+  // const valueQueue = [];
+  // const valueIndeces = [];
 
-  const determineChange = () => {
-    values.forEach((num, index) => {
-      if (num > 0) {
-        valueQueue.push(num);
-        valueIndeces.push(index);
+  // const determineChange = () => {
+  //   values.forEach((num, index) => {
+  //     if (num > 0) {
+  //       valueQueue.push(num);
+  //       valueIndeces.push(index);
+  //     }
+  //   });
+  // };
+
+  // determineChange();
+
+  // let renderedKey = keys[valueIndeces[index]];
+  // let renderedValue = valueQueue[index];
+
+  // const handleClick = () => {
+  //   if (index + 1 >= valueQueue.length) {
+  //     // navigate to finish page?
+  //     navigate("/total-change");
+  //     // or if index +1 > value.length, change button text to "Finish," and then navigate
+  //   }
+  //   setIndex(index + 1);
+  // };
+
+  const renderDenomination = () => {
+    for (const denomination in calculatedChange) {
+      let value = calculatedChange[denomination];
+      if (value > 0) {
+        renderedDenomination = denomination;
+        renderedValue = value;
+        break;
       }
-    });
-  };
-
-  determineChange();
-
-  let renderedKey = keys[valueIndeces[index]];
-  let renderedValue = valueQueue[index];
-
-  const handleClick = () => {
-    if (index + 1 >= valueQueue.length) {
-      // navigate to finish page?
-      navigate("/total-change");
-      // or if index +1 > value.length, change button text to "Finish," and then navigate
     }
-    setIndex(index + 1);
   };
+
+  renderDenomination();
 
   return (
     <>
       <div className="totalbar">
         <Totalbar />
       </div>
+      <p>{renderedDenomination}</p>
+      <p>{renderedValue}</p>
 
+      {/* 
       <p>{renderedKey}: </p>
       <p>{renderedValue}</p>
 
@@ -79,10 +99,10 @@ const CalculatedChangeRender = () => {
       ) : null}
       {renderedKey === "Pennies" ? (
         <img className="coins penny" src="src/images/penny.jpeg" />
-      ) : null}
+      ) : null} */}
 
       <br />
-      <button onClick={handleClick}>Next</button>
+      <button onClick={() => renderDenomination()}>Next</button>
       <br />
       <button onClick={() => navigate("/total-change")}>
         View total change
@@ -92,3 +112,13 @@ const CalculatedChangeRender = () => {
 };
 
 export default CalculatedChangeRender;
+
+// brainstorm:
+// cycle through object
+// for key in calculatedChange
+// while !paused
+// if key[value?] > 0, render
+// {key}, render{key[value]}
+// set pause
+
+// click sets pause to false
