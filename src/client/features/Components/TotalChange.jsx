@@ -2,34 +2,45 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import "../../../images/images.css";
 import Totalbar from "../../layout/Totals_Navbar";
+import DenominationCard from "./DenominationCard";
 
 const TotalChange = () => {
   const calculatedChange = useSelector((state) => state.cart.calculatedChange);
   const navigate = useNavigate();
 
-  const findValue = (key) => {
-    let value = calculatedChange[key];
-    return value;
-  };
+  // const findValue = (key) => {
+  //   let value = calculatedChange[key];
+  //   return value;
+  // };
 
-  const usableKeys = [];
+  // const usableKeys = [];
 
-  const valuesQueue = [];
+  // const valuesQueue = [];
 
-  for (const key in calculatedChange) {
-    const value = calculatedChange[key];
-    if (value > 0) {
-      usableKeys.push(key);
-      valuesQueue.push(value);
-    }
+  // for (const key in calculatedChange) {
+  //   const value = calculatedChange[key];
+  //   if (value > 0) {
+  //     usableKeys.push(key);
+  //     valuesQueue.push(value);
+  //   }
+  // }
+
+  // render full object, via denomination card....
+  // <DenominationCard />
+
+  ///////////////
+  for (const denomination in calculatedChange) {
+    let value = calculatedChange[denomination];
+    return <DenominationCard denomination={denomination} value={value} />;
   }
+  /////////////
 
   return (
     <div>
       <div className="totalbar">
         <Totalbar />
       </div>
-      {usableKeys.map((key) => (
+      {/* {usableKeys.map((key) => (
         <>
           <p key={key}>{key}:</p>
           <p>{findValue(key)}</p>
@@ -58,10 +69,10 @@ const TotalChange = () => {
             <img className="coins penny" src="src/images/penny.jpeg" />
           ) : null}
         </>
-      ))}
+      ))} */}
       <button onClick={() => navigate("/completed")}>Next</button>
     </div>
   );
-}
+};
 
 export default TotalChange;
