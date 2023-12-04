@@ -5,7 +5,7 @@ import Totalbar from "../../layout/Totals_Navbar";
 
 import "../../../images/images.css";
 
-export default function CalculatedChangeRender() {
+const CalculatedChangeRender = () => {
   const navigate = useNavigate();
   // will use index to iterate through valueQueue and valueIndeces
   const [index, setIndex] = useState(0);
@@ -89,4 +89,6 @@ export default function CalculatedChangeRender() {
       </button>
     </>
   );
-}
+};
+
+export default CalculatedChangeRender;

@@ -1,4 +1,4 @@
-export default function calculateChange(value) {
+const calculateChange = (value) => {
   const calculatedChange = {
     Twenties: 0,
     Tens: 0,
@@ -89,3 +89,5 @@ export default function calculateChange(value) {
   }
   return calculatedChange;
 }
+
+export default calculateChange;
