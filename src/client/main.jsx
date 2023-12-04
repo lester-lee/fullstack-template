@@ -16,6 +16,7 @@ import ReceivedBills from "./features/Components/ReceivedBills";
 import ReceivedCoins from "./features/Components/ReceivedCoins";
 import TotalChange from "./features/Components/TotalChange";
 import Completed from "./features/Components/Completed";
+import ErrorPage from "./features/Components/ErrorPage";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
@@ -32,6 +33,7 @@ const router = createBrowserRouter([
       { path: "/change", element: <CalculatedChangeRender /> },
       { path: "/total-change", element: <TotalChange /> },
       { path: "/completed", element: <Completed /> },
+      { path: "*", element: <ErrorPage /> },
     ],
   },
 ]);
