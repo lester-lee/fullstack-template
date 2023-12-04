@@ -1,40 +1,40 @@
-const DenominationCard = (key, value) => {
+const DenominationCard = ({ denomination, value }) => {
   // variables to be set in if statements
   let imgSrc = null;
   let className = null;
 
   // determines img and className to associate with key/value pairs
   const determineImg = () => {
-    if (key === "Twenties") {
-      imgSrc = "../../../images/twenty-dollar-bill.jpeg";
+    if (denomination === "Twenties") {
+      imgSrc = "src/images/twenty-dollar-bill.jpeg";
       className = "bills";
     }
-    if (key === "Tens") {
-      imgSrc = "../../../images/ten-dollar-bill.jpg";
+    if (denomination === "Tens") {
+      imgSrc = "src/images/ten-dollar-bill.jpg";
       className = "bills";
     }
-    if (key === "Fives") {
-      imgSrc = "../../../images/five-dollar-bill.jpg";
+    if (denomination === "Fives") {
+      imgSrc = "src/images/five-dollar-bill.jpg";
       className = "bills";
     }
-    if (key === "Singles") {
-      imgSrc = "../../../images/one-dollar-bill.jpg";
+    if (denomination === "Singles") {
+      imgSrc = "src/images/one-dollar-bill.jpg";
       className = "bills";
     }
-    if (key === "Quarters") {
-      imgSrc = "../../../images/quarter.jpeg";
+    if (denomination === "Quarters") {
+      imgSrc = "src/images/quarter.jpeg";
       className = "coins quarter";
     }
-    if (key === "Dimes") {
-      imgSrc = "../../../images/dime.jpeg";
+    if (denomination === "Dimes") {
+      imgSrc = "src/images/dime.jpeg";
       className = "coins dime";
     }
-    if (key === "Nickels") {
-      imgSrc = "../../../images/Nickel.jpeg";
+    if (denomination === "Nickels") {
+      imgSrc = "src/images/Nickel.jpeg";
       className = "coins nickel";
     }
-    if (key === "Pennies") {
-      imgSrc = "../../../images/penny.jpeg";
+    if (denomination === "Pennies") {
+      imgSrc = "src/images/penny.jpeg";
       className = "coins penny";
     }
   };
@@ -43,7 +43,7 @@ const DenominationCard = (key, value) => {
 
   return (
     <div className="denomination-card">
-      <p>{key}: </p>
+      <p>{denomination}: </p>
       <p>{value}</p>
       <img className={className} src={imgSrc} />
     </div>

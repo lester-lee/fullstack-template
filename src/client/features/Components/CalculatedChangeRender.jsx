@@ -8,11 +8,10 @@ import "../../../images/images.css";
 
 const CalculatedChangeRender = () => {
   const navigate = useNavigate();
-  // will use index to iterate through valueQueue and valueIndeces
+
   const [index, setIndex] = useState(0);
-  const [paused, setPaused] = useState(false);
-  let renderedDenomination = null;
-  let renderedValue = null;
+  // let renderedDenomination = null;
+  // let renderedValue = null;
 
   //gets calculatedChange object from redux store
   const calculatedChange = useSelector((state) => state.cart.calculatedChange);
@@ -50,28 +49,34 @@ const CalculatedChangeRender = () => {
   //   }
   //   setIndex(index + 1);
   // };
-
+  const renderingArray = [];
   const renderDenomination = () => {
     for (const denomination in calculatedChange) {
       let value = calculatedChange[denomination];
       if (value > 0) {
-        renderedDenomination = denomination;
-        renderedValue = value;
-        break;
+        // renderedDenomination = denomination;
+        // renderedValue = value;
+        renderingArray.push(denomination, value);
       }
     }
   };
 
   renderDenomination();
 
+  let renderedDenomination = renderingArray[index];
+  let renderedValue = renderingArray[index + 1];
+
   return (
     <>
       <div className="totalbar">
         <Totalbar />
       </div>
-      <p>{renderedDenomination}</p>
-      <p>{renderedValue}</p>
-
+      <div>
+        <DenominationCard
+          denomination={renderedDenomination}
+          value={renderedValue}
+        />
+      </div>
       {/* 
       <p>{renderedKey}: </p>
       <p>{renderedValue}</p>
@@ -102,7 +107,9 @@ const CalculatedChangeRender = () => {
       ) : null} */}
 
       <br />
-      <button onClick={() => renderDenomination()}>Next</button>
+      {index + 2 < renderingArray.length ? (
+        <button onClick={() => setIndex(index + 2)}>Next</button>
+      ) : null}
       <br />
       <button onClick={() => navigate("/total-change")}>
         View total change
