@@ -6,30 +6,37 @@ import Totalbar from "../../layout/Totals_Navbar";
 import "../../../images/images.css";
 
 export default function CalculatedChangeRender() {
-  const calculatedChange = useSelector((state) => state.cart.calculatedChange);
-
   const navigate = useNavigate();
+  // will use index to iterate through valueQueue and valueIndeces
   const [index, setIndex] = useState(0);
 
+  //gets calculatedChange object from redux store
+  const calculatedChange = useSelector((state) => state.cart.calculatedChange);
+
+  //puts all keys in an array
   const keys = Object.keys(calculatedChange);
+
+  // puts all values in another array
   const values = Object.values(calculatedChange);
 
-  // puts all values > 0 in an array, and those associated indeces in another array
+  // find values greater than 0, and puts them in valueQueue
+  // puts the index of the value > 0 in valueIndeces array
   const valueQueue = [];
   const valueIndeces = [];
 
-  values.forEach((num, index) => {
-    if (num > 0) {
-      valueQueue.push(num);
-      valueIndeces.push(index);
-    }
-  });
+  const determineChange = () => {
+    values.forEach((num, index) => {
+      if (num > 0) {
+        valueQueue.push(num);
+        valueIndeces.push(index);
+      }
+    });
+  };
+
+  determineChange();
 
   let renderedKey = keys[valueIndeces[index]];
   let renderedValue = valueQueue[index];
-
-  console.log("rendered Key", renderedKey);
-  console.log("rendered value:", renderedValue);
 
   const handleClick = () => {
     if (index + 1 >= valueQueue.length) {
@@ -45,7 +52,7 @@ export default function CalculatedChangeRender() {
       <div className="totalbar">
         <Totalbar />
       </div>
-    
+
       <p>{renderedKey}: </p>
       <p>{renderedValue}</p>
 
