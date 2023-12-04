@@ -5,7 +5,7 @@ import Totalbar from "../../layout/Totals_Navbar";
 
 import "../../../images/images.css";
 
-export default function CalculatedChangeRender() {
+const CalculatedChangeRender = () => {
   const calculatedChange = useSelector((state) => state.cart.calculatedChange);
 
   const navigate = useNavigate();
@@ -83,3 +83,5 @@ export default function CalculatedChangeRender() {
     </>
   );
 }
+
+export default CalculatedChangeRender;

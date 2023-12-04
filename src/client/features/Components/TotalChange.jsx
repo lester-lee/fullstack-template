@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import "../../../images/images.css";
 import Totalbar from "../../layout/Totals_Navbar";
 
-export default function TotalChange() {
+const TotalChange = () => {
   const calculatedChange = useSelector((state) => state.cart.calculatedChange);
   const navigate = useNavigate();
 
@@ -63,3 +63,5 @@ export default function TotalChange() {
     </div>
   );
 }
+
+export default TotalChange;

@@ -1,12 +1,13 @@
 import { Outlet } from "react-router-dom";
 
-export default function Root() {
+const Root = () => {
   return (
     <>
-      {/* <Navbar /> */}
       <main>
         <Outlet />
       </main>
     </>
   );
 }
+
+export default Root;
