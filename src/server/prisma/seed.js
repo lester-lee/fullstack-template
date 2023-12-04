@@ -35,7 +35,7 @@ const seed = async () => {
             category: 'drinks' },
           { name: 'Orange Juice',
             price: 1.79,
-            imgUrl: 'https://cdn.pixabay.com/photo/2012/11/28/09/31/orange-juice-67556_1280.jpg',
+            imgUrl: 'https://cdn.pixabay.com/photo/2021/07/04/23/01/oranges-6387749_1280.jpg',
             category: 'drinks' },
           { name: 'Bagel',
             price: 3.72,
