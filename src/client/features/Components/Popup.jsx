@@ -20,19 +20,19 @@ import "./popup.css"
         <p className="popup-para">Hello, how can I help you today?</p>
       </Popup> */}
 
-const Popup = (props) => {
+const Popup = ({ trigger, setTrigger, children }) => {
 
-  return props.trigger ? (
-    <div className="popup">
+  return trigger ? (
+     <div className="popup">
       <div className="popup-inner">
-        <button className="close-btn" onClick={() => props.setTrigger(false)}>
+        <button className="close-btn" onClick={() => setTrigger(false)}>
           &times;
         </button>
-        {props.children}
+          {children}
       </div>
     </div>
-  ) : (
-    ""
+    ) : (
+      ""
   );
 }
 
