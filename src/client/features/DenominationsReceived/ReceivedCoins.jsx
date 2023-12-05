@@ -15,13 +15,13 @@ import {
   addTotalReceived,
   subtractTotalReceived,
   addCalculatedChange,
-} from "../Slices/cartSlice";
+} from "../CashRegister/cartSlice";
 import { useState } from "react";
 
-import calculateChange from "../changeCalculation";
-import "../../../images/images.css";
-import Totalbar from "../../layout/Totals_Navbar";
-import Popup from "./Popup";
+import calculateChange from "./changeCalculation";
+import "../../assets/images/images.scss";
+import Totalbar from "../TotalsBar/TotalsBar";
+import Popup from "../Popup/Popup";
 
 const ReceivedCoins = () => {
   const dispatch = useDispatch();

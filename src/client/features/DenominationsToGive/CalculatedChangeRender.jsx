@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import Totalbar from "../../layout/Totals_Navbar";
+import Totalbar from "../TotalsBar/TotalsBar";
 
-import "../../../images/images.css";
+import "../../assets/images/images.scss";
 
 const CalculatedChangeRender = () => {
   const calculatedChange = useSelector((state) => state.cart.calculatedChange);
