@@ -71,6 +71,12 @@ const cartSlice = createSlice({
       const { changeObject } = action.payload;
       state.calculatedChange = changeObject;
     },
+    resetCart: (state) => {
+      state.totalPrice = 0;
+      state.totalReceived = 0;
+      state.calculatedChange = {};
+      state.cartItems = [];
+    },
   },
 });
 
@@ -80,6 +86,7 @@ export const {
   addTotalReceived,
   subtractTotalReceived,
   addCalculatedChange,
+  resetCart,
 } = cartSlice.actions;
 
 export default cartSlice.reducer;
