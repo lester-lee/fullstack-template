@@ -34,12 +34,16 @@ const cartSlice = createSlice({
       }
     },
     removeFromCart: (state, action) => {
+      //product object for use in price calculation and cart cards
       const product = action.payload;
+
+      // Look for product in cart
       const cartIndex = state.cartItems.findIndex(
         (cartItem) => cartItem.id === product.id
       );
       const cartItem = state.cartItems[cartIndex];
 
+      // If product exists in the cart and there are more than one, reduce quanitiy
       if (cartIndex !== -1) {
         if (cartItem.quantity > 1) {
           cartItem.quantity--;
@@ -49,6 +53,7 @@ const cartSlice = createSlice({
           state.totalPrice -= product.price;
           console.log(cartItem.name, "quantity updated");
         } else {
+          // If there is only one of the product in cart, remove from cart
           state.cartItems.splice(cartIndex, 1);
           console.log(
             `${product.price} deducted from total of ${state.totalPrice} for ${product.name}`

@@ -16,7 +16,7 @@
 
     .cart-container {
         height: 90vh;
-        width: 30vw;
+        width: 40vw;
         border: 1px solid gray;
         border-radius: 20px;
         padding: 10px;
@@ -24,6 +24,9 @@
         .total-price {
             text-align: right;
             border-top: 1px solid gray
+        }
+        ul {
+            padding-inline-start: 0px;
         }
     }
     
