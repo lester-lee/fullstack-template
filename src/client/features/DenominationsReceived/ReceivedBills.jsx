@@ -9,14 +9,16 @@ import "../../assets/images/images.scss";
 
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { addTotalReceived, subtractTotalReceived } from "../CashRegister/cartSlice";
+import {
+  addTotalReceived,
+  subtractTotalReceived,
+} from "../CashRegister/cartSlice";
 import { useState } from "react";
 import Totalbar from "../TotalsBar/TotalsBar";
 //popup and import show the total in the popup
 import Popup from "../Popup/Popup";
 import { useEffect } from "react";
-import { useSelector } from 'react-redux';
-
+import { useSelector } from "react-redux";
 
 const ReceivedBills = () => {
   const dispatch = useDispatch();
@@ -41,17 +43,17 @@ const ReceivedBills = () => {
 
   return (
     <>
-    <Popup trigger={timedPopup} setTrigger={setTimedPopup}>
+      <Popup trigger={timedPopup} setTrigger={setTimedPopup}>
         <h1 className="popup-header">Tell the customer:</h1>
         <p className="popup-para">Your total today is ${totalPrice}</p>
       </Popup>
       <div className="totalbar">
-      <Totalbar />
+        <Totalbar />
       </div>
       <h1>Received Bills page</h1>
       {/* hundreds */}
       <img
-        src="src/images/hundred-dollar-bill.jpeg"
+        src="src/client/assets/images/hundred-dollar-bill.jpeg"
         alt="hundred-dollar-bill"
         className="bills"
         onClick={() => {
@@ -76,7 +78,7 @@ const ReceivedBills = () => {
       <br />
       {/* fifties */}
       <img
-        src="src/images/fifty-dollar-bill.jpeg"
+        src="src/client/assets/images/fifty-dollar-bill.jpeg"
         alt="fifty-dollar-bill"
         className="bills"
         onClick={() => {
@@ -101,7 +103,7 @@ const ReceivedBills = () => {
       <br />
       {/* twenties */}
       <img
-        src="src/images/twenty-dollar-bill.jpeg"
+        src="src/client/assets/images/twenty-dollar-bill.jpeg"
         alt="twenty-dollar-bill"
         className="bills"
         onClick={() => {
@@ -126,7 +128,7 @@ const ReceivedBills = () => {
       <br />
       {/* tens */}
       <img
-        src="src/images/ten-dollar-bill.jpg"
+        src="src/client/assets/images/ten-dollar-bill.jpg"
         alt="ten-dollar-bill"
         className="bills"
         onClick={() => {
@@ -151,7 +153,7 @@ const ReceivedBills = () => {
       <br />
       {/* fives */}
       <img
-        src="src/images/five-dollar-bill.jpg"
+        src="src/client/assets/images/five-dollar-bill.jpg"
         alt="five-dollar-bill"
         className="bills"
         onClick={() => {
@@ -176,7 +178,7 @@ const ReceivedBills = () => {
       <br />
       {/* singles */}
       <img
-        src="src/images/one-dollar-bill.jpg"
+        src="src/client/assets/images/one-dollar-bill.jpg"
         alt="one-dollar-bill"
         className="bills"
         onClick={() => {
@@ -202,6 +204,6 @@ const ReceivedBills = () => {
       <button onClick={() => navigate("/received-coins")}>Next</button>
     </>
   );
-}
+};
 
 export default ReceivedBills;
