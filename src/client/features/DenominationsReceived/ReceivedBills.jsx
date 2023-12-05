@@ -50,7 +50,7 @@ const ReceivedBills = () => {
       <h1>Received Bills page</h1>
       {/* hundreds */}
       <img
-        src="src/images/hundred-dollar-bill.jpeg"
+        src="src/client/assets/images/hundred-dollar-bill.jpeg"
         alt="hundred-dollar-bill"
         className="bills"
         onClick={() => {
@@ -75,7 +75,7 @@ const ReceivedBills = () => {
       <br />
       {/* fifties */}
       <img
-        src="src/images/fifty-dollar-bill.jpeg"
+        src="src/client/assets/images/fifty-dollar-bill.jpeg"
         alt="fifty-dollar-bill"
         className="bills"
         onClick={() => {
@@ -100,7 +100,7 @@ const ReceivedBills = () => {
       <br />
       {/* twenties */}
       <img
-        src="src/images/twenty-dollar-bill.jpeg"
+        src="src/client/assets/images/twenty-dollar-bill.jpeg"
         alt="twenty-dollar-bill"
         className="bills"
         onClick={() => {
@@ -125,7 +125,7 @@ const ReceivedBills = () => {
       <br />
       {/* tens */}
       <img
-        src="src/images/ten-dollar-bill.jpg"
+        src="src/client/assets/images/ten-dollar-bill.jpg"
         alt="ten-dollar-bill"
         className="bills"
         onClick={() => {
@@ -150,7 +150,7 @@ const ReceivedBills = () => {
       <br />
       {/* fives */}
       <img
-        src="src/images/five-dollar-bill.jpg"
+        src="src/client/assets/images/five-dollar-bill.jpg"
         alt="five-dollar-bill"
         className="bills"
         onClick={() => {
@@ -175,7 +175,7 @@ const ReceivedBills = () => {
       <br />
       {/* singles */}
       <img
-        src="src/images/one-dollar-bill.jpg"
+        src="src/client/assets/images/one-dollar-bill.jpg"
         alt="one-dollar-bill"
         className="bills"
         onClick={() => {
