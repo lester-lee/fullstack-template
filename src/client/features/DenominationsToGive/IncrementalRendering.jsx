@@ -7,7 +7,7 @@ import DenominationCard from "./DenominationCard";
 import "../../assets/images/images.scss";
 
 // finds denominations with values > 0, and renders one at a time (onClick)
-const CalculatedChangeRender = () => {
+const IncrementalRendering = () => {
   //gets calculatedChange object from redux store
   const calculatedChange = useSelector((state) => state.cart.calculatedChange);
 
@@ -57,4 +57,4 @@ const CalculatedChangeRender = () => {
   );
 };
 
-export default CalculatedChangeRender;
+export default IncrementalRendering;
