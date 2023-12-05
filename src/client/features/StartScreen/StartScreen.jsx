@@ -2,14 +2,18 @@ import { Link } from "react-router-dom";
 import "./StartScreen.scss";
 const StartScreen = () => {
    return (
-   <>
-   <div className="start-div">
-   <Link className="start-button" to={'/products'}> Start </Link>
+   <div className="start-screen-div">
+   <div>
+   <Link to={'/products'}>
+      <button className="start-button"> Start </button>
+   </Link>
    </div>
-   <br/>
-   <div className="setup-div">
-   <Link className="setup-button" to={'/login'}> Setup </Link>
-   </div>   </>
+   <div>
+   <Link to={'/login'}>
+      <button className="setup-button"> Setup </button>
+   </Link>
+   </div>
+   </div>
    )
 }
 
