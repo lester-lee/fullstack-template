@@ -6,7 +6,7 @@ const DenominationCard = ({ denomination, value }) => {
   // determines img and className to associate with key/value pairs
   const determineImg = () => {
     if (denomination === "Twenties") {
-      imgSrc = "src/assets/images/twenty-dollar-bill.jpeg";
+      imgSrc = "src/client/assets/images/twenty-dollar-bill.jpeg";
       className = "bills";
     }
     if (denomination === "Tens") {
@@ -14,27 +14,27 @@ const DenominationCard = ({ denomination, value }) => {
       className = "bills";
     }
     if (denomination === "Fives") {
-      imgSrc = "../../assets/images/five-dollar-bill.jpg";
+      imgSrc = "src/client/assets/images/five-dollar-bill.jpg";
       className = "bills";
     }
     if (denomination === "Singles") {
-      imgSrc = "src/images/one-dollar-bill.jpg";
+      imgSrc = "src/client/assets/images/one-dollar-bill.jpg";
       className = "bills";
     }
     if (denomination === "Quarters") {
-      imgSrc = "src/images/quarter.jpeg";
+      imgSrc = "src/client/assets/images/quarter.jpeg";
       className = "coins quarter";
     }
     if (denomination === "Dimes") {
-      imgSrc = "src/images/dime.jpeg";
+      imgSrc = "src/client/assets/images/dime.jpeg";
       className = "coins dime";
     }
     if (denomination === "Nickels") {
-      imgSrc = "src/images/Nickel.jpeg";
+      imgSrc = "src/client/assets/images/Nickel.jpeg";
       className = "coins nickel";
     }
     if (denomination === "Pennies") {
-      imgSrc = "src/images/penny.jpeg";
+      imgSrc = "src/client/assets/images/penny.jpeg";
       className = "coins penny";
     }
   };
@@ -42,11 +42,11 @@ const DenominationCard = ({ denomination, value }) => {
   determineImg();
 
   return (
-    <div className="denomination-card">
-      <p>{denomination}: </p>
+    <ul className="denomination-card">
+      <h4>{denomination}: </h4>
       <p>{value}</p>
       <img className={className} src={imgSrc} />
-    </div>
+    </ul>
   );
 };
 
