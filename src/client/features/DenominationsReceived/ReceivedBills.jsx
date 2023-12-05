@@ -5,20 +5,20 @@
 // a delete button
 
 // next button
-import "../../../images/images.css";
+import "../../assets/images/images.scss";
 
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { addTotalReceived, subtractTotalReceived } from "../Slices/cartSlice";
+import { addTotalReceived, subtractTotalReceived } from "../CashRegister/cartSlice";
 import { useState } from "react";
-import Totalbar from "../../layout/Totals_Navbar";
+import Totalbar from "../TotalsBar/TotalsBar";
 //popup and import show the total in the popup
-import Popup from "./Popup";
+import Popup from "../Popup/Popup";
 import { useEffect } from "react";
 import { useSelector } from 'react-redux';
 
 
-export default function ReceivedBills() {
+const ReceivedBills = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -203,3 +203,5 @@ export default function ReceivedBills() {
     </>
   );
 }
+
+export default ReceivedBills;

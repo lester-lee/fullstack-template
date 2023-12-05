@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-export default function Completed() {
+const Completed = () => {
   const navigate = useNavigate();
   return (
     <>
@@ -12,3 +12,5 @@ export default function Completed() {
     </>
   );
 }
+
+export default Completed;

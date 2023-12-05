@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import Totalbar from "../../layout/Totals_Navbar";
+import Totalbar from "../TotalsBar/TotalsBar";
 
-import "../../../images/images.css";
+import "../../assets/images/images.scss";
 
-export default function CalculatedChangeRender() {
+const CalculatedChangeRender = () => {
   const calculatedChange = useSelector((state) => state.cart.calculatedChange);
 
   const navigate = useNavigate();
@@ -28,6 +28,9 @@ export default function CalculatedChangeRender() {
   let renderedKey = keys[valueIndeces[index]];
   let renderedValue = valueQueue[index];
 
+  console.log("rendered Key", renderedKey);
+  console.log("rendered value:", renderedValue);
+
   const handleClick = () => {
     if (index + 1 >= valueQueue.length) {
       // navigate to finish page?
@@ -42,31 +45,32 @@ export default function CalculatedChangeRender() {
       <div className="totalbar">
         <Totalbar />
       </div>
-
+    
+      <p>{renderedKey}: </p>
       <p>{renderedValue}</p>
-      <p>{renderedKey}</p>
-      {renderedKey === "twenties" ? (
+
+      {renderedKey === "Twenties" ? (
         <img className="bills" src="src/images/twenty-dollar-bill.jpeg" />
       ) : null}
-      {renderedKey === "tens" ? (
+      {renderedKey === "Tens" ? (
         <img className="bills" src="src/images/ten-dollar-bill.jpg" />
       ) : null}
-      {renderedKey === "fives" ? (
+      {renderedKey === "Fives" ? (
         <img className="bills" src="src/images/five-dollar-bill.jpg" />
       ) : null}
-      {renderedKey === "singles" ? (
+      {renderedKey === "Singles" ? (
         <img className="bills" src="src/images/one-dollar-bill.jpg" />
       ) : null}
-      {renderedKey === "quarters" ? (
+      {renderedKey === "Quarters" ? (
         <img className="coins quarter" src="src/images/quarter.jpeg" />
       ) : null}
-      {renderedKey === "dimes" ? (
+      {renderedKey === "Dimes" ? (
         <img className="coins dime" src="src/images/dime.jpeg" />
       ) : null}
-      {renderedKey === "nickels" ? (
+      {renderedKey === "Nickels" ? (
         <img className="coins nickel" src="src/images/Nickel.jpeg" />
       ) : null}
-      {renderedKey === "pennies" ? (
+      {renderedKey === "Pennies" ? (
         <img className="coins penny" src="src/images/penny.jpeg" />
       ) : null}
 
@@ -79,3 +83,5 @@ export default function CalculatedChangeRender() {
     </>
   );
 }
+
+export default CalculatedChangeRender;

@@ -15,15 +15,15 @@ import {
   addTotalReceived,
   subtractTotalReceived,
   addCalculatedChange,
-} from "../Slices/cartSlice";
+} from "../CashRegister/cartSlice";
 import { useState } from "react";
 
-import calculateChange from "../changeCalculation";
-import "../../../images/images.css";
-import Totalbar from "../../layout/Totals_Navbar";
-import Popup from "./popup";
+import calculateChange from "./changeCalculation";
+import "../../assets/images/images.scss";
+import Totalbar from "../TotalsBar/TotalsBar";
+import Popup from "../Popup/Popup";
 
-export default function ReceivedCoins() {
+const ReceivedCoins = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -196,3 +196,5 @@ export default function ReceivedCoins() {
     </>
   );
 }
+
+export default ReceivedCoins;
