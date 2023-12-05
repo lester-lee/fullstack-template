@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import "../../assets/images/images.scss";
 import Totalbar from "../TotalsBar/TotalsBar";
-import DenominationCard from "./DenominationsCard";
+import DenominationCard from "./DenominationCard";
 
 // shows user all change due
 const TotalChange = () => {
