@@ -40,19 +40,25 @@ const IncrementalRendering = () => {
       <div className="totalbar">
         <Totalbar />
       </div>
-      <div>
-        <DenominationCard
-          denomination={renderedDenomination}
-          value={renderedValue}
-        />
-      </div>
-      {/* conditional to only display next button if there is another denomination/value to show */}
-      {index + 2 < renderingArray.length ? (
-        <button onClick={() => setIndex(index + 2)}>Next</button>
-      ) : null}
-      <button onClick={() => navigate("/total-change")}>
-        View total change
-      </button>
+      {renderedDenomination ? (
+        <>
+          <div>
+            <DenominationCard
+              denomination={renderedDenomination}
+              value={renderedValue}
+            />
+          </div>
+          {/* conditional to only display next button if there is another denomination/value to show */}
+          {index + 2 < renderingArray.length ? (
+            <button onClick={() => setIndex(index + 2)}>Next</button>
+          ) : null}
+          <button onClick={() => navigate("/total-change")}>
+            View total change
+          </button>
+        </>
+      ) : (
+        <button onClick={() => navigate("/")}>Home</button>
+      )}
     </>
   );
 };
