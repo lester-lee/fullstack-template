@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
-
-
+import "./StartScreen.scss";
 const StartScreen = () => {
    return (
    <>
-   <div>
+   <div className="start-div">
    <Link className="start-button" to={'/products'}> Start </Link>
    </div>
-   <div>
+   <br/>
+   <div className="setup-div">
    <Link className="setup-button" to={'/login'}> Setup </Link>
    </div>   </>
    )
