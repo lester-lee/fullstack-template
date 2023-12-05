@@ -11,6 +11,11 @@ prisma = prisma.$extends({
         args.data.password = password;
         return query(args);
       },
+      async upsert({ args, query }) {
+        const password = await bcrypt.hash(args.create.password, 10);
+        args.create.password = password;
+        return query(args);
+      },
     },
   },
 });
