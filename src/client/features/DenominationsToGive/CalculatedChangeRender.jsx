@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import Totalbar from "../../layout/Totals_Navbar";
+import Totalbar from "../TotalsBar/TotalsBar";
 import DenominationCard from "./DenominationCard";
 
-import "../../../images/images.css";
+import "../../assets/images/images.scss";
 
 // finds denominations with values > 0, and renders one at a time (onClick)
 const CalculatedChangeRender = () => {
