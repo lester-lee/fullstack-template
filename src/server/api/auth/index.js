@@ -33,7 +33,10 @@ router.post("/login", async (req, res, next) => {
       where: { username: username },
     });
 
-    if (foundUsername) {
+    if (
+      foundUsername &&
+      (await bcrypt.compare(password, foundUsername.password))
+    ) {
       if (password === foundUsername.password) {
         return res.json({
           token: jwt.sign({ id: foundUsername.id }, process.env.JWT),
