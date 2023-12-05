@@ -6,15 +6,15 @@ const DenominationCard = ({ denomination, value }) => {
   // determines img and className to associate with key/value pairs
   const determineImg = () => {
     if (denomination === "Twenties") {
-      imgSrc = "src/images/twenty-dollar-bill.jpeg";
+      imgSrc = "src/assets/images/twenty-dollar-bill.jpeg";
       className = "bills";
     }
     if (denomination === "Tens") {
-      imgSrc = "src/images/ten-dollar-bill.jpg";
+      imgSrc = "src/client/assets/images/ten-dollar-bill.jpg";
       className = "bills";
     }
     if (denomination === "Fives") {
-      imgSrc = "src/images/five-dollar-bill.jpg";
+      imgSrc = "../../assets/images/five-dollar-bill.jpg";
       className = "bills";
     }
     if (denomination === "Singles") {

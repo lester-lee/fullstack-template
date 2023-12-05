@@ -39,8 +39,6 @@ const ReceivedCoins = () => {
 
   const changeToGive = totalReceived - totalPrice;
 
-  console.log("change to give: ", changeToGive);
-
   const handleClick = () => {
     const result = calculateChange(changeToGive);
     dispatch(addCalculatedChange({ changeObject: result }));
@@ -59,9 +57,10 @@ const ReceivedCoins = () => {
         <Totalbar />
       </div>
       <h1>Received Coins page</h1>
+
       {/* dollar coins */}
       <img
-        src="src/images/dollar-coin.jpeg"
+        src="src/client/assets/images/dollar-coin.jpeg"
         alt="dollar-coin"
         className="coins dollar-coin"
         onClick={() => {
@@ -86,7 +85,7 @@ const ReceivedCoins = () => {
       <br />
       {/* quarters */}
       <img
-        src="src/images/quarter.jpeg"
+        src="src/client/assets/images/quarter.jpeg"
         alt="quarter"
         className="coins quarter"
         onClick={() => {
@@ -111,7 +110,7 @@ const ReceivedCoins = () => {
       <br />
       {/* dimes */}
       <img
-        src="src/images/dime.jpeg"
+        src="src/client/assets/images/dime.jpeg"
         alt="dime"
         className="coins dime"
         onClick={() => {
@@ -136,7 +135,7 @@ const ReceivedCoins = () => {
       <br />
       {/* nickels */}
       <img
-        src="src/images/nickel.jpeg"
+        src="src/client/assets/images/nickel.jpeg"
         alt="nickel"
         className="coins nickel"
         onClick={() => {
@@ -161,7 +160,7 @@ const ReceivedCoins = () => {
       <br />
       {/* pennies */}
       <img
-        src="src/images/penny.jpeg"
+        src="src/client/assets/images/penny.jpeg"
         alt="penny"
         className="coins penny"
         onClick={() => {
@@ -195,6 +194,6 @@ const ReceivedCoins = () => {
       </Popup>
     </>
   );
-}
+};
 
 export default ReceivedCoins;
