@@ -14,7 +14,7 @@ const CashRegister = () => {
 
   // Use select cart items and total price from redux store
   let total = useSelector((state) => state.cart.totalPrice);
-  total = Math.abs(total.toFixed(2));
+  total = Math.abs(total).toFixed(2);
   const cartItems = useSelector((state) => state.cart.cartItems);
 
   //Popup: useState and useEffect for Popup function
@@ -42,7 +42,7 @@ const CashRegister = () => {
             <CartCard key={product.id} product={product} />
           ))}
         </ul>
-        <h2 className="total-price">Total: {total}</h2>
+        <h2 className="total-price">Total: ${total}</h2>
         <button onClick={() => navigate("/received-bills")}>Checkout</button>
       </div>
       <Popup trigger={timedPopup} setTrigger={setTimedPopup}>

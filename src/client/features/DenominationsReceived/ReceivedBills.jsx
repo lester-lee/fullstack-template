@@ -1,22 +1,21 @@
 //pictures associated with values
-
 // onClick the picture, it adds value to total received (connected to navBar (shared state))
-
 // a delete button
-
 // next button
 import "../../assets/images/images.scss";
 
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { addTotalReceived, subtractTotalReceived } from "../CashRegister/cartSlice";
+import {
+  addTotalReceived,
+  subtractTotalReceived,
+} from "../CashRegister/cartSlice";
 import { useState } from "react";
 import Totalbar from "../TotalsBar/TotalsBar";
 //popup and import show the total in the popup
 import Popup from "../Popup/Popup";
 import { useEffect } from "react";
-import { useSelector } from 'react-redux';
-
+import { useSelector } from "react-redux";
 
 const ReceivedBills = () => {
   const dispatch = useDispatch();
@@ -41,12 +40,12 @@ const ReceivedBills = () => {
 
   return (
     <>
-    <Popup trigger={timedPopup} setTrigger={setTimedPopup}>
+      <Popup trigger={timedPopup} setTrigger={setTimedPopup}>
         <h1 className="popup-header">Tell the customer:</h1>
         <p className="popup-para">Your total today is ${totalPrice}</p>
       </Popup>
       <div className="totalbar">
-      <Totalbar />
+        <Totalbar />
       </div>
       <h1>Received Bills page</h1>
       {/* hundreds */}
@@ -202,6 +201,6 @@ const ReceivedBills = () => {
       <button onClick={() => navigate("/received-coins")}>Next</button>
     </>
   );
-}
+};
 
 export default ReceivedBills;
