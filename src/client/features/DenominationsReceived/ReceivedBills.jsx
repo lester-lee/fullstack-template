@@ -42,7 +42,9 @@ const ReceivedBills = () => {
     <>
       <Popup trigger={timedPopup} setTrigger={setTimedPopup}>
         <h1 className="popup-header">Tell the customer:</h1>
-        <p className="popup-para">Your total today is ${totalPrice}</p>
+        <p className="popup-para">
+          Your total today is ${totalPrice.toFixed(2)}
+        </p>
       </Popup>
       <div className="totalbar">
         <Totalbar />
