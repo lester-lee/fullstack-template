@@ -1,21 +1,24 @@
+
 .product {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    border: 1px solid lightgray;
+    justify-content: center;
+    border: 1px solid gray;
     border-radius: 20px;
-    box-shadow: 0 5px 0 lightgray    ;
+    box-shadow: 0 5px 0 lightgray;
     background-color: white;
     img {
         padding: 10px;
         width: 150px;
     }
     margin: 5px;
+    cursor: pointer;
 
     .product-name {
         align-items: flex-end;
         text-align: center;
         padding: 2px;
+        font-family: Verdana, sans-serif;
     }
 }
 

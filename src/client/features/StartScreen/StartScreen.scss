@@ -8,6 +8,8 @@
 .start-button {
     padding: 4px;
     border: 1px solid grey;
+    box-shadow: 0 5px 0 lightgray;
+    cursor: pointer;
     border-radius: 4px;
     margin: 5px;
     background-color: rgb(245, 246, 248);
@@ -21,6 +23,8 @@
 .setup-button {
     padding: 4px;
     border: 1px solid grey;
+    box-shadow: 0 5px 0 lightgray;
+    cursor: pointer;
     border-radius: 4px;
     margin: 5px;
     background-color: rgb(245, 246, 248);

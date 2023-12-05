@@ -41,7 +41,7 @@ const CashRegister = () => {
           ))}
         </ul>
         <h2 className="total-price">Total: {total}</h2>
-        <button onClick={() => navigate("/received-bills")}>Checkout</button>
+        <button className="checkout-button" onClick={() => navigate("/received-bills")}>Checkout</button>
       </div>
       <Popup trigger={timedPopup} setTrigger={setTimedPopup}>
         <h1 className="popup-header">Greet the customer:</h1>
