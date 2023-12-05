@@ -1,24 +1,22 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-import "./index.less";
-
 import { Provider } from "react-redux";
 import store from "./store";
 
 //import AuthForm from "./features/auth/AuthForm";
 
-import Root from "./layout/Root.jsx";
-import StartScreen from "./features/Components/StartScreen";
-import Login from "./features/Components/Login";
-import Register from "./features/Components/Register";
-import CalculatedChangeRender from "./features/Components/CalculatedChangeRender.jsx";
-import CashRegister from "./features/Components/CashRegister";
-import ReceivedBills from "./features/Components/ReceivedBills";
-import ReceivedCoins from "./features/Components/ReceivedCoins";
-import TotalChange from "./features/Components/TotalChange";
-import Completed from "./features/Components/Completed";
-import ErrorPage from "./features/Components/ErrorPage";
+import Root from "./Root/Root.jsx";
+import StartScreen from "./features/StartScreen/StartScreen.jsx"
+import Login from "./features/UserAccounts/Login";
+import Register from "./features/UserAccounts/UserRegistration";
+import CashRegister from "./features/CashRegister/CashRegister";
+import ReceivedBills from "./features/DenominationsReceived/ReceivedBills";
+import ReceivedCoins from "./features/DenominationsReceived/ReceivedCoins";
+import CalculatedChangeRender from "./features/DenominationsToGive/CalculatedChangeRender.jsx";
+import TotalChange from "./features/DenominationsToGive/TotalChange";
+import Completed from "./features/DenominationsToGive/Completed";
+import ErrorPage from "./features/Errors/ErrorPage";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 

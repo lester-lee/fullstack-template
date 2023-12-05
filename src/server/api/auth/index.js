@@ -1,5 +1,5 @@
 const prisma = require("../../prisma");
-const jwt = require("./jwt");
+//const jwt = require("./jwt");
 const bcrypt = require("bcrypt");
 const router = require("express").Router();
 module.exports = router;

@@ -1,24 +1,24 @@
 import { useState } from "react";
-import { useRegisterMutation } from "../../store/authSlice.js";
+import { useLoginMutation } from "./authSlice.js";
 
-export default function Register() {
+export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const [register] = useRegisterMutation();
+  const [login] = useLoginMutation();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await register({ username, password });
-    } catch (error) {
-      console.error("Error: ", error);
+      await login({ username, password });
+    } catch (err) {
+      next(err);
     }
   };
 
   return (
     <>
-      <h1>Register Page</h1>
+      <h1>Login Page</h1>
       <form className="login-form" onSubmit={handleSubmit}>
         <label className="form-labels">Username: </label>
         <input
@@ -34,7 +34,7 @@ export default function Register() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button className="form-button">Register</button>
+        <button className="form-button">Log In</button>
       </form>
     </>
   );
