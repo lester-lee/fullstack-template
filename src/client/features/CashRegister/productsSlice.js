@@ -1,4 +1,4 @@
-import api from "./api";
+import api from "../../store/api";
 
 const productsApi = api.injectEndpoints({
   endpoints: (builder) => ({

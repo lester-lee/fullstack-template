@@ -1,5 +1,5 @@
 import React from "react";
-import "./popup.css"
+import "./Popup.scss"
 //**Popup needs in other files:
 // import Popup from "./Popup";
 //only need useEffect for timed popup

@@ -1,9 +1,9 @@
 import { useSelector } from "react-redux";
-import { useGetProductsQuery } from "../../store/productsSlice";
+import { useGetProductsQuery } from "./productsSlice";
 import { useNavigate } from "react-router-dom";
 import ProductCard from "./ProductCard";
 import CartCard from "./CartCard";
-import Popup from "./popup";
+import Popup from "../Popup/Popup";
 import { useState, useEffect } from "react";
 import "./CashRegister.scss";
 
