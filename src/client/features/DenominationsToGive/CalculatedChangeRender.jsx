@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Totalbar from "../TotalsBar/TotalsBar";
-import DenominationCard from "./DenominationsCard";
+import DenominationCard from "./DenominationCard";
 
 import "../../assets/images/images.scss";
 
