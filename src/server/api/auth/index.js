@@ -1,5 +1,5 @@
 const prisma = require("../../prisma");
-//const jwt = require("./jwt");
+const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const router = require("express").Router();
 module.exports = router;
@@ -35,7 +35,9 @@ router.post("/login", async (req, res, next) => {
 
     if (foundUsername) {
       if (password === foundUsername.password) {
-        return res.json(foundUsername.id);
+        return res.json({
+          token: jwt.sign({ id: foundUsername.id }, process.env.JWT),
+        });
       }
     }
     res.status(401).send("incorrect username or password");
