@@ -8,9 +8,11 @@ import { useState, useEffect } from "react";
 import "./CashRegister.scss";
 
 const CashRegister = () => {
+  // Fetch list of products from api
   const { data: products, isLoading } = useGetProductsQuery();
   const navigate = useNavigate();
 
+  // Use select cart items and total price from redux store
   let total = useSelector((state) => state.cart.totalPrice);
   total = Math.abs(total.toFixed(2));
   const cartItems = useSelector((state) => state.cart.cartItems);

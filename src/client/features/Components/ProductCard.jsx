@@ -6,6 +6,7 @@ const ProductCard = ({ product }) => {
   const { name, imgUrl } = product;
   const dispatch = useDispatch();
 
+  // Create handler to add products to the cart
   const handleAddToCart = (product) => {
     dispatch(addToCart(product));
   };
