@@ -1,5 +1,17 @@
 body {
-  max-width: 70ch;
-  margin: 0 auto;
-  padding: 0.5rem;
+  margin: 40px;
+  margin-left: 100px;
+  background-color:#FFF4C7;
+}
+button {
+  background-color: #FFAA6F;
+  border-radius: 10px;
+  padding: 4px;
+  margin: 5px;
+  cursor: pointer; 
+  width: 100px;
+  height: 50px;
+  font-family: Verdana, sans-serif;
+  font-size: 95%;
+  border-width: 0;
 }

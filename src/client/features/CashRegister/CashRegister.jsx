@@ -27,6 +27,10 @@ const CashRegister = () => {
     <h2>Loading...</h2>
   ) : (
     <div className="main-container">
+      <div className="header">
+      <h1>Welcome to our cafe!</h1>
+      <p>Enjoy our delicious selection of treats!</p>
+      </div>
       <div className="product-container">
         <ul className="product-list">
           {products.map((product) => (

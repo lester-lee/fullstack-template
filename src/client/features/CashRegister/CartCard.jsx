@@ -11,12 +11,14 @@ const CartCard = ({ product }) => {
   };
 
   return (
+    <div className="cart-card">
     <li className="cart-item">
-      <button onClick={() => handleRemoveFromCart(product)}> - </button>
+      <button className="delete-button" onClick={() => handleRemoveFromCart(product)}> - </button>
       <h3>{name}</h3>
-      <p>x{quantity}</p>
+      <p>x {quantity}</p>
       <p className="item-price">${price}</p>
     </li>
+    </div>
   );
 };
 
