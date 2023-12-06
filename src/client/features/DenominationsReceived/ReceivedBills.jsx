@@ -6,6 +6,7 @@
 
 // next button
 import "../../assets/images/images.scss";
+import "./ReceivedBills.scss";
 
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -47,10 +48,10 @@ const ReceivedBills = () => {
         <h1 className="popup-header">Tell the customer:</h1>
         <p className="popup-para">Your total today is ${totalPrice}</p>
       </Popup>
+      <h1 className="receivedHeader">Received Bills</h1>
       <div className="totalbar">
         <Totalbar />
       </div>
-      <h1>Received Bills page</h1>
       {/* hundreds */}
       <img
         src="src/client/assets/images/hundred-dollar-bill.jpeg"
