@@ -25,7 +25,7 @@ const EditUserStore = () => {
       ) : (
         <>
           <h3>Edit Store stuff here</h3>
-          <form>{/*  */}</form>
+          <form></form>
           <button onClick={() => handleLogout()}>Log Out</button>
         </>
       )}
