@@ -3,3 +3,8 @@
     margin-left: 5px;
     border-radius: 10px;
 }
+section {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: left;
+}

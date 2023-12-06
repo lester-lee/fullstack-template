@@ -52,156 +52,162 @@ const ReceivedBills = () => {
       <div className="totalbar">
         <Totalbar />
       </div>
-      {/* hundreds */}
-      <img
-        src="src/client/assets/images/hundred-dollar-bill.jpeg"
-        alt="hundred-dollar-bill"
-        className="bills"
-        onClick={() => {
-          dispatch(addTotalReceived({ value: 100 }));
-          setHundreds(hundreds + 1);
-        }}
-      />
-      {hundreds > 0 ? (
-        <>
-          <p>x {hundreds}</p>
-          <button
-            className="minus-button"
+      <section>
+        <div className="hundredFifty">
+          {/* hundreds */}
+          <img
+            src="src/client/assets/images/hundred-dollar-bill.jpeg"
+            alt="hundred-dollar-bill"
+            className="bills"
             onClick={() => {
-              setHundreds(hundreds - 1);
-              dispatch(subtractTotalReceived({ value: 100 }));
+              dispatch(addTotalReceived({ value: 100 }));
+              setHundreds(hundreds + 1);
             }}
-          >
-            -
-          </button>
-        </>
-      ) : null}
-      <br />
-      {/* fifties */}
-      <img
-        src="src/client/assets/images/fifty-dollar-bill.jpeg"
-        alt="fifty-dollar-bill"
-        className="bills"
-        onClick={() => {
-          dispatch(addTotalReceived({ value: 50 }));
-          setFifties(fifties + 1);
-        }}
-      />
-      {fifties > 0 ? (
-        <>
-          <p>x {fifties}</p>
-          <button
-            className="minus-button"
+          />
+          {hundreds > 0 ? (
+            <>
+              <p>x {hundreds}</p>
+              <button
+                className="minus-button"
+                onClick={() => {
+                  setHundreds(hundreds - 1);
+                  dispatch(subtractTotalReceived({ value: 100 }));
+                }}
+              >
+                -
+              </button>
+            </>
+          ) : null}
+          <br />
+          {/* fifties */}
+          <img
+            src="src/client/assets/images/fifty-dollar-bill.jpeg"
+            alt="fifty-dollar-bill"
+            className="bills"
             onClick={() => {
-              setFifties(fifties - 1);
-              dispatch(subtractTotalReceived({ value: 50 }));
+              dispatch(addTotalReceived({ value: 50 }));
+              setFifties(fifties + 1);
             }}
-          >
-            -
-          </button>
-        </>
-      ) : null}
-      <br />
-      {/* twenties */}
-      <img
-        src="src/client/assets/images/twenty-dollar-bill.jpeg"
-        alt="twenty-dollar-bill"
-        className="bills"
-        onClick={() => {
-          dispatch(addTotalReceived({ value: 20 }));
-          setTwenties(twenties + 1);
-        }}
-      />
-      {twenties > 0 ? (
-        <>
-          <p>x {twenties}</p>
-          <button
-            className="minus-button"
+          />
+          {fifties > 0 ? (
+            <>
+              <p>x {fifties}</p>
+              <button
+                className="minus-button"
+                onClick={() => {
+                  setFifties(fifties - 1);
+                  dispatch(subtractTotalReceived({ value: 50 }));
+                }}
+              >
+                -
+              </button>
+            </>
+          ) : null}
+          <br />
+        </div>
+        <div className="smallBills">
+          {/* twenties */}
+          <img
+            src="src/client/assets/images/twenty-dollar-bill.jpeg"
+            alt="twenty-dollar-bill"
+            className="bills"
             onClick={() => {
-              setTwenties(twenties - 1);
-              dispatch(subtractTotalReceived({ value: 20 }));
+              dispatch(addTotalReceived({ value: 20 }));
+              setTwenties(twenties + 1);
             }}
-          >
-            -
-          </button>
-        </>
-      ) : null}
-      <br />
-      {/* tens */}
-      <img
-        src="src/client/assets/images/ten-dollar-bill.jpg"
-        alt="ten-dollar-bill"
-        className="bills"
-        onClick={() => {
-          dispatch(addTotalReceived({ value: 10 }));
-          setTens(tens + 1);
-        }}
-      />
-      {tens > 0 ? (
-        <>
-          <p>x {tens}</p>
-          <button
-            className="minus-button"
+          />
+          {twenties > 0 ? (
+            <>
+              <p>x {twenties}</p>
+              <button
+                className="minus-button"
+                onClick={() => {
+                  setTwenties(twenties - 1);
+                  dispatch(subtractTotalReceived({ value: 20 }));
+                }}
+              >
+                -
+              </button>
+            </>
+          ) : null}
+          <br />
+          {/* tens */}
+          <img
+            src="src/client/assets/images/ten-dollar-bill.jpg"
+            alt="ten-dollar-bill"
+            className="bills"
             onClick={() => {
-              setTens(tens - 1);
-              dispatch(subtractTotalReceived({ value: 10 }));
+              dispatch(addTotalReceived({ value: 10 }));
+              setTens(tens + 1);
             }}
-          >
-            -
-          </button>
-        </>
-      ) : null}
-      <br />
-      {/* fives */}
-      <img
-        src="src/client/assets/images/five-dollar-bill.jpg"
-        alt="five-dollar-bill"
-        className="bills"
-        onClick={() => {
-          dispatch(addTotalReceived({ value: 5 }));
-          setFives(fives + 1);
-        }}
-      />
-      {fives > 0 ? (
-        <>
-          <p>x {fives}</p>
-          <button
-            className="minus-button"
+          />
+          {tens > 0 ? (
+            <>
+              <p>x {tens}</p>
+              <button
+                className="minus-button"
+                onClick={() => {
+                  setTens(tens - 1);
+                  dispatch(subtractTotalReceived({ value: 10 }));
+                }}
+              >
+                -
+              </button>
+            </>
+          ) : null}
+          <br />
+          {/* fives */}
+          <img
+            src="src/client/assets/images/five-dollar-bill.jpg"
+            alt="five-dollar-bill"
+            className="bills"
             onClick={() => {
-              setFives(fives - 1);
-              dispatch(subtractTotalReceived({ value: 5 }));
+              dispatch(addTotalReceived({ value: 5 }));
+              setFives(fives + 1);
             }}
-          >
-            -
-          </button>
-        </>
-      ) : null}
-      <br />
-      {/* singles */}
-      <img
-        src="src/client/assets/images/one-dollar-bill.jpg"
-        alt="one-dollar-bill"
-        className="bills"
-        onClick={() => {
-          dispatch(addTotalReceived({ value: 1 }));
-          setOnes(ones + 1);
-        }}
-      />
-      {ones > 0 ? (
-        <>
-          <p>x {ones}</p>
-          <button
-            className="minus-button"
+          />
+          {fives > 0 ? (
+            <>
+              <p>x {fives}</p>
+              <button
+                className="minus-button"
+                onClick={() => {
+                  setFives(fives - 1);
+                  dispatch(subtractTotalReceived({ value: 5 }));
+                }}
+              >
+                -
+              </button>
+            </>
+          ) : null}
+          <br />
+          {/* singles */}
+          <img
+            src="src/client/assets/images/one-dollar-bill.jpg"
+            alt="one-dollar-bill"
+            className="bills"
             onClick={() => {
-              setOnes(ones - 1);
-              dispatch(subtractTotalReceived({ value: 1 }));
+              dispatch(addTotalReceived({ value: 1 }));
+              setOnes(ones + 1);
             }}
-          >
-            -
-          </button>
-        </>
-      ) : null}
-      <br />
+          />
+          {ones > 0 ? (
+            <>
+              <p>x {ones}</p>
+              <button
+                className="minus-button"
+                onClick={() => {
+                  setOnes(ones - 1);
+                  dispatch(subtractTotalReceived({ value: 1 }));
+                }}
+              >
+                -
+              </button>
+            </>
+          ) : null}
+          <br />
+        </div>
+      </section>
       <button onClick={() => navigate("/received-coins")}>Next</button>
     </>
   );
