@@ -41,7 +41,6 @@ router.post("/login", async (req, res, next) => {
         token: jwt.sign({ id: foundUsername.id }, process.env.JWT),
       });
     }
-
     res.status(401).send("incorrect username or password");
   } catch (err) {
     next(err);
