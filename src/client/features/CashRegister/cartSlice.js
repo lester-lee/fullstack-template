@@ -34,12 +34,16 @@ const cartSlice = createSlice({
       }
     },
     removeFromCart: (state, action) => {
+      //product object for use in price calculation and cart cards
       const product = action.payload;
+
+      // Look for product in cart
       const cartIndex = state.cartItems.findIndex(
         (cartItem) => cartItem.id === product.id
       );
       const cartItem = state.cartItems[cartIndex];
 
+      // If product exists in the cart and there are more than one, reduce quanitiy
       if (cartIndex !== -1) {
         if (cartItem.quantity > 1) {
           cartItem.quantity--;
@@ -49,6 +53,7 @@ const cartSlice = createSlice({
           state.totalPrice -= product.price;
           console.log(cartItem.name, "quantity updated");
         } else {
+          // If there is only one of the product in cart, remove from cart
           state.cartItems.splice(cartIndex, 1);
           console.log(
             `${product.price} deducted from total of ${state.totalPrice} for ${product.name}`
@@ -60,16 +65,22 @@ const cartSlice = createSlice({
       }
     },
     addTotalReceived: (state, action) => {
-      const { value } = action.payload;
-      state.totalReceived += value;
+      const value = action.payload;
+      state.totalReceived += parseFloat(value);
     },
     subtractTotalReceived: (state, action) => {
-      const { value } = action.payload;
-      state.totalReceived -= value;
+      const value = action.payload;
+      state.totalReceived -= parseFloat(value);
     },
     addCalculatedChange: (state, action) => {
       const { changeObject } = action.payload;
       state.calculatedChange = changeObject;
+    },
+    resetCart: (state) => {
+      state.totalPrice = 0;
+      state.totalReceived = 0;
+      state.calculatedChange = {};
+      state.cartItems = [];
     },
   },
 });
@@ -80,6 +91,7 @@ export const {
   addTotalReceived,
   subtractTotalReceived,
   addCalculatedChange,
+  resetCart,
 } = cartSlice.actions;
 
 export default cartSlice.reducer;

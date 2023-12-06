@@ -16,6 +16,6 @@ const Totalbar = () => {
     </div>
     </>
   );
-}
+};
 
 export default Totalbar;

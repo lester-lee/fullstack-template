@@ -4,10 +4,10 @@ import { useSelector } from "react-redux";
 import Totalbar from "../TotalsBar/TotalsBar";
 import DenominationCard from "./DenominationCard";
 
-import "../../assets/images/images.scss";
+import "../DenominationsReceived/Denomination.scss";
 
 // finds denominations with values > 0, and renders one at a time (onClick)
-const CalculatedChangeRender = () => {
+const IncrementalRendering = () => {
   //gets calculatedChange object from redux store
   const calculatedChange = useSelector((state) => state.cart.calculatedChange);
 
@@ -40,21 +40,27 @@ const CalculatedChangeRender = () => {
       <div className="totalbar">
         <Totalbar />
       </div>
-      <div>
-        <DenominationCard
-          denomination={renderedDenomination}
-          value={renderedValue}
-        />
-      </div>
-      {/* conditional to only display next button if there is another denomination/value to show */}
-      {index + 2 < renderingArray.length ? (
-        <button onClick={() => setIndex(index + 2)}>Next</button>
-      ) : null}
-      <button onClick={() => navigate("/total-change")}>
-        View total change
-      </button>
+      {renderedDenomination ? (
+        <>
+          <div>
+            <DenominationCard
+              denomination={renderedDenomination}
+              value={renderedValue}
+            />
+          </div>
+          {/* conditional to only display next button if there is another denomination/value to show */}
+          {index + 2 < renderingArray.length ? (
+            <button onClick={() => setIndex(index + 2)}>Next</button>
+          ) : null}
+          <button onClick={() => navigate("/total-change")}>
+            View total change
+          </button>
+        </>
+      ) : (
+        <button onClick={() => navigate("/")}>Home</button>
+      )}
     </>
   );
 };
 
-export default CalculatedChangeRender;
+export default IncrementalRendering;

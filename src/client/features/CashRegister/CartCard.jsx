@@ -3,9 +3,10 @@ import { removeFromCart } from "./cartSlice";
 import "./CartCard.scss";
 
 const CartCard = ({ product }) => {
-  const { id, name, price, quantity } = product;
+  const { name, price, quantity } = product;
   const dispatch = useDispatch();
 
+  // Create handler to remove item from the cart
   const handleRemoveFromCart = (product) => {
     dispatch(removeFromCart(product));
   };
