@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { useLoginMutation } from "./authSlice.js";
+import { useNavigate } from "react-router-dom";
 
-export default function Login() {
+const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const [login] = useLoginMutation();
 
@@ -14,11 +16,12 @@ export default function Login() {
     } catch (err) {
       next(err);
     }
+    navigate("/edit");
   };
 
   return (
     <>
-      <h1>Login Page</h1>
+      <h1>Login</h1>
       <form className="login-form" onSubmit={handleSubmit}>
         <label className="form-labels">Username: </label>
         <input
@@ -38,4 +41,6 @@ export default function Login() {
       </form>
     </>
   );
-}
+};
+
+export default Login;
