@@ -7,13 +7,13 @@ import store from "./store";
 //import AuthForm from "./features/auth/AuthForm";
 
 import Root from "./Root/Root.jsx";
-import StartScreen from "./features/StartScreen/StartScreen.jsx"
+import StartScreen from "./features/StartScreen/StartScreen.jsx";
 import Login from "./features/UserAccounts/Login";
 import Register from "./features/UserAccounts/UserRegistration";
 import CashRegister from "./features/CashRegister/CashRegister";
 import ReceivedBills from "./features/DenominationsReceived/ReceivedBills";
 import ReceivedCoins from "./features/DenominationsReceived/ReceivedCoins";
-import CalculatedChangeRender from "./features/DenominationsToGive/CalculatedChangeRender.jsx";
+import IncrementalRendering from "./features/DenominationsToGive/IncrementalRendering.jsx";
 import TotalChange from "./features/DenominationsToGive/TotalChange";
 import Completed from "./features/DenominationsToGive/Completed";
 import ErrorPage from "./features/Errors/ErrorPage";
@@ -32,7 +32,7 @@ const router = createBrowserRouter([
       { path: "/register", element: <Register /> },
       { path: "/received-bills", element: <ReceivedBills /> },
       { path: "/received-coins", element: <ReceivedCoins /> },
-      { path: "/change", element: <CalculatedChangeRender /> },
+      { path: "/change", element: <IncrementalRendering /> },
       { path: "/total-change", element: <TotalChange /> },
       { path: "/completed", element: <Completed /> },
       { path: "*", element: <ErrorPage /> },
