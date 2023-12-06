@@ -27,18 +27,16 @@ router.post("/register", async (req, res, next) => {
 });
 
 router.post("/login", async (req, res, next) => {
-  const { username, password } = req.body;
   try {
+    const { username, password } = req.body;
     const foundUsername = await prisma.store.findFirst({
       where: { username: username },
     });
 
-    // if (
-    //   foundUsername &&
-    //   (await bcrypt.compare(password, foundUsername.password))
-    // )
-
-    if (foundUsername) {
+    if (
+      foundUsername &&
+      (await bcrypt.compare(password, foundUsername.password))
+    ) {
       return res.json({
         token: jwt.sign({ id: foundUsername.id }, process.env.JWT),
       });
