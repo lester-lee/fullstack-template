@@ -28,7 +28,6 @@ const EditUserStore = () => {
         </>
       ) : (
         <>
-          <h3>Edit Store stuff here</h3>
           <form className="edit-form">
             <label className="form-labels">Product Name: </label>
             <input

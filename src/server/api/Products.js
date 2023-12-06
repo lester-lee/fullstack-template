@@ -26,3 +26,24 @@ router.get("/:id", async (req, res, next) => {
     next(err);
   }
 });
+
+/**Add a new product with store id */
+router.post("/store/:id", async (req, res, next) => {
+  try {
+    const id = +req.params.id;
+    const { name, price, imgUrl, category } = req.body;
+
+    const newProduct = await prisma.product.create({
+      data: {
+        name: name,
+        price: +price,
+        imgUrl: imgUrl,
+        category: category,
+        storeId: id,
+      },
+    });
+    res.json(newProduct);
+  } catch (err) {
+    next(err);
+  }
+});
