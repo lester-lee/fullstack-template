@@ -2,7 +2,7 @@
 // onClick the picture, it adds value to total received (connected to navBar (shared state))
 // a delete button
 // next button
-import "../../assets/images/images.scss";
+import "./Denomination.scss";
 
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
