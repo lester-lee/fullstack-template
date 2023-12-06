@@ -33,16 +33,17 @@ router.post("/login", async (req, res, next) => {
       where: { username: username },
     });
 
-    if (
-      foundUsername &&
-      (await bcrypt.compare(password, foundUsername.password))
-    ) {
-      if (password === foundUsername.password) {
-        return res.json({
-          token: jwt.sign({ id: foundUsername.id }, process.env.JWT),
-        });
-      }
+    // if (
+    //   foundUsername &&
+    //   (await bcrypt.compare(password, foundUsername.password))
+    // )
+
+    if (foundUsername) {
+      return res.json({
+        token: jwt.sign({ id: foundUsername.id }, process.env.JWT),
+      });
     }
+
     res.status(401).send("incorrect username or password");
   } catch (err) {
     next(err);
