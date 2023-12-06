@@ -65,12 +65,12 @@ const cartSlice = createSlice({
       }
     },
     addTotalReceived: (state, action) => {
-      const { value } = action.payload;
-      state.totalReceived += value;
+      const value = action.payload;
+      state.totalReceived += parseFloat(value);
     },
     subtractTotalReceived: (state, action) => {
-      const { value } = action.payload;
-      state.totalReceived -= value;
+      const value = action.payload;
+      state.totalReceived -= parseFloat(value);
     },
     addCalculatedChange: (state, action) => {
       const { changeObject } = action.payload;
