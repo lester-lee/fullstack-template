@@ -87,7 +87,6 @@ const EditUserStore = () => {
             <input
               className="form-inputs"
               type="text"
-              // type="file"
               value={category}
               onChange={(e) => setCategory(e.target.value)}
             />
