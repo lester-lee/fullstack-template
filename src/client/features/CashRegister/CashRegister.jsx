@@ -32,6 +32,8 @@ const CashRegister = () => {
     isError: productsByStoreIsError,
   } = useGetProductsByStoreIdQuery(storeDetailsData?.id ?? skipToken);
 
+  console.log("products by store: ", productsByStoreData);
+  console.log("store details: ", storeDetailsData);
   // Use select cart items and total price from redux store
   let total = useSelector((state) => state.cart.totalPrice);
   total = Math.abs(total).toFixed(2);
@@ -45,32 +47,32 @@ const CashRegister = () => {
     }, 200);
   }, []);
 
-  return;
-  // isLoading ? (
-  //   <h2>Loading...</h2>
-  // ) :
-  <div className="main-container">
-    <div className="product-container">
-      <ul className="product-list">
-        {products.map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))}
-      </ul>
+  return productsByStoreLoading ? (
+    <h2>Loading...</h2>
+  ) : (
+    <div className="main-container">
+      <div className="product-container">
+        <ul className="product-list">
+          {productsByStoreData?.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
+        </ul>
+      </div>
+      <div className="cart-container">
+        <ul className="cart-list">
+          {cartItems.map((product) => (
+            <CartCard key={product.id} product={product} />
+          ))}
+        </ul>
+        <h2 className="total-price">Total: ${total}</h2>
+        <button onClick={() => navigate("/received-bills")}>Checkout</button>
+      </div>
+      <Popup trigger={timedPopup} setTrigger={setTimedPopup}>
+        <h1 className="popup-header">Greet the customer:</h1>
+        <p className="popup-para">Hello, how can I help you today?</p>
+      </Popup>
     </div>
-    <div className="cart-container">
-      <ul className="cart-list">
-        {cartItems.map((product) => (
-          <CartCard key={product.id} product={product} />
-        ))}
-      </ul>
-      <h2 className="total-price">Total: ${total}</h2>
-      <button onClick={() => navigate("/received-bills")}>Checkout</button>
-    </div>
-    <Popup trigger={timedPopup} setTrigger={setTimedPopup}>
-      <h1 className="popup-header">Greet the customer:</h1>
-      <p className="popup-para">Hello, how can I help you today?</p>
-    </Popup>
-  </div>;
+  );
 };
 
 export default CashRegister;
