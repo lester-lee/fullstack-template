@@ -11,29 +11,47 @@ import CartCard from "./CartCard";
 import Popup from "../Popup/Popup";
 import { useState, useEffect } from "react";
 import "./CashRegister.scss";
+import { selectToken } from "../UserAccounts/authSlice";
 
 const CashRegister = () => {
+  const token = useSelector(selectToken);
   const navigate = useNavigate();
   // Fetch list of products from api
-  // won't need
-  // const { data: products, isLoading } = useGetProductsQuery();
 
-  //get username and storeId
   const {
     data: storeDetailsData,
     storeDetailsIsLoading,
     storeDetailsIsError,
   } = useGetStoreDetailsQuery();
 
-  //get products using storeId
+  // get products using storeId
   const {
     data: productsByStoreData,
-    isLoading: productsByStoreLoading,
+    isLoading: productsByStoreIsLoading,
     isError: productsByStoreIsError,
   } = useGetProductsByStoreIdQuery(storeDetailsData?.id ?? skipToken);
 
-  console.log("products by store: ", productsByStoreData);
-  console.log("store details: ", storeDetailsData);
+  // in case there is no token, getting data from the sample store
+  const {
+    data: sampleStoreData,
+    isLoading: sampleStoreDataIsLoading,
+    isError: sampleStoreDataIsError,
+  } = useGetProductsByStoreIdQuery(1);
+
+  // determine if there is or isn't a token, and conditionally return an array of data
+  let storeToMap = [];
+  const findStoreToMap = () => {
+    if (token) {
+      storeToMap = productsByStoreData;
+    } else {
+      storeToMap = sampleStoreData;
+    }
+  };
+
+  findStoreToMap();
+
+  console.log("storeToMap:", storeToMap);
+
   // Use select cart items and total price from redux store
   let total = useSelector((state) => state.cart.totalPrice);
   total = Math.abs(total).toFixed(2);
@@ -47,13 +65,13 @@ const CashRegister = () => {
     }, 200);
   }, []);
 
-  return productsByStoreLoading ? (
+  return productsByStoreIsLoading || sampleStoreDataIsLoading ? (
     <h2>Loading...</h2>
   ) : (
     <div className="main-container">
       <div className="product-container">
         <ul className="product-list">
-          {productsByStoreData?.map((product) => (
+          {storeToMap?.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </ul>
