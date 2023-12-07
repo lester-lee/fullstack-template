@@ -74,6 +74,7 @@ const ReceivedBills = () => {
       </Popup>
       <div className="receivedHeader">
         <h1 className="receivedHeaderText">Received Bills</h1>
+        <p>Click on each bill that you received from the customer</p>
       </div>
       <div className="totalbar">
         <Totalbar />

@@ -17,20 +17,21 @@
     }
     
 }
-.billsSection{
+.coinsSection{
     display: grid;
   grid-template-columns: repeat(2, 1fr); /* Creates 2 equal-width columns */
   gap: 8px; /* Adjust the gap between items as needed */
   margin-left: 40px;
   margin-bottom: 20px;
+  margin-top: 20px;
 }
 
-.billDiv {
+.coinDiv {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    width: 450px;
+    width: 350px;
 
     img {
         border-radius: 20px;
