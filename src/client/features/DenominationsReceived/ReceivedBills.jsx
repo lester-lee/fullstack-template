@@ -72,36 +72,40 @@ const ReceivedBills = () => {
           Your total today is ${totalPrice.toFixed(2)}
         </p>
       </Popup>
-      <h1 className="receivedHeader">Received Bills</h1>
+      <div className="receivedHeader">
+        <h1 className="receivedHeaderText">Received Bills</h1>
+      </div>
       <div className="totalbar">
         <Totalbar />
       </div>
-      <h1>Received Bills page</h1>
-      {Object.entries(bills).map(([billValue, count]) => {
-        const billSrc = `src/client/assets/images/${billValue}-dollar-bill.jpeg`;
-        return (
-          <div key={billValue}>
-            <img
-              src={billSrc}
-              alt={`${billValue}-dollar-bill`}
-              className="bills"
-              onClick={() => handleBillClick(billValue)}
-            />
-            {count > 0 && (
-              <>
-                <p>x {count}</p>
-                <button
-                  className="remove-button"
-                  onClick={() => handleBillRemovalClick(billValue)}
-                >
-                  -
-                </button>
-              </>
-            )}
-            <br />
-          </div>
-        );
-      })}
+      <br />
+      <section className="billsSection">
+        {Object.entries(bills).map(([billValue, count]) => {
+          const billSrc = `src/client/assets/images/${billValue}-dollar-bill.jpeg`;
+          return (
+            <div className="billDiv" key={billValue}>
+              <img
+                src={billSrc}
+                alt={`${billValue}-dollar-bill`}
+                className="bills"
+                onClick={() => handleBillClick(billValue)}
+              />
+              {count > 0 && (
+                <>
+                  <p>x {count}</p>
+                  <button
+                    className="remove-button"
+                    onClick={() => handleBillRemovalClick(billValue)}
+                  >
+                    -
+                  </button>
+                </>
+              )}
+              <br />
+            </div>
+          );
+        })}
+      </section>
       <button onClick={() => navigate("/received-coins")}>Next</button>
     </>
   );

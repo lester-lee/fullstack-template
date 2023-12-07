@@ -1,10 +1,23 @@
 .receivedHeader {
     background-color: #fbc59d;
-    margin-left: 5px;
     border-radius: 10px;
-}
-section {
+    height: 70px;
     display: flex;
-    flex-direction: row-reverse;
-    justify-content: left;
+    align-items: center;
+    margin-bottom: 15px;
+    width: 75vw;
+
+    h1 {
+        margin-left: 5px;
+    }
+    
 }
+.billsSection{
+    display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Creates 2 equal-width columns */
+  gap: 8px; /* Adjust the gap between items as needed */
+  margin-left: 40px;
+    
+}
+
+
