@@ -1,9 +1,6 @@
 import { useSelector } from "react-redux";
 import { skipToken } from "@reduxjs/toolkit/query";
-import {
-  useGetProductsQuery,
-  useGetProductsByStoreIdQuery,
-} from "./productsSlice";
+import { useGetProductsByStoreIdQuery } from "./productsSlice";
 import { useGetStoreDetailsQuery } from "../UserAccounts/authSlice";
 import { useNavigate } from "react-router-dom";
 import ProductCard from "./ProductCard";
@@ -16,41 +13,25 @@ import { selectToken } from "../UserAccounts/authSlice";
 const CashRegister = () => {
   const token = useSelector(selectToken);
   const navigate = useNavigate();
-  // Fetch list of products from api
 
+  /////////// Fetches list of products from api//////////////
+  // gets store details using useGetStoreDetailsQuery
   const {
     data: storeDetailsData,
     storeDetailsIsLoading,
     storeDetailsIsError,
   } = useGetStoreDetailsQuery();
 
-  // get products using storeId
+  // get products by storeId using useGetProdcutsByStoreIdQuery
+  // if no token, storeId is set to 1
+  // with a token, storeId is found via useGetStoreDetailsQuery above
   const {
     data: productsByStoreData,
     isLoading: productsByStoreIsLoading,
     isError: productsByStoreIsError,
-  } = useGetProductsByStoreIdQuery(storeDetailsData?.id ?? skipToken);
-
-  // in case there is no token, getting data from the sample store
-  const {
-    data: sampleStoreData,
-    isLoading: sampleStoreDataIsLoading,
-    isError: sampleStoreDataIsError,
-  } = useGetProductsByStoreIdQuery(1);
-
-  // determine if there is or isn't a token, and conditionally return an array of data
-  let storeToMap = [];
-  const findStoreToMap = () => {
-    if (token) {
-      storeToMap = productsByStoreData;
-    } else {
-      storeToMap = sampleStoreData;
-    }
-  };
-
-  findStoreToMap();
-
-  console.log("storeToMap:", storeToMap);
+  } = useGetProductsByStoreIdQuery(
+    !token ? 1 : storeDetailsData?.id ?? skipToken
+  );
 
   // Use select cart items and total price from redux store
   let total = useSelector((state) => state.cart.totalPrice);
@@ -65,13 +46,13 @@ const CashRegister = () => {
     }, 200);
   }, []);
 
-  return productsByStoreIsLoading || sampleStoreDataIsLoading ? (
+  return productsByStoreIsLoading || storeDetailsIsLoading ? (
     <h2>Loading...</h2>
   ) : (
     <div className="main-container">
       <div className="product-container">
         <ul className="product-list">
-          {storeToMap?.map((product) => (
+          {productsByStoreData?.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </ul>
