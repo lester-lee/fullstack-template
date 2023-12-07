@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import Totalbar from "../TotalsBar/TotalsBar";
 import DenominationCard from "./DenominationCard";
 
-import "../../assets/images/images.scss";
+import "../DenominationsReceived/Denomination.scss";
 
 // finds denominations with values > 0, and renders one at a time (onClick)
 const IncrementalRendering = () => {
