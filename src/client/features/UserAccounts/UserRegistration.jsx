@@ -1,7 +1,10 @@
 import { useState } from "react";
 import { useRegisterMutation, useLoginMutation } from "./authSlice.js";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
+  const navigate = useNavigate();
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -13,6 +16,7 @@ const Register = () => {
     try {
       await register({ username, password });
       await login({ username, password });
+      navigate("/edit");
     } catch (error) {
       console.error("Error: ", error);
     }

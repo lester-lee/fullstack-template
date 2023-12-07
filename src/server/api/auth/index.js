@@ -47,3 +47,20 @@ router.post("/login", async (req, res, next) => {
     next(err);
   }
 });
+
+/** Sends store details (username, store id) */
+router.get("/", async (req, res, next) => {
+  try {
+    const payload = jwt.verify(req.headers.authorization, process.env.JWT);
+    const store = await prisma.store.findUnique({
+      where: {
+        id: payload.id,
+      },
+    });
+    if (store) {
+      return res.json(store);
+    }
+  } catch (err) {
+    next(err);
+  }
+});

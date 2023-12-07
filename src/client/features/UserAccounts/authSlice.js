@@ -17,6 +17,10 @@ const authApi = api.injectEndpoints({
         body: { username, password },
       }),
     }),
+    getStoreDetails: builder.query({
+      query: () => `auth/`,
+      // providesTags: ["Products"],
+    }),
   }),
 });
 
@@ -51,4 +55,8 @@ export const selectToken = (state) => state.auth.token;
 
 export default authSlice.reducer;
 
-export const { useRegisterMutation, useLoginMutation } = authApi;
+export const {
+  useRegisterMutation,
+  useLoginMutation,
+  useGetStoreDetailsQuery,
+} = authApi;

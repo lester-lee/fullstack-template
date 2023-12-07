@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { logout } from "./authSlice";
 import { useState } from "react";
 import { useAddProductMutation } from "../CashRegister/productsSlice";
+import { useGetStoreDetailsQuery } from "./authSlice";
 
 const EditUserStore = () => {
   const token = useSelector(selectToken);
@@ -14,9 +15,26 @@ const EditUserStore = () => {
   const [price, setPrice] = useState("");
   const [imgUrl, setImgUrl] = useState("");
   const [category, setCategory] = useState("");
-  //get store id
-  // add storeId to line19
-  const product = { name, price, imgUrl, category };
+
+  const [addProduct] = useAddProductMutation();
+  const { data, isLoading, isError } = useGetStoreDetailsQuery();
+
+  if (isLoading) return <p>Loading...</p>;
+
+  if (isError) return <p>Error occured while fetching data</p>;
+
+  if (!data) return <p>No data available</p>;
+
+  const storeId = data.id;
+  const username = data.username;
+
+  const product = { name, price, imgUrl, category, storeId };
+  // console.log("product: ", product);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    addProduct(product);
+  };
 
   const handleLogout = () => {
     navigate("/");
@@ -25,7 +43,7 @@ const EditUserStore = () => {
 
   return (
     <>
-      <h1>Edit Store</h1>
+      <h1>Welcome to your Store, {username}</h1>
       {!token ? (
         <>
           <p>You must be logged in to edit a store</p>
@@ -34,6 +52,7 @@ const EditUserStore = () => {
         </>
       ) : (
         <>
+          <h2>Add Product</h2>
           <form className="edit-form">
             <label className="form-labels">Product Name: </label>
             <input
@@ -67,7 +86,9 @@ const EditUserStore = () => {
               value={category}
               onChange={(e) => setCategory(e.target.value)}
             />
-            <button type="submit">Add Product</button>
+            <button type="submit" onClick={handleSubmit}>
+              Add Product
+            </button>
           </form>
           <button onClick={() => handleLogout()}>Log Out</button>
         </>

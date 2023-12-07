@@ -10,7 +10,7 @@ const api = createApi({
     baseUrl: "http://localhost:3000/api",
     prepareHeaders: (headers, { getState }) => {
       const token = getState().auth.token;
-      token && headers.set("authorization", `Bearer ${token}`);
+      token && headers.set("authorization", `${token}`);
       return headers;
     },
   }),
