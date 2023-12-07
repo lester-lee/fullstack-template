@@ -5,6 +5,7 @@ import { logout } from "./authSlice";
 import { useState } from "react";
 import { useAddProductMutation } from "../CashRegister/productsSlice";
 import { useGetStoreDetailsQuery } from "./authSlice";
+import { useGetProductsByStoreIdQuery } from "../CashRegister/productsSlice";
 
 // page allows administrators to add and edit products in their store
 const EditUserStore = () => {
@@ -33,6 +34,12 @@ const EditUserStore = () => {
   const storeId = data.id;
   const username = data.username;
 
+  // const { storeData, storeIsLoading, storeIsError } =
+  //   useGetProductsByStoreIdQuery(storeId);
+  // if (storeIsLoading) return <p>Loading...</p>;
+  // if (storeIsError) return <p>Error occured while fetching store data</p>;
+  // if (!storeData) return <p>No data available</p>;
+
   const product = { name, price, imgUrl, category, storeId };
   // console.log("product: ", product);
 
@@ -48,6 +55,7 @@ const EditUserStore = () => {
 
   return (
     <>
+      <p>{storeData}</p>
       <h1>Welcome to your Store, {username}</h1>
       {!token ? (
         <>
