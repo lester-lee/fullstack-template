@@ -5,6 +5,7 @@ import Totalbar from "../TotalsBar/TotalsBar";
 import DenominationCard from "./DenominationCard";
 
 import "../DenominationsReceived/Denomination.scss";
+import "./IncrementalRendering.scss";
 
 // finds denominations with values > 0, and renders one at a time (onClick)
 const IncrementalRendering = () => {
@@ -37,12 +38,16 @@ const IncrementalRendering = () => {
 
   return (
     <>
+    <div className="changeHeader">
+        <h1>Change</h1>
+        <p>Give each customer the bills and coins below</p>
+    </div>
       <div className="totalbar">
         <Totalbar />
       </div>
       {renderedDenomination ? (
         <>
-          <div>
+          <div className="card">
             <DenominationCard
               denomination={renderedDenomination}
               value={renderedValue}
@@ -52,6 +57,7 @@ const IncrementalRendering = () => {
           {index + 2 < renderingArray.length ? (
             <button onClick={() => setIndex(index + 2)}>Next</button>
           ) : null}
+          <br/>
           <button onClick={() => navigate("/total-change")}>
             View total change
           </button>

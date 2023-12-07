@@ -1,0 +1,18 @@
+.changeHeader {
+    background-color: #fbc59d;
+    border-radius: 10px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    width: 75vw;
+
+    h1 {
+        margin-left: 20px;
+    }
+
+    p {
+        margin-left: 120px;
+        font-size: 20px;
+    }
+}

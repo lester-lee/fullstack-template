@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import "../DenominationsReceived/Denomination.scss";
+import "./TotalChange.scss";
 import Totalbar from "../TotalsBar/TotalsBar";
 import DenominationCard from "./DenominationCard";
 
@@ -12,6 +13,10 @@ const TotalChange = () => {
 
   return (
     <div>
+      <div className="changeHeader">
+        <h1>Total Change</h1>
+        <p>Check the customer's change with the bills and coins below</p>
+    </div>
       <div className="totalbar">
         <Totalbar />
       </div>
