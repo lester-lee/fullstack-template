@@ -1,0 +1,49 @@
+// body{
+//     font-family: Verdana, sans-serif;
+// }
+.loginHeader {
+    background-color: #fbc59d;
+    border-radius: 10px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    width: 75vw;
+
+    h1 {
+        margin-left: 20px;
+    }
+
+    p {
+        margin-left: 120px;
+        font-size: 20px;
+    }
+}
+
+form {
+    background-color: white;
+    border-radius: 30px;
+    box-shadow: 0 5px 0 lightgray;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    height: 350px;
+    font-size: larger;
+
+    h2 {
+        font-size: x-large;
+        margin-top: 20px;
+        margin-left:15px;
+    }
+    label {
+        margin-top: 20px;
+        margin-left:15px;
+    }
+
+    input {
+        margin-left: 15px;
+        margin-top: 5px;
+        width: 220px;
+        border-radius: 10px;
+    }
+}
