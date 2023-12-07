@@ -6,17 +6,21 @@ import { useState } from "react";
 import { useAddProductMutation } from "../CashRegister/productsSlice";
 import { useGetStoreDetailsQuery } from "./authSlice";
 
+// page allows administrators to add and edit products in their store
 const EditUserStore = () => {
   const token = useSelector(selectToken);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  // fields set in form
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [imgUrl, setImgUrl] = useState("");
   const [category, setCategory] = useState("");
 
+  // allows POST to API to add products
   const [addProduct] = useAddProductMutation();
+  // gets data from the store, specifically to retrieve username and storeId
   const { data, isLoading, isError } = useGetStoreDetailsQuery();
 
   if (isLoading) return <p>Loading...</p>;
@@ -25,6 +29,7 @@ const EditUserStore = () => {
 
   if (!data) return <p>No data available</p>;
 
+  // storeId is auto-populated in the post request, ensuring that all products go to that admin's store
   const storeId = data.id;
   const username = data.username;
 
