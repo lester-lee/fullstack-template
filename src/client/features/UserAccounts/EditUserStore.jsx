@@ -7,6 +7,7 @@ import { useAddProductMutation } from "../CashRegister/productsSlice";
 import { useGetStoreDetailsQuery } from "./authSlice";
 import { useGetProductsByStoreIdQuery } from "../CashRegister/productsSlice";
 import { skipToken } from "@reduxjs/toolkit/query";
+import "./EditUserStore.scss"
 
 // page allows administrators to add and edit products in their store
 const EditUserStore = () => {
@@ -106,6 +107,15 @@ const EditUserStore = () => {
             </button>
           </form>
           <button onClick={() => handleLogout()}>Log Out</button>
+          <ul className="inventory">
+            {storeData.map((product) => (
+              <li className="product">
+                <img src={product.imgUrl} />
+                <p>${product.price.toFixed(2)}</p>
+                <h3 className="product-name">{product.name}</h3>
+              </li>
+            ))}
+          </ul>
         </>
       )}
     </>
