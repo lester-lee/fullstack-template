@@ -17,6 +17,7 @@ import IncrementalRendering from "./features/DenominationsToGive/IncrementalRend
 import TotalChange from "./features/DenominationsToGive/TotalChange";
 import Completed from "./features/DenominationsToGive/Completed";
 import ErrorPage from "./features/Errors/ErrorPage";
+import EditUserStore from "./features/UserAccounts/EditUserStore";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
@@ -35,6 +36,7 @@ const router = createBrowserRouter([
       { path: "/change", element: <IncrementalRendering /> },
       { path: "/total-change", element: <TotalChange /> },
       { path: "/completed", element: <Completed /> },
+      { path: "/edit", element: <EditUserStore /> },
       { path: "*", element: <ErrorPage /> },
     ],
   },
