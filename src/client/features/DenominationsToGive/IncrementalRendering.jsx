@@ -10,7 +10,7 @@ import "./IncrementalRendering.scss";
 // finds denominations with values > 0, and renders one at a time (onClick)
 const IncrementalRendering = () => {
   //gets calculatedChange object from redux store
-  const calculatedChange = useSelector((state) => state.cart.calculatedChange);
+  const { calculatedChange, changeToGive } = useSelector((state) => state.cart);
 
   const navigate = useNavigate();
 
@@ -38,13 +38,14 @@ const IncrementalRendering = () => {
 
   return (
     <>
-    <div className="changeHeader">
+      <div className="changeHeader">
         <h1>Change</h1>
         <p className="changeP">Give each customer the bills and coins below</p>
-    </div>
+      </div>
       <div className="totalbar">
         <Totalbar />
       </div>
+      <h3>Total Change Due: ${changeToGive.toFixed(2)}</h3>
       {renderedDenomination ? (
         <>
           <div className="card">
@@ -57,7 +58,7 @@ const IncrementalRendering = () => {
           {index + 2 < renderingArray.length ? (
             <button onClick={() => setIndex(index + 2)}>Next</button>
           ) : null}
-          <br/>
+          <br />
           <button onClick={() => navigate("/total-change")}>
             View total change
           </button>

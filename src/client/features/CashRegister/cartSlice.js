@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   totalPrice: 0,
   totalReceived: 0,
+  changeToGive: 0,
   calculatedChange: {},
   cartItems: [],
 };
@@ -76,10 +77,14 @@ const cartSlice = createSlice({
       const { changeObject } = action.payload;
       state.calculatedChange = changeObject;
     },
+    setChangeToGive: (state, action) => {
+      state.changeToGive = action.payload;
+    },
     resetCart: (state) => {
       state.totalPrice = 0;
       state.totalReceived = 0;
       state.calculatedChange = {};
+      state.changeToGive = 0;
       state.cartItems = [];
     },
   },
@@ -92,6 +97,7 @@ export const {
   subtractTotalReceived,
   addCalculatedChange,
   resetCart,
+  setChangeToGive,
 } = cartSlice.actions;
 
 export default cartSlice.reducer;
