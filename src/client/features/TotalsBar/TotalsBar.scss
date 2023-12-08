@@ -3,13 +3,18 @@
     flex-direction: row;
     align-items: center;
     background-color: #C0DEAD;
+    border: 3px solid #a6c295;
     border-radius: 10px;
     //margin: 200px;
     height: 70px;
     width: 75vw;
 
     h1 {
-        margin-right: 70px;
-        margin-left: 20px;
+        margin: 20px;
+        margin-right: 50px;
+        padding: 0;
+        font-size: 4vh;
+        max-height: 100%;
     }
 }
+

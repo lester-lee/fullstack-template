@@ -3,6 +3,7 @@ import "./StartScreen.scss";
 const StartScreen = () => {
    return (
    <div className="start-screen-div">
+      <h4>Welcome!</h4>
    <div>
    <Link to={'/products'}>
       <button className="start-button"> Start </button>

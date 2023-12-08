@@ -79,7 +79,7 @@ const ReceivedCoins = () => {
 
   return (
     <>
-      <div className="receivedHeader">
+      <div className="receivedCoinHeader">
         <h1 className="receivedHeaderText">Received Coins</h1>
         <p>Click on each coin that you received from the customer</p>
       </div>

@@ -20,13 +20,15 @@
         h1 {
             margin: 0;
             padding: 0;
-            font-size: 50px;
+            font-size: 6vh;
+            max-height: 90%;
         }
 
         p {
             margin: 0;
             padding: 0;
-            font-size: 25px;
+            font-size: 2.5vh;
+            max-height: 90%;
         }
     }
 
@@ -52,6 +54,12 @@
         margin-top: 70px;
         font-family: Verdana, sans-serif;
         font-weight: 50;
+
+        h3 {
+            font-weight: 1000;
+            margin-top: 2px;
+            margin-bottom: 4px;
+        }
         
         .total-price {
             text-align: right;

@@ -40,7 +40,7 @@ const IncrementalRendering = () => {
     <>
     <div className="changeHeader">
         <h1>Change</h1>
-        <p>Give each customer the bills and coins below</p>
+        <p className="changeP">Give each customer the bills and coins below</p>
     </div>
       <div className="totalbar">
         <Totalbar />

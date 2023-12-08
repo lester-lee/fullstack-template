@@ -41,6 +41,7 @@ const CashRegister = () => {
         </ul>
       </div>
       <div className="cart-container">
+      <h3>Customer Cart:</h3>
         <ul className="cart-list">
           {cartItems.map((product) => (
             <CartCard key={product.id} product={product} />

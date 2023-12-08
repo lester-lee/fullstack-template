@@ -27,7 +27,7 @@ const Login = () => {
       <p>Log in to your store, or register to create a new store</p>
       </div>
       <form className="login-form" onSubmit={handleSubmit}>
-        <h2>Welcome! Please log in:</h2>
+        <h2>Welcome! <br/>Please log in!</h2>
         <label className="form-labels">Username: </label>
         <input
           className="form-inputs"

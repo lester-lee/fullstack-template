@@ -72,7 +72,7 @@ const ReceivedBills = () => {
           Your total today is ${totalPrice.toFixed(2)}
         </p>
       </Popup>
-      <div className="receivedHeader">
+      <div className="receivedBillHeader">
         <h1 className="receivedHeaderText">Received Bills</h1>
         <p>Click on each bill that you received from the customer</p>
       </div>

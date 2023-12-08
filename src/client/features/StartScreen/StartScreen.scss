@@ -12,7 +12,14 @@ body {
     background-color: white;
     width: 70vw;
     height: 70vh;
+    border: 5px solid #ED8A53;
     border-radius: 30px;
+
+    h4{
+        font-size: 50px;
+        margin-top: 0;
+        font-weight: 100;
+    }
 }
 .start-button {
     padding: 4px;
@@ -21,6 +28,7 @@ body {
     background-color: #FFAA6F;
     border-radius: 10px;
     margin: 30px;
+    margin-top: 0;
     color: black;
     width: 200px;
     height: 100px;
