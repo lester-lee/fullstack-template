@@ -20,6 +20,7 @@ import { useState } from "react";
 
 import calculateChange from "./changeCalculation";
 import "./Denomination.scss";
+import "./ReceivedCoins.scss";
 import Totalbar from "../TotalsBar/TotalsBar";
 import Popup from "../Popup/Popup";
 
@@ -78,14 +79,18 @@ const ReceivedCoins = () => {
 
   return (
     <>
+      <div className="receivedCoinHeader">
+        <h1 className="receivedHeaderText">Received Coins</h1>
+        <p>Click on each coin that you received from the customer</p>
+      </div>
       <div className="totalbar">
         <Totalbar />
       </div>
-      <h1>Received Coins page</h1>
+      <section className="coinsSection">
       {Object.entries(coins).map(([coinValue, count]) => {
         const coinSrc = `src/client/assets/images/${coinValue}-cent-coin.jpeg`;
         return (
-          <div key={coinValue}>
+          <div className="coinDiv" key={coinValue}>
             <img
               src={coinSrc}
               alt={`${coinValue}-cent-coin`}
@@ -107,6 +112,7 @@ const ReceivedCoins = () => {
           </div>
         );
       })}
+      </section>
       <button onClick={handleClick}>Next</button>
       {/* Popup: */}
       <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>

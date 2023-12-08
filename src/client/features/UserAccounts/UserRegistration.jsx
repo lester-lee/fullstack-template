@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useRegisterMutation, useLoginMutation } from "./authSlice.js";
 import { useNavigate } from "react-router-dom";
-
+import "./Login.scss";
 const Register = () => {
   const navigate = useNavigate();
 
@@ -24,8 +24,13 @@ const Register = () => {
 
   return (
     <>
+    <div className="loginHeader">
       <h1>Register</h1>
+      <p>Register to create your own store</p>
+    </div>
       <form className="login-form" onSubmit={handleSubmit}>
+      <h2 className="registerFormWelcome">Welcome!</h2>
+      <p className="registerFormText"> Please enter a username and password:</p>
         <label className="form-labels">Username: </label>
         <input
           className="form-inputs"

@@ -3,6 +3,7 @@
 // a delete button
 // next button
 import "./Denomination.scss";
+import "./ReceivedBills.scss";
 
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -71,35 +72,41 @@ const ReceivedBills = () => {
           Your total today is ${totalPrice.toFixed(2)}
         </p>
       </Popup>
+      <div className="receivedBillHeader">
+        <h1 className="receivedHeaderText">Received Bills</h1>
+        <p>Click on each bill that you received from the customer</p>
+      </div>
       <div className="totalbar">
         <Totalbar />
       </div>
-      <h1>Received Bills page</h1>
-      {Object.entries(bills).map(([billValue, count]) => {
-        const billSrc = `src/client/assets/images/${billValue}-dollar-bill.jpeg`;
-        return (
-          <div key={billValue}>
-            <img
-              src={billSrc}
-              alt={`${billValue}-dollar-bill`}
-              className="bills"
-              onClick={() => handleBillClick(billValue)}
-            />
-            {count > 0 && (
-              <>
-                <p>x {count}</p>
-                <button
-                  className="remove-button"
-                  onClick={() => handleBillRemovalClick(billValue)}
-                >
-                  -
-                </button>
-              </>
-            )}
-            <br />
-          </div>
-        );
-      })}
+      <br />
+      <section className="billsSection">
+        {Object.entries(bills).map(([billValue, count]) => {
+          const billSrc = `src/client/assets/images/${billValue}-dollar-bill.jpeg`;
+          return (
+            <div className="billDiv" key={billValue}>
+              <img
+                src={billSrc}
+                alt={`${billValue}-dollar-bill`}
+                className="bills"
+                onClick={() => handleBillClick(billValue)}
+              />
+              {count > 0 && (
+                <>
+                  <p>x {count}</p>
+                  <button
+                    className="remove-button"
+                    onClick={() => handleBillRemovalClick(billValue)}
+                  >
+                    -
+                  </button>
+                </>
+              )}
+              <br />
+            </div>
+          );
+        })}
+      </section>
       <button onClick={() => navigate("/received-coins")}>Next</button>
     </>
   );

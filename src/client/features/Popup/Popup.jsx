@@ -26,7 +26,7 @@ const Popup = ({ trigger, setTrigger, children }) => {
      <div className="popup">
       <div className="popup-inner">
         <button className="close-btn" onClick={() => setTrigger(false)}>
-          &times;
+          X
         </button>
           {children}
       </div>

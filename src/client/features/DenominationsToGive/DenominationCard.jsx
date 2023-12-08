@@ -1,3 +1,5 @@
+import "./DenominationCard.scss";
+
 const DenominationCard = ({ denomination, value }) => {
   // variables to be set in if statements
   let imgSrc = null;
@@ -43,9 +45,8 @@ const DenominationCard = ({ denomination, value }) => {
 
   return (
     <ul className="denomination-card">
-      <h4>{denomination}: </h4>
-      <p>{value}</p>
       <img className={className} src={imgSrc} />
+      <h4>{denomination}: {value}</h4>
     </ul>
   );
 };

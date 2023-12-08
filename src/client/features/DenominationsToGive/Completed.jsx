@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { resetCart } from "../CashRegister/cartSlice";
 import { useDispatch } from "react-redux";
+import "./Completed.scss";
+
 
 const Completed = () => {
   const navigate = useNavigate();
@@ -13,11 +15,13 @@ const Completed = () => {
 
   return (
     <>
+    <div className="message">
       <h1 className="finished_h1">Finished!</h1>
-      <h2 className="finished_h2">Tell the customer: Have a great day!</h2>
+      <h2 className="finished_h2">Tell the customer: <br/> Have a great day!</h2>
       <button className="done" onClick={handleClick}>
         Done
       </button>
+    </div>
     </>
   );
 };
