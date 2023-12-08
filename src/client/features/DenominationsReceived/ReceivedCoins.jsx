@@ -15,6 +15,7 @@ import {
   addTotalReceived,
   subtractTotalReceived,
   addCalculatedChange,
+  setChangeToGive,
 } from "../CashRegister/cartSlice";
 import { useState } from "react";
 
@@ -70,6 +71,7 @@ const ReceivedCoins = () => {
   const handleClick = () => {
     const result = calculateChange(changeToGive);
     dispatch(addCalculatedChange({ changeObject: result }));
+    dispatch(setChangeToGive(changeToGive));
     if (changeToGive < 0) {
       setButtonPopup(true);
     } else {
@@ -87,32 +89,33 @@ const ReceivedCoins = () => {
         <Totalbar />
       </div>
       <section className="coinsSection">
-      {Object.entries(coins).map(([coinValue, count]) => {
-        const coinSrc = `src/client/assets/images/${coinValue}-cent-coin.jpeg`;
-        return (
-          <div className="coinDiv" key={coinValue}>
-            <img
-              src={coinSrc}
-              alt={`${coinValue}-cent-coin`}
-              className={`coins coin-${coinValue}-cent`}
-              onClick={() => handleCoinClick(coinValue)}
-            />
-            {count > 0 && (
-              <>
-                <p>x {count}</p>
-                <button
-                  className="remove-button"
-                  onClick={() => handleCoinRemovalClick(coinValue)}
-                >
-                  -
-                </button>
-              </>
-            )}
-            <br />
-          </div>
-        );
-      })}
+        {Object.entries(coins).map(([coinValue, count]) => {
+          const coinSrc = `src/client/assets/images/${coinValue}-cent-coin.jpeg`;
+          return (
+            <div className="coinDiv" key={coinValue}>
+              <img
+                src={coinSrc}
+                alt={`${coinValue}-cent-coin`}
+                className={`coins coin-${coinValue}-cent`}
+                onClick={() => handleCoinClick(coinValue)}
+              />
+              {count > 0 && (
+                <>
+                  <p>x {count}</p>
+                  <button
+                    className="remove-button"
+                    onClick={() => handleCoinRemovalClick(coinValue)}
+                  >
+                    -
+                  </button>
+                </>
+              )}
+              <br />
+            </div>
+          );
+        })}
       </section>
+      <button onClick={() => navigate("/received-bills")}>Back</button>
       <button onClick={handleClick}>Next</button>
       {/* Popup: */}
       <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>

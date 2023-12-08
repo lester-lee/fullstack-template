@@ -3,7 +3,10 @@ import { selectToken } from "./authSlice";
 import { useNavigate } from "react-router-dom";
 import { logout } from "./authSlice";
 import { useState } from "react";
-import { useAddProductMutation } from "../CashRegister/productsSlice";
+import {
+  useAddProductMutation,
+  useDeleteProductMutation,
+} from "../CashRegister/productsSlice";
 import { useGetStoreDetailsQuery } from "./authSlice";
 import { useGetProductsByStoreIdQuery } from "../CashRegister/productsSlice";
 import { skipToken } from "@reduxjs/toolkit/query";
@@ -23,6 +26,7 @@ const EditUserStore = () => {
 
   // allows POST to API to add products
   const [addProduct] = useAddProductMutation();
+  const [deleteProduct] = useDeleteProductMutation();
   // gets data from the store, specifically to retrieve username and storeId
   const { data, isLoading, isError } = useGetStoreDetailsQuery();
   const {
@@ -61,6 +65,10 @@ const EditUserStore = () => {
   const handleLogout = () => {
     navigate("/");
     dispatch(logout());
+  };
+
+  const handleDeleteProduct = async (productId) => {
+    deleteProduct(productId);
   };
 
   return (
@@ -116,8 +124,21 @@ const EditUserStore = () => {
           </form>
           <div className="buttonDiv" >
           <button onClick={() => handleLogout()}>Log Out</button>
+
           <button className="cashRegisterButton" onClick={() => navigate("/products")}>Cash Register</button>
-          </div>
+</div>
+          <ul className="inventory">
+            {storeData.map((product) => (
+              <li key={product.id} className="product">
+                <img src={product.imgUrl} />
+                <p>${product.price.toFixed(2)}</p>
+                <h3 className="product-name">{product.name}</h3>
+                <button onClick={() => handleDeleteProduct(product.id)}>
+                  Delete
+                </button>
+              </li>
+            ))}
+          </ul>
         </>
       )}
     </>

@@ -101,6 +101,8 @@ const ReceivedBills = () => {
           );
         })}
       </section>
+
+    <button onClick={() => navigate("/products")}>Back</button>
       <button className="receivedBillNextButton" onClick={() => navigate("/received-coins")}>Next</button>
       <Popup trigger={timedPopup} setTrigger={setTimedPopup}>
         <h1 className="popup-header">Tell the customer:</h1>
@@ -108,6 +110,7 @@ const ReceivedBills = () => {
           Your total today is ${totalPrice.toFixed(2)}
         </p>
       </Popup>
+
     </>
   );
 };
