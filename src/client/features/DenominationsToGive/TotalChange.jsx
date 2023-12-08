@@ -28,6 +28,7 @@ const TotalChange = () => {
           return <DenominationCard denomination={denomination} value={value} />;
         })}
       </ul>
+      <button onClick={() => navigate("/change")}>Back</button>
       <button onClick={() => navigate("/completed")}>Next</button>
     </div>
   );

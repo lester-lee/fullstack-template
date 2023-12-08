@@ -54,6 +54,7 @@ const IncrementalRendering = () => {
               value={renderedValue}
             />
           </div>
+          <button onClick={() => navigate("/received-coins")}>Back</button>
           {/* conditional to only display next button if there is another denomination/value to show */}
           {index + 2 < renderingArray.length ? (
             <button onClick={() => setIndex(index + 2)}>Next</button>

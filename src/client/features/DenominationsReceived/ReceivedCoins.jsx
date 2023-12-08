@@ -115,6 +115,7 @@ const ReceivedCoins = () => {
           );
         })}
       </section>
+      <button onClick={() => navigate("/received-bills")}>Back</button>
       <button onClick={handleClick}>Next</button>
       {/* Popup: */}
       <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>

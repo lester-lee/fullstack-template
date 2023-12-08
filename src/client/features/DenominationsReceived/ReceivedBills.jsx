@@ -107,6 +107,7 @@ const ReceivedBills = () => {
           );
         })}
       </section>
+      <button onClick={() => navigate("/products")}>Back</button>
       <button onClick={() => navigate("/received-coins")}>Next</button>
     </>
   );
