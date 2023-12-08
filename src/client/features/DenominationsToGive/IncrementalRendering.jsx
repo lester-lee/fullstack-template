@@ -38,10 +38,10 @@ const IncrementalRendering = () => {
 
   return (
     <>
-    <div className="changeHeader">
+      <div className="changeHeader">
         <h1>Change</h1>
         <p className="changeP">Give each customer the bills and coins below</p>
-    </div>
+      </div>
       <div className="totalbar">
         <Totalbar />
       </div>
@@ -53,11 +53,12 @@ const IncrementalRendering = () => {
               value={renderedValue}
             />
           </div>
+          <button onClick={() => navigate("/received-coins")}>Back</button>
           {/* conditional to only display next button if there is another denomination/value to show */}
           {index + 2 < renderingArray.length ? (
             <button onClick={() => setIndex(index + 2)}>Next</button>
           ) : null}
-          <br/>
+          <br />
           <button onClick={() => navigate("/total-change")}>
             View total change
           </button>

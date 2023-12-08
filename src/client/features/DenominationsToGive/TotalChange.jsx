@@ -16,7 +16,7 @@ const TotalChange = () => {
       <div className="changeHeader">
         <h1>Total Change</h1>
         <p>Check the customer's change with the bills and coins below</p>
-    </div>
+      </div>
       <div className="totalbar">
         <Totalbar />
       </div>
@@ -27,6 +27,7 @@ const TotalChange = () => {
           return <DenominationCard denomination={denomination} value={value} />;
         })}
       </ul>
+      <button onClick={() => navigate("/change")}>Back</button>
       <button onClick={() => navigate("/completed")}>Next</button>
     </div>
   );
