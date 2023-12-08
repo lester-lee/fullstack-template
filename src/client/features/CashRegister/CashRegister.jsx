@@ -23,6 +23,8 @@ const CashRegister = () => {
     storeDetailsIsError,
   } = useGetStoreDetailsQuery();
 
+  // assign store username to a variable
+
   // get products by storeId using useGetProdcutsByStoreIdQuery
   // if no token, storeId is set to 1
   // with a token, storeId is found via useGetStoreDetailsQuery above
@@ -52,7 +54,7 @@ const CashRegister = () => {
   ) : (
     <div className="main-container">
       <div className="header">
-        <h1>Welcome to our cafe!</h1>
+        <h1>Welcome to your store!</h1>
         <p>Enjoy our delicious selection of treats!</p>
       </div>
       <div className="product-container">
