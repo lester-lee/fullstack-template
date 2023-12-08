@@ -61,3 +61,19 @@ router.get("/store/:id", async (req, res, next) => {
     next(err);
   }
 });
+
+// Delete single product router
+router.delete("/:id", async (req, res, next) => {
+  try {
+    const id = +req.params.id;
+    const deletedProduct = await prisma.product.delete({ where: { id } });
+
+    if (!deletedProduct) {
+      return next(new ServerError("Product not found", 404));
+    }
+
+    return res.json({ message: "Product successfully deleted" });
+  } catch (err) {
+    next(err);
+  }
+});
