@@ -54,13 +54,14 @@ const IncrementalRendering = () => {
             />
           </div>
           {/* conditional to only display next button if there is another denomination/value to show */}
+         <div className="changeButtonDiv">
           {index + 2 < renderingArray.length ? (
             <button onClick={() => setIndex(index + 2)}>Next</button>
           ) : null}
-          <br/>
           <button onClick={() => navigate("/total-change")}>
             View total change
           </button>
+          </div>
         </>
       ) : (
         <button onClick={() => navigate("/")}>Home</button>

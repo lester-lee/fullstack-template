@@ -1,11 +1,14 @@
 .changeHeader {
+    position: absolute;
+    top: 0;
     background-color: #fbc59d;
     border-radius: 10px;
     height: 70px;
+    width: 80vw;
+    margin-top: 7px;
+    margin-bottom: 10px;
     display: flex;
     align-items: center;
-    margin-bottom: 15px;
-    width: 75vw;
 
     h1 {
         margin-left: 20px;

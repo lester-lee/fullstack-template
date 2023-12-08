@@ -7,6 +7,7 @@ import { useAddProductMutation } from "../CashRegister/productsSlice";
 import { useGetStoreDetailsQuery } from "./authSlice";
 import { useGetProductsByStoreIdQuery } from "../CashRegister/productsSlice";
 import { skipToken } from "@reduxjs/toolkit/query";
+import "./EditUserStore.scss";
 
 // page allows administrators to add and edit products in their store
 const EditUserStore = () => {
@@ -49,6 +50,12 @@ const EditUserStore = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     addProduct(product);
+
+    //clear form
+    setName("");
+    setPrice("");
+    setImgUrl("");
+    setCategory("");
   };
 
   const handleLogout = () => {
@@ -59,7 +66,9 @@ const EditUserStore = () => {
   return (
     <>
       {/* <p>{storeData.name}</p> */}
+      <div className="editHeader">
       <h1>Welcome to your Store, {username}</h1>
+      </div>
       {!token ? (
         <>
           <p>You must be logged in to edit a store</p>
@@ -101,11 +110,14 @@ const EditUserStore = () => {
               value={category}
               onChange={(e) => setCategory(e.target.value)}
             />
-            <button type="submit" onClick={handleSubmit}>
+            <button className="addButton" type="submit" onClick={handleSubmit}>
               Add Product
             </button>
           </form>
+          <div className="buttonDiv" >
           <button onClick={() => handleLogout()}>Log Out</button>
+          <button className="cashRegisterButton" onClick={() => navigate("/products")}>Cash Register</button>
+          </div>
         </>
       )}
     </>

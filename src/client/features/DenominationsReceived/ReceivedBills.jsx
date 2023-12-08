@@ -66,12 +66,6 @@ const ReceivedBills = () => {
 
   return (
     <>
-      <Popup trigger={timedPopup} setTrigger={setTimedPopup}>
-        <h1 className="popup-header">Tell the customer:</h1>
-        <p className="popup-para">
-          Your total today is ${totalPrice.toFixed(2)}
-        </p>
-      </Popup>
       <div className="receivedBillHeader">
         <h1 className="receivedHeaderText">Received Bills</h1>
         <p>Click on each bill that you received from the customer</p>
@@ -107,7 +101,13 @@ const ReceivedBills = () => {
           );
         })}
       </section>
-      <button onClick={() => navigate("/received-coins")}>Next</button>
+      <button className="receivedBillNextButton" onClick={() => navigate("/received-coins")}>Next</button>
+      <Popup trigger={timedPopup} setTrigger={setTimedPopup}>
+        <h1 className="popup-header">Tell the customer:</h1>
+        <p className="popup-para">
+          Your total today is ${totalPrice.toFixed(2)}
+        </p>
+      </Popup>
     </>
   );
 };

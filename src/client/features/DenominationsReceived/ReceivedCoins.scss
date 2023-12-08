@@ -1,8 +1,11 @@
 .receivedCoinHeader {
+    position: absolute;
+    top: 0;
     background-color: #fbc59d;
     border-radius: 10px;
     height: 70px;
-    width: 75vw;
+    width: 80vw;
+    margin-top: 7px;
     margin-bottom: 10px;
     display: flex;
     align-items: center;
@@ -24,7 +27,7 @@
 }
     
 .coinsSection{
-    display: grid;
+  display: grid;
   grid-template-columns: repeat(2, 1fr); /* Creates 2 equal-width columns */
   gap: 8px; /* Adjust the gap between items as needed */
   margin-left: 40px;
@@ -37,7 +40,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    width: 350px;
+    width: 300px;
 
     img {
         border-radius: 20px;
