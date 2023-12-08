@@ -1,11 +1,8 @@
-.changeHeader {
-    position: absolute;
-    top: 0;
-    background-color: #fbc59d;
+.editHeader {
+    background-color: #C0DEAD;
     border-radius: 10px;
     height: 70px;
     width: 80vw;
-    margin-top: 7px;
     margin-bottom: 10px;
     display: flex;
     align-items: center;
@@ -17,17 +14,14 @@
             font-size: 3.4vh;
             max-height: 100%;
         }
-        
-        p {
-            margin-right: 20px;
-            margin-left: 150px;
-            padding: 0;
-            font-size: 15px;
-        }
-
     }
 
-    .changeButtonDiv {
+    .addButton {
+        margin-top: 15px;
+        margin-left: 15px;
+    }
+
+    .buttonDiv {
         display: flex;
         flex-direction: row;
         align-items: center;

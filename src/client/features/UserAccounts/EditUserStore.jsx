@@ -54,6 +54,12 @@ const EditUserStore = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     addProduct(product);
+
+    //clear form
+    setName("");
+    setPrice("");
+    setImgUrl("");
+    setCategory("");
   };
 
   const handleLogout = () => {
@@ -68,7 +74,9 @@ const EditUserStore = () => {
   return (
     <>
       {/* <p>{storeData.name}</p> */}
+      <div className="editHeader">
       <h1>Welcome to your Store, {username}</h1>
+      </div>
       {!token ? (
         <>
           <p>You must be logged in to edit a store</p>
@@ -110,12 +118,15 @@ const EditUserStore = () => {
               value={category}
               onChange={(e) => setCategory(e.target.value)}
             />
-            <button type="submit" onClick={handleSubmit}>
+            <button className="addButton" type="submit" onClick={handleSubmit}>
               Add Product
             </button>
           </form>
+          <div className="buttonDiv" >
           <button onClick={() => handleLogout()}>Log Out</button>
-          <button onClick={() => navigate("/products")}>Cash Register</button>
+
+          <button className="cashRegisterButton" onClick={() => navigate("/products")}>Cash Register</button>
+</div>
           <ul className="inventory">
             {storeData.map((product) => (
               <li key={product.id} className="product">

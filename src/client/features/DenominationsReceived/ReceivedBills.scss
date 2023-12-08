@@ -1,8 +1,11 @@
 .receivedBillHeader {
+    position: absolute;
+    top: 0;
     background-color: #fbc59d;
     border-radius: 10px;
     height: 70px;
-    width: 75vw;
+    width: 80vw;
+    margin-top: 7px;
     margin-bottom: 10px;
     display: flex;
     align-items: center;
@@ -26,8 +29,7 @@
     display: grid;
   grid-template-columns: repeat(2, 1fr); /* Creates 2 equal-width columns */
   gap: 8px; /* Adjust the gap between items as needed */
-  margin-left: 40px;
-  margin-bottom: 20px;
+  margin-left: 30px;
 }
 
 .billDiv {
@@ -40,9 +42,9 @@
     img {
         border-radius: 20px;
         box-shadow: 0 5px 0 lightgray;
-        border: 15px solid white;
+        border: 12px solid white;
         cursor: pointer;
-        margin: 5px;
+        margin: 3px;
     }
 
     img:active {
@@ -68,4 +70,8 @@
         width: 20px;
         height: 20px;
     }
+}
+
+.receivedBillNextButton {
+    margin-top: 20px;
 }
