@@ -4,7 +4,7 @@ const prisma = require("../prisma");
 const router = require("express").Router();
 module.exports = router;
 
-/** Sends all products */
+/** GETS all products */
 router.get("/", async (req, res, next) => {
   try {
     const products = await prisma.product.findMany();
@@ -14,7 +14,7 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-/** Change for a single product */
+/** GETS details for a single product */
 router.get("/:id", async (req, res, next) => {
   try {
     const id = +req.params.id;
@@ -27,7 +27,7 @@ router.get("/:id", async (req, res, next) => {
   }
 });
 
-/**Add a new product with store id */
+/**Adds a new product to user's store, using storeId */
 router.post("/store", async (req, res, next) => {
   try {
     const { name, price, imgUrl, category, storeId } = req.body;
@@ -47,7 +47,7 @@ router.post("/store", async (req, res, next) => {
   }
 });
 
-/** Sends all products from a specific store ID  */
+/** GETS all products from with same storeId  */
 router.get("/store/:id", async (req, res, next) => {
   try {
     const id = +req.params.id;
