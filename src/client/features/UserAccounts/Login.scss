@@ -22,10 +22,12 @@
 
 form {
     background-color: white;
+    border: 3px solid #ED8A53;
     border-radius: 30px;
     box-shadow: 0 5px 0 lightgray;
     display: flex;
     flex-direction: column;
+    margin: 30px;
     width: 300px;
     height: 350px;
     font-size: larger;
@@ -46,4 +48,29 @@ form {
         width: 220px;
         border-radius: 10px;
     }
+}
+
+.register {
+    display: flex;
+    flex-direction: column;
+
+    p{
+        margin-bottom: 0px;
+        margin-left: 20px;
+        font-size: 12px;
+    }
+
+    button {
+        margin-top: 1px;
+    }
+}
+
+.registerFormText {
+    margin-left: 20px;
+    margin-top: 0;
+}
+
+.registerFormWelcome {
+    margin-left: 20px;
+    margin-bottom: 0;
 }
