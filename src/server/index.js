@@ -20,7 +20,7 @@ const createApp = async () => {
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
 
-  // API routes
+   //API routes
   app.use("/api", require("./api"));
 
   // Serve static HTML in production & Vite dev server in development

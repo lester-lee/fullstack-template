@@ -10,9 +10,7 @@ const api = createApi({
     baseUrl: "/api",
     prepareHeaders: (headers, { getState }) => {
       const token = getState().auth.token;
-      if (token) {
-        headers.set("authorization", `Bearer ${token}`);
-      }
+      token && headers.set("authorization", `${token}`);
       return headers;
     },
   }),

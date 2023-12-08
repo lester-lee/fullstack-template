@@ -1,72 +1,66 @@
-const { ServerError } = require("../../errors");
 const prisma = require("../../prisma");
-const jwt = require("./jwt");
+const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const router = require("express").Router();
 module.exports = router;
 
-/** Creates new account and returns token */
 router.post("/register", async (req, res, next) => {
   try {
     const { username, password } = req.body;
-
-    // Check if username and password provided
-    if (!username || !password) {
-      throw new ServerError(400, "Username and password required.");
-    }
-
-    // Check if account already exists
-    const user = await prisma.user.findUnique({
-      where: { username },
+    const checkStoreAvailable = await prisma.store.findUnique({
+      where: {
+        username: username,
+      },
     });
-    if (user) {
-      throw new ServerError(
-        400,
-        `Account with username ${username} already exists.`
-      );
+
+    if (checkStoreAvailable) {
+      return res.status(400).send("A store with that name already exists");
     }
 
-    // Create new user
-    const newUser = await prisma.user.create({
+    const newStore = await prisma.store.create({
       data: { username, password },
     });
-
-    const token = jwt.sign({ id: newUser.id });
-    res.json({ token });
+    res.json(newStore);
   } catch (err) {
     next(err);
   }
 });
 
-/** Returns token for account if credentials valid */
 router.post("/login", async (req, res, next) => {
   try {
     const { username, password } = req.body;
-
-    // Check if username and password provided
-    if (!username || !password) {
-      throw new ServerError(400, "Username and password required.");
-    }
-
-    // Check if account exists
-    const user = await prisma.user.findUnique({
-      where: { username },
+    const foundUsername = await prisma.store.findFirst({
+      where: { username: username },
     });
-    if (!user) {
-      throw new ServerError(
-        400,
-        `Account with username ${username} does not exist.`
-      );
-    }
 
-    // Check if password is correct
-    const passwordValid = await bcrypt.compare(password, user.password);
-    if (!passwordValid) {
-      throw new ServerError(401, "Invalid password.");
+    if (
+      foundUsername &&
+      (await bcrypt.compare(password, foundUsername.password))
+    ) {
+      return res.json({
+        token: jwt.sign({ id: foundUsername.id }, process.env.JWT),
+        // Maybe unecessary
+        storeId: foundUsername.id,
+      });
     }
+    res.status(401).send("incorrect username or password");
+  } catch (err) {
+    next(err);
+  }
+});
 
-    const token = jwt.sign({ id: user.id });
-    res.json({ token });
+/** Sends store details (username, store id) */
+router.get("/", async (req, res, next) => {
+  try {
+    const payload = jwt.verify(req.headers.authorization, process.env.JWT);
+    const store = await prisma.store.findUnique({
+      where: {
+        id: payload.id,
+      },
+    });
+    if (store) {
+      return res.json(store);
+    }
   } catch (err) {
     next(err);
   }

@@ -1,24 +1,43 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-import "./index.less";
-
 import { Provider } from "react-redux";
 import store from "./store";
 
-import AuthForm from "./features/auth/AuthForm";
-import Tasks from "./features/tasks/Tasks";
-import Root from "./layout/Root.jsx";
+//import AuthForm from "./features/auth/AuthForm";
+
+import Root from "./Root/Root.jsx";
+import StartScreen from "./features/StartScreen/StartScreen.jsx";
+import Login from "./features/UserAccounts/Login";
+import Register from "./features/UserAccounts/UserRegistration";
+import CashRegister from "./features/CashRegister/CashRegister";
+import ReceivedBills from "./features/DenominationsReceived/ReceivedBills";
+import ReceivedCoins from "./features/DenominationsReceived/ReceivedCoins";
+import IncrementalRendering from "./features/DenominationsToGive/IncrementalRendering.jsx";
+import TotalChange from "./features/DenominationsToGive/TotalChange";
+import Completed from "./features/DenominationsToGive/Completed";
+import ErrorPage from "./features/Errors/ErrorPage";
+import EditUserStore from "./features/UserAccounts/EditUserStore";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
     children: [
-      { path: "/", element: <Tasks /> },
-      { path: "/tasks", element: <Tasks /> },
-      { path: "/login", element: <AuthForm /> },
+      { path: "/", element: <StartScreen /> },
+      { path: "/products", element: <CashRegister /> },
+      { path: "/start", element: <StartScreen /> },
+      { path: "/login", element: <Login /> },
+      { path: "/register", element: <Register /> },
+      { path: "/received-bills", element: <ReceivedBills /> },
+      { path: "/received-coins", element: <ReceivedCoins /> },
+      { path: "/change", element: <IncrementalRendering /> },
+      { path: "/total-change", element: <TotalChange /> },
+      { path: "/completed", element: <Completed /> },
+      { path: "/edit", element: <EditUserStore /> },
+      { path: "*", element: <ErrorPage /> },
     ],
   },
 ]);

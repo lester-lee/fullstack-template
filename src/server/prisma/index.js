@@ -1,14 +1,11 @@
-const bcrypt = require("bcrypt");
 const { PrismaClient } = require("@prisma/client");
-let prisma = new PrismaClient();
-
-// Hash user password before saving to database
-prisma = prisma.$extends({
+const bcrypt = require("bcrypt");
+const prisma = new PrismaClient().$extends({
   query: {
-    user: {
+    store: {
       async create({ args, query }) {
-        const password = await bcrypt.hash(args.data.password, 10);
-        args.data.password = password;
+        args.data.password = await bcrypt.hash(args.data.password, 5);
+
         return query(args);
       },
       async upsert({ args, query }) {
@@ -19,5 +16,4 @@ prisma = prisma.$extends({
     },
   },
 });
-
 module.exports = prisma;
