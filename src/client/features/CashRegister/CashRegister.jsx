@@ -1,16 +1,37 @@
 import { useSelector } from "react-redux";
-import { useGetProductsQuery } from "./productsSlice";
+import { skipToken } from "@reduxjs/toolkit/query";
+import { useGetProductsByStoreIdQuery } from "./productsSlice";
+import { useGetStoreDetailsQuery } from "../UserAccounts/authSlice";
 import { useNavigate } from "react-router-dom";
 import ProductCard from "./ProductCard";
 import CartCard from "./CartCard";
 import Popup from "../Popup/Popup";
 import { useState, useEffect } from "react";
 import "./CashRegister.scss";
+import { selectToken } from "../UserAccounts/authSlice";
 
 const CashRegister = () => {
-  // Fetch list of products from api
-  const { data: products, isLoading } = useGetProductsQuery();
+  const token = useSelector(selectToken);
   const navigate = useNavigate();
+
+  /////////// Fetches list of products from api//////////////
+  // gets store details using useGetStoreDetailsQuery
+  const {
+    data: storeDetailsData,
+    storeDetailsIsLoading,
+    storeDetailsIsError,
+  } = useGetStoreDetailsQuery();
+
+  // get products by storeId using useGetProdcutsByStoreIdQuery
+  // if no token, storeId is set to 1
+  // with a token, storeId is found via useGetStoreDetailsQuery above
+  const {
+    data: productsByStoreData,
+    isLoading: productsByStoreIsLoading,
+    isError: productsByStoreIsError,
+  } = useGetProductsByStoreIdQuery(
+    !token ? 1 : storeDetailsData?.id ?? skipToken
+  );
 
   // Use select cart items and total price from redux store
   let total = useSelector((state) => state.cart.totalPrice);
@@ -25,13 +46,13 @@ const CashRegister = () => {
     }, 200);
   }, []);
 
-  return isLoading ? (
+  return productsByStoreIsLoading || storeDetailsIsLoading ? (
     <h2>Loading...</h2>
   ) : (
     <div className="main-container">
       <div className="product-container">
         <ul className="product-list">
-          {products.map((product) => (
+          {productsByStoreData?.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </ul>

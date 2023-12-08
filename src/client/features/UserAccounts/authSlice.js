@@ -9,6 +9,7 @@ const authApi = api.injectEndpoints({
         method: "POST",
         body: { username, password },
       }),
+      invalidatesTags: ["StoreDetails"],
     }),
     login: builder.mutation({
       query: ({ username, password }) => ({
@@ -16,10 +17,11 @@ const authApi = api.injectEndpoints({
         method: "POST",
         body: { username, password },
       }),
+      invalidatesTags: ["StoreDetails"],
     }),
     getStoreDetails: builder.query({
       query: () => `auth/`,
-      // providesTags: ["Products"],
+      providesTags: ["StoreDetails"],
     }),
   }),
 });

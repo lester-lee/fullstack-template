@@ -5,6 +5,8 @@ import { logout } from "./authSlice";
 import { useState } from "react";
 import { useAddProductMutation } from "../CashRegister/productsSlice";
 import { useGetStoreDetailsQuery } from "./authSlice";
+import { useGetProductsByStoreIdQuery } from "../CashRegister/productsSlice";
+import { skipToken } from "@reduxjs/toolkit/query";
 
 // page allows administrators to add and edit products in their store
 const EditUserStore = () => {
@@ -22,6 +24,11 @@ const EditUserStore = () => {
   const [addProduct] = useAddProductMutation();
   // gets data from the store, specifically to retrieve username and storeId
   const { data, isLoading, isError } = useGetStoreDetailsQuery();
+  const {
+    data: storeData,
+    isLoading: storeIsLoading,
+    isError: storeIsError,
+  } = useGetProductsByStoreIdQuery(data?.id ?? skipToken);
 
   if (isLoading) return <p>Loading...</p>;
 
@@ -33,8 +40,11 @@ const EditUserStore = () => {
   const storeId = data.id;
   const username = data.username;
 
+  if (storeIsLoading) return <p>Loading...</p>;
+  if (storeIsError) return <p>Error occured while fetching store data</p>;
+  if (!storeData) return <p>No data available</p>;
+
   const product = { name, price, imgUrl, category, storeId };
-  // console.log("product: ", product);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -48,6 +58,7 @@ const EditUserStore = () => {
 
   return (
     <>
+      {/* <p>{storeData.name}</p> */}
       <h1>Welcome to your Store, {username}</h1>
       {!token ? (
         <>

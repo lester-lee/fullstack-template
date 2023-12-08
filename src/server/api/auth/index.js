@@ -39,6 +39,7 @@ router.post("/login", async (req, res, next) => {
     ) {
       return res.json({
         token: jwt.sign({ id: foundUsername.id }, process.env.JWT),
+        // Maybe unecessary
         storeId: foundUsername.id,
       });
     }
