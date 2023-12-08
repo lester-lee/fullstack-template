@@ -4,6 +4,7 @@ import "./CartCard.scss";
 
 const CartCard = ({ product }) => {
   const { name, price, quantity } = product;
+
   const dispatch = useDispatch();
 
   // Create handler to remove item from the cart
@@ -13,12 +14,18 @@ const CartCard = ({ product }) => {
 
   return (
     <div className="cart-card">
-    <li className="cart-item">
-      <button className="delete-button" onClick={() => handleRemoveFromCart(product)}> - </button>
-      <h3>{name}</h3>
-      <p>x {quantity}</p>
-      <p className="item-price">${price}</p>
-    </li>
+      <li className="cart-item">
+        <button
+          className="delete-button"
+          onClick={() => handleRemoveFromCart(product)}
+        >
+          {" "}
+          -{" "}
+        </button>
+        <h3>{name}</h3>
+        <p>x {quantity}</p>
+        <p className="item-price">${price.toFixed(2)}</p>
+      </li>
     </div>
   );
 };
