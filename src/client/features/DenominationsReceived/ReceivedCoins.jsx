@@ -15,6 +15,7 @@ import {
   addTotalReceived,
   subtractTotalReceived,
   addCalculatedChange,
+  setChangeToGive,
 } from "../CashRegister/cartSlice";
 import { useState } from "react";
 
@@ -70,6 +71,7 @@ const ReceivedCoins = () => {
   const handleClick = () => {
     const result = calculateChange(changeToGive);
     dispatch(addCalculatedChange({ changeObject: result }));
+    dispatch(setChangeToGive(changeToGive));
     if (changeToGive < 0) {
       setButtonPopup(true);
     } else {

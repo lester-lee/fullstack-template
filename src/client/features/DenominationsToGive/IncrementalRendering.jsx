@@ -10,7 +10,7 @@ import "./IncrementalRendering.scss";
 // finds denominations with values > 0, and renders one at a time (onClick)
 const IncrementalRendering = () => {
   //gets calculatedChange object from redux store
-  const calculatedChange = useSelector((state) => state.cart.calculatedChange);
+  const { calculatedChange, changeToGive } = useSelector((state) => state.cart);
 
   const navigate = useNavigate();
 
@@ -45,6 +45,7 @@ const IncrementalRendering = () => {
       <div className="totalbar">
         <Totalbar />
       </div>
+      <h3>Total Change Due: ${changeToGive.toFixed(2)}</h3>
       {renderedDenomination ? (
         <>
           <div className="card">
