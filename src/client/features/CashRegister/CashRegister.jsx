@@ -9,6 +9,7 @@ import Popup from "../Popup/Popup";
 import { useState, useEffect } from "react";
 import "./CashRegister.scss";
 import { selectToken } from "../UserAccounts/authSlice";
+import Footer from "../Footer/Footer";
 
 const CashRegister = () => {
   const token = useSelector(selectToken);
@@ -62,7 +63,7 @@ const CashRegister = () => {
         </ul>
       </div>
       <div className="cart-container">
-      <h3>Customer Cart:</h3>
+        <h3>Customer Cart:</h3>
         <ul className="cart-list">
           {cartItems.map((product) => (
             <CartCard key={product.id} product={product} />
@@ -80,6 +81,7 @@ const CashRegister = () => {
         <h1 className="popup-header">Greet the customer:</h1>
         <p className="popup-para">Hello, how can I help you today?</p>
       </Popup>
+      <Footer />
     </div>
   );
 };
