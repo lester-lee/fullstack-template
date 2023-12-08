@@ -55,7 +55,7 @@ const CashRegister = () => {
     <div className="main-container">
       <div className="header">
         <h1>Welcome to your store!</h1>
-        <p>Enjoy our delicious selection of treats!</p>
+        <p>Click on an item to add it to your cart.</p>
       </div>
       <div className="product-container">
         <ul className="product-list">
