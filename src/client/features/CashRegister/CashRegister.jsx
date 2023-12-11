@@ -52,39 +52,45 @@ const CashRegister = () => {
   return productsByStoreIsLoading || storeDetailsIsLoading ? (
     <h2>Loading...</h2>
   ) : (
-    <div className="main-container">
-      <div className="header">
-        <h1>Welcome to your store!</h1>
-        <p>Click on an item to add it to your cart.</p>
+    <body>
+      <section className="header">
+        <h1 className="headings">Welcome to your store!</h1>
+        <p className="headings">Click on an item to add it to your cart.</p>
+      </section>
+      <div className="main-container">
+        <section className="products-and-cart">
+          <div className="product-container">
+            <ul className="product-list">
+              {productsByStoreData?.map((product) => (
+                <ProductCard key={product.id} product={product} />
+              ))}
+            </ul>
+          </div>
+          <div className="cart-container">
+            <h3>Customer Cart:</h3>
+            <ul className="cart-list">
+              {cartItems.map((product) => (
+                <CartCard key={product.id} product={product} />
+              ))}
+            </ul>
+            <h2 className="total-price">Total: ${total}</h2>
+            <button
+              className="checkout-button"
+              onClick={() => navigate("/received-bills")}
+            >
+              Checkout
+            </button>
+          </div>
+        </section>
+        <Popup trigger={timedPopup} setTrigger={setTimedPopup}>
+          <h1 className="popup-header">Greet the customer:</h1>
+          <p className="popup-para">Hello, how can I help you today?</p>
+        </Popup>
+        <section className="footer">
+          <Footer />
+        </section>
       </div>
-      <div className="product-container">
-        <ul className="product-list">
-          {productsByStoreData?.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </ul>
-      </div>
-      <div className="cart-container">
-        <h3>Customer Cart:</h3>
-        <ul className="cart-list">
-          {cartItems.map((product) => (
-            <CartCard key={product.id} product={product} />
-          ))}
-        </ul>
-        <h2 className="total-price">Total: ${total}</h2>
-        <button
-          className="checkout-button"
-          onClick={() => navigate("/received-bills")}
-        >
-          Checkout
-        </button>
-      </div>
-      <Popup trigger={timedPopup} setTrigger={setTimedPopup}>
-        <h1 className="popup-header">Greet the customer:</h1>
-        <p className="popup-para">Hello, how can I help you today?</p>
-      </Popup>
-      <Footer />
-    </div>
+    </body>
   );
 };
 

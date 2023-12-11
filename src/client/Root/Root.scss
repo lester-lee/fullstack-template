@@ -1,11 +1,11 @@
 body {
-  margin: 40px;
-  margin-left: 100px;
-  background-color:#FFF4C7;
+  background-color: #fff4c7;
   font-family: Verdana, sans-serif;
+  width: 100vw;
+  height: 100vh;
 }
 
-h1{
+h1 {
   font-size: 30px;
   font-weight: 300;
 }
@@ -14,11 +14,11 @@ p {
 }
 
 button {
-  background-color: #FFAA6F;
+  background-color: #ffaa6f;
   border-radius: 10px;
   padding: 4px;
   margin: 5px;
-  cursor: pointer; 
+  cursor: pointer;
   width: 100px;
   height: 50px;
   font-family: Verdana, sans-serif;
