@@ -20,14 +20,17 @@ const Footer = () => {
   };
 
   return (
-    <button
-      className="footer"
-      onClick={() => {
-        clickAction();
-      }}
-    >
-      {text}
-    </button>
+    <footer>
+      <button onClick={() => navigate("/")}>Home</button>
+      <button
+        className="footer"
+        onClick={() => {
+          clickAction();
+        }}
+      >
+        {text}
+      </button>
+    </footer>
   );
 };
 
