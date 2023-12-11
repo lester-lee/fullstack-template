@@ -6,20 +6,18 @@
   box-shadow: 0 5px 0 lightgray;
   background-color: white;
   aspect-ratio: fixed;
-  //   height: 10%;
   width: 15%;
   img {
-    padding: 10px;
+    padding-top: 1em;
     align-self: center;
     width: 90%;
   }
-  margin: 5px;
+  margin: 2em;
   cursor: pointer;
 
   .product-name {
     align-items: flex-end;
     text-align: center;
-    padding: 2px;
     font-family: Verdana, sans-serif;
     font-weight: 100;
   }
