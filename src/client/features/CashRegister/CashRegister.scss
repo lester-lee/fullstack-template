@@ -1,11 +1,9 @@
 .main-container {
   display: flex;
   flex-direction: column;
-  background-color: red;
   align-items: center;
 
   .products-and-cart {
-    background-color: green;
     max-width: 1200px;
     display: flex;
     flex-direction: row;
@@ -16,9 +14,6 @@
     .product-list {
       display: flex;
       flex-flow: row wrap;
-    }
-    .product-list {
-      background: yellow;
     }
   }
 
@@ -50,20 +45,18 @@
 .footer {
   display: flex;
   justify-content: center;
-  background-color: blue;
 }
 
 .header {
   background-color: #fbc59d;
-  border-radius: 10px;
-  width: 75%;
-  //   height: 90px;
-  //   margin: 10px;
+  border-radius: 20px;
+  width: 80%;
   display: flex;
   flex-direction: column;
   align-items: center;
   align-self: center;
   justify-content: center;
+  padding: 1em;
 
   h1 {
     margin: 0;
