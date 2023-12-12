@@ -52,12 +52,12 @@ const CashRegister = () => {
   return productsByStoreIsLoading || storeDetailsIsLoading ? (
     <h2>Loading...</h2>
   ) : (
-    <body>
-      <section className="header">
-        <h1 className="headings">Welcome to your store!</h1>
-        <p className="headings">Click on an item to add it to your cart.</p>
-      </section>
-      <div className="main-container">
+    <>
+      <body>
+        <section className="header">
+          <h1>Welcome to your store!</h1>
+          <p>Click on an item to add it to your cart.</p>
+        </section>
         <section className="products-and-cart">
           <div className="product-container">
             <ul className="product-list">
@@ -82,15 +82,15 @@ const CashRegister = () => {
             </button>
           </div>
         </section>
+        <section className="footer">
+          <Footer />
+        </section>
         <Popup trigger={timedPopup} setTrigger={setTimedPopup}>
           <h1 className="popup-header">Greet the customer:</h1>
           <p className="popup-para">Hello, how can I help you today?</p>
         </Popup>
-        <section className="footer">
-          <Footer />
-        </section>
-      </div>
-    </body>
+      </body>
+    </>
   );
 };
 
