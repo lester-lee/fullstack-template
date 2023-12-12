@@ -1,34 +1,27 @@
+.body {
+  display: flex;
+  align-items: center;
+  height: 100vh;
+}
+
 .changeHeader {
-    position: absolute;
-    top: 0;
-    background-color: #fbc59d;
-    border-radius: 10px;
-    height: 70px;
-    width: 80vw;
-    margin-top: 7px;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
+  background-color: #fbc59d;
+  border-radius: 10px;
+  width: 95vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
+  h1 {
+    margin: 20px;
+    padding: 0;
+    font-size: 3.4vh;
+  }
 
-        h1 {
-            margin: 20px;
-            padding: 0;
-            font-size: 3.4vh;
-            max-height: 100%;
-        }
-        
-        p {
-            margin-right: 20px;
-            margin-left: 150px;
-            padding: 0;
-            font-size: 15px;
-        }
-
-    }
-
-    .changeButtonDiv {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-    }
+  p {
+    margin-right: 20px;
+    margin-left: 150px;
+    padding: 0;
+    font-size: 15px;
+  }
+}
