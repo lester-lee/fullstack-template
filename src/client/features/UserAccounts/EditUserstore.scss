@@ -1,43 +1,42 @@
 .editHeader {
-    background-color: #C0DEAD;
-    border-radius: 10px;
-    height: 70px;
-    width: 80vw;
-    margin-bottom: 10px;
+  background-color: #c0dead;
+  border-radius: 10px;
+  height: 70px;
+  width: 80vw;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+
+  h1 {
+    margin: 20px;
+    padding: 0;
+    font-size: 3.4vh;
+    max-height: 100%;
+  }
+}
+
+.addButton {
+  margin-top: 15px;
+  margin-left: 15px;
+}
+
+.buttonDiv {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.product-editor {
+  display: flex;
+  flex-direction: row;
+}
+.product-list {
+  display: flex;
+  flex-flow: row wrap;
+  height: 60vh;
+  overflow: auto;
+  width: 60vw;
+  ul {
     display: flex;
-    align-items: center;
-
-
-        h1 {
-            margin: 20px;
-            padding: 0;
-            font-size: 3.4vh;
-            max-height: 100%;
-        }
-    }
-
-    .addButton {
-        margin-top: 15px;
-        margin-left: 15px;
-    }
-
-    .buttonDiv {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-    }
-    .product-editor {
-        display: flex;
-        flex-direction: row;
-    }
-    .product-list {
-        display: flex;
-        flex-flow: row wrap;
-        height: 60vh;
-        overflow: auto;
-        width: 60vw;
-        ul {
-            display: flex;
-            flex-flow: row wrap;
-        }
-    }
+    flex-flow: row wrap;
+  }
+}
