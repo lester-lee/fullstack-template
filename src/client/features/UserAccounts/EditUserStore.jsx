@@ -86,6 +86,7 @@ const EditUserStore = () => {
       ) : (
         <>
           <h2>Add Product</h2>
+          <section className="product-editor">
           <form className="edit-form">
             <label className="form-labels">Product Name: </label>
             <input
@@ -122,11 +123,7 @@ const EditUserStore = () => {
               Add Product
             </button>
           </form>
-          <div className="buttonDiv" >
-          <button onClick={() => handleLogout()}>Log Out</button>
-
-          <button className="cashRegisterButton" onClick={() => navigate("/products")}>Cash Register</button>
-</div>
+          <div className="product-list">
           <ul className="inventory">
             {storeData.map((product) => (
               <li key={product.id} className="product">
@@ -136,9 +133,17 @@ const EditUserStore = () => {
                 <button onClick={() => handleDeleteProduct(product.id)}>
                   Delete
                 </button>
+                <button onClick={() => navigate(`/edit/${product.id}`)}>Edit Product</button>
               </li>
             ))}
           </ul>
+          </div>
+          </section>
+          <div className="buttonDiv" >
+          <button onClick={() => handleLogout()}>Log Out</button>
+
+          <button className="cashRegisterButton" onClick={() => navigate("/products")}>Cash Register</button>
+          </div>
         </>
       )}
     </>
