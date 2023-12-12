@@ -18,6 +18,7 @@ import TotalChange from "./features/DenominationsToGive/TotalChange";
 import Completed from "./features/DenominationsToGive/Completed";
 import ErrorPage from "./features/Errors/ErrorPage";
 import EditUserStore from "./features/UserAccounts/EditUserStore";
+import ProductDetails from "./features/UserAccounts/ProductDetails.jsx";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
@@ -37,6 +38,7 @@ const router = createBrowserRouter([
       { path: "/total-change", element: <TotalChange /> },
       { path: "/completed", element: <Completed /> },
       { path: "/edit", element: <EditUserStore /> },
+      { path: "/edit/:id", element: <ProductDetails /> },
       { path: "*", element: <ErrorPage /> },
     ],
   },
