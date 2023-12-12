@@ -77,3 +77,31 @@ router.delete("/:id", async (req, res, next) => {
     next(err);
   }
 });
+
+//Edit an existing product
+router.put("/:id", async (req, res, next) => {
+  try {
+    const id = +req.params.id;
+    console.log("router req body", req.body)
+    let { name, price, imgUrl, category, storeId } = req.body;
+    price = parseFloat(price)
+
+    const product = await prisma.product.findUnique({ where: { id } });
+    if (!product) {
+      return next(new ServerError("Product not found", 404));
+    }
+    const editedItem = await prisma.product.update({
+      where: { id },
+      data: {
+        name,
+        price,
+        imgUrl,
+        category,
+        storeId,
+      },
+    });
+    res.json(editedItem);
+  } catch (err) {
+    next(err);
+  }
+});

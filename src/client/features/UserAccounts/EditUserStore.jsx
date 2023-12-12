@@ -133,6 +133,7 @@ const EditUserStore = () => {
                 <button onClick={() => handleDeleteProduct(product.id)}>
                   Delete
                 </button>
+                <button onClick={() => navigate(`/edit/${product.id}`)}>Edit Product</button>
               </li>
             ))}
           </ul>
