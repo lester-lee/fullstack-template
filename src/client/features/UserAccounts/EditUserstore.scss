@@ -26,3 +26,18 @@
         flex-direction: row;
         align-items: center;
     }
+    .product-editor {
+        display: flex;
+        flex-direction: row;
+    }
+    .product-list {
+        display: flex;
+        flex-flow: row wrap;
+        height: 60vh;
+        overflow: auto;
+        width: 60vw;
+        ul {
+            display: flex;
+            flex-flow: row wrap;
+        }
+    }
