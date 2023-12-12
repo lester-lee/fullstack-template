@@ -29,7 +29,7 @@ body {
   display: flex;
   flex-direction: row;
   align-items: stretch;
-  padding: 1em;
+  padding-top: 1em;
   margin-top: 1em;
 
   .product-container {
@@ -37,6 +37,7 @@ body {
     .product-list {
       display: flex;
       flex-flow: row wrap;
+      height: 95%;
     }
   }
 

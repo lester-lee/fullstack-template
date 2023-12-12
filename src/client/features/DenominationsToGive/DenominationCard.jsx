@@ -44,10 +44,12 @@ const DenominationCard = ({ denomination, value }) => {
   determineImg();
 
   return (
-    <ul className="denomination-card">
+    <section className="denomination-card">
       <img className={className} src={imgSrc} />
-      <h4>{denomination}: {value}</h4>
-    </ul>
+      <h4>
+        {denomination}: {value}
+      </h4>
+    </section>
   );
 };
 
