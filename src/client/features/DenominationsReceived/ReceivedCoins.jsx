@@ -81,50 +81,54 @@ const ReceivedCoins = () => {
 
   return (
     <>
-      <div className="receivedCoinHeader">
-        <h1 className="receivedHeaderText">Received Coins</h1>
-        <p>Click on each coin that you received from the customer</p>
-      </div>
-      <div className="totalbar">
-        <Totalbar />
-      </div>
-      <section className="coinsSection">
-        {Object.entries(coins).map(([coinValue, count]) => {
-          const coinSrc = `src/client/assets/images/${coinValue}-cent-coin.jpeg`;
-          return (
-            <div className="coinDiv" key={coinValue}>
-              <img
-                src={coinSrc}
-                alt={`${coinValue}-cent-coin`}
-                className={`coins coin-${coinValue}-cent`}
-                onClick={() => handleCoinClick(coinValue)}
-              />
-              {count > 0 && (
-                <>
-                  <p>x {count}</p>
-                  <button
-                    className="remove-button"
-                    onClick={() => handleCoinRemovalClick(coinValue)}
-                  >
-                    -
-                  </button>
-                </>
-              )}
-              <br />
-            </div>
-          );
-        })}
-      </section>
-      <button onClick={() => navigate("/received-bills")}>Back</button>
-      <button onClick={handleClick}>Next</button>
-      {/* Popup: */}
-      <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
-        <h1 className="popup-header">Tell the customer:</h1>
-        <p className="popup-para">
-          It looks like the cost is more than what you paid, please provide more
-          cash. Thanks!
-        </p>
-      </Popup>
+      <body>
+        <div className="receivedCoinHeader">
+          <h1 className="receivedHeaderText">Received Coins</h1>
+          <p>Click on each coin that you received from the customer</p>
+        </div>
+        <div className="totalbar">
+          <Totalbar />
+        </div>
+        <section className="coinsSection">
+          {Object.entries(coins).map(([coinValue, count]) => {
+            const coinSrc = `src/client/assets/images/${coinValue}-cent-coin.jpeg`;
+            return (
+              <div className="coinDiv" key={coinValue}>
+                <img
+                  src={coinSrc}
+                  alt={`${coinValue}-cent-coin`}
+                  className={`coins coin-${coinValue}-cent`}
+                  onClick={() => handleCoinClick(coinValue)}
+                />
+                {count > 0 && (
+                  <>
+                    <p>x {count}</p>
+                    <button
+                      className="remove-button"
+                      onClick={() => handleCoinRemovalClick(coinValue)}
+                    >
+                      -
+                    </button>
+                  </>
+                )}
+                <br />
+              </div>
+            );
+          })}
+        </section>
+        <footer>
+          <button onClick={() => navigate("/received-bills")}>Back</button>
+          <button onClick={handleClick}>Next</button>
+        </footer>
+        {/* Popup: */}
+        <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
+          <h1 className="popup-header">Tell the customer:</h1>
+          <p className="popup-para">
+            It looks like the cost is more than what you paid, please provide
+            more cash. Thanks!
+          </p>
+        </Popup>
+      </body>
     </>
   );
 };

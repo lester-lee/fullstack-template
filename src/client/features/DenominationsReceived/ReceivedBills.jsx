@@ -66,51 +66,57 @@ const ReceivedBills = () => {
 
   return (
     <>
-      <div className="receivedBillHeader">
-        <h1 className="receivedHeaderText">Received Bills</h1>
-        <p>Click on each bill that you received from the customer</p>
-      </div>
-      <div className="totalbar">
-        <Totalbar />
-      </div>
-      <br />
-      <section className="billsSection">
-        {Object.entries(bills).map(([billValue, count]) => {
-          const billSrc = `src/client/assets/images/${billValue}-dollar-bill.jpeg`;
-          return (
-            <div className="billDiv" key={billValue}>
-              <img
-                src={billSrc}
-                alt={`${billValue}-dollar-bill`}
-                className="bills"
-                onClick={() => handleBillClick(billValue)}
-              />
-              {count > 0 && (
-                <>
-                  <p>x {count}</p>
-                  <button
-                    className="remove-button"
-                    onClick={() => handleBillRemovalClick(billValue)}
-                  >
-                    -
-                  </button>
-                </>
-              )}
-              <br />
-            </div>
-          );
-        })}
-      </section>
-
-    <button onClick={() => navigate("/products")}>Back</button>
-      <button className="receivedBillNextButton" onClick={() => navigate("/received-coins")}>Next</button>
-      <Popup trigger={timedPopup} setTrigger={setTimedPopup}>
-        <h1 className="popup-header">Tell the customer:</h1>
-        <p className="popup-para">
-          Your total today is ${totalPrice.toFixed(2)}
-        </p>
-      </Popup>
-
+      <body>
+        <div className="receivedBillHeader">
+          <h1 className="receivedHeaderText">Received Bills</h1>
+          <p>Click on each bill that you received from the customer</p>
+        </div>
+        <div className="totalbar">
+          <Totalbar />
+        </div>
+        <section className="billsSection">
+          {Object.entries(bills).map(([billValue, count]) => {
+            const billSrc = `src/client/assets/images/${billValue}-dollar-bill.jpeg`;
+            return (
+              <div className="billDiv" key={billValue}>
+                <img
+                  src={billSrc}
+                  alt={`${billValue}-dollar-bill`}
+                  className="bills"
+                  onClick={() => handleBillClick(billValue)}
+                />
+                {count > 0 && (
+                  <>
+                    <p>x {count}</p>
+                    <button
+                      className="remove-button"
+                      onClick={() => handleBillRemovalClick(billValue)}
+                    >
+                      -
+                    </button>
+                  </>
+                )}
+                <br />
+              </div>
+            );
+          })}
+        </section>
+        <footer>
+          <button onClick={() => navigate("/products")}>Back</button>
+          <button
+            className="receivedBillNextButton"
+            onClick={() => navigate("/received-coins")}
+          >
+            Next
+          </button>
+        </footer>
+        <Popup trigger={timedPopup} setTrigger={setTimedPopup}>
+          <h1 className="popup-header">Tell the customer:</h1>
+          <p className="popup-para">
+            Your total today is ${totalPrice.toFixed(2)}
+          </p>
+        </Popup>
+      </body>
     </>
   );
 };

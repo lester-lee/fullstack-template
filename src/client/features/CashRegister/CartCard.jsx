@@ -29,7 +29,7 @@ const CartCard = ({ product }) => {
           {" "}
           -{" "}
         </button>
-        <h3>{name}</h3>
+        <h4>{name}</h4>
         <p>x {quantity}</p>
         <p className="item-price">${price.toFixed(2)}</p>
       </li>

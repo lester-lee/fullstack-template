@@ -38,37 +38,44 @@ const IncrementalRendering = () => {
 
   return (
     <>
-      <div className="changeHeader">
-        <h1>Change</h1>
-        <p className="changeP">Give each customer the bills and coins below</p>
-      </div>
-      <div className="totalbar">
-        <Totalbar />
-      </div>
-      <h3>Total Change Due: ${changeToGive.toFixed(2)}</h3>
-      {renderedDenomination ? (
-        <>
-          <div className="card">
-            <DenominationCard
-              denomination={renderedDenomination}
-              value={renderedValue}
-            />
+      <body>
+        <section className="combinedHeading">
+          <div className="changeHeader">
+            <h1>Change</h1>
+            <p className="changeP">
+              Give each customer the bills and coins below
+            </p>
           </div>
-          <button onClick={() => navigate("/received-coins")}>Back</button>
-          {/* conditional to only display next button if there is another denomination/value to show */}
-         <div className="changeButtonDiv">
-          {index + 2 < renderingArray.length ? (
-            <button onClick={() => setIndex(index + 2)}>Next</button>
-          ) : null}
+          <br />
+          <div className="totalbar">
+            <Totalbar />
+          </div>
+        </section>
+        <h3>Total Change Due: ${changeToGive.toFixed(2)}</h3>
+        {renderedDenomination ? (
+          <>
+            <div className="card">
+              <DenominationCard
+                denomination={renderedDenomination}
+                value={renderedValue}
+              />
+            </div>
+            <footer>
+              <button onClick={() => navigate("/received-coins")}>Back</button>
+              {/* conditional to only display next button if there is another denomination/value to show */}
+              <div className="changeButtonDiv">
+                {index + 2 < renderingArray.length ? (
+                  <button onClick={() => setIndex(index + 2)}>Next</button>
+                ) : null}
 
-          <button onClick={() => navigate("/total-change")}>
-            View total change
-          </button>
-          </div>
-        </>
-      ) : (
-        <button onClick={() => navigate("/")}>Home</button>
-      )}
+                <button onClick={() => navigate("/total-change")}>Total</button>
+              </div>
+            </footer>
+          </>
+        ) : (
+          <button onClick={() => navigate("/")}>Home</button>
+        )}
+      </body>
     </>
   );
 };
