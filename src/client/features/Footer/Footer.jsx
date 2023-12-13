@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { selectToken } from "../UserAccounts/authSlice";
 import { logout } from "../UserAccounts/authSlice";
 
-import "./footer.scss";
+import "./Footer.scss";
 
 // Button for conditional LOG IN or LOG OUT
 const Footer = () => {
