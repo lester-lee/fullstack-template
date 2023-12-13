@@ -86,7 +86,7 @@ const EditUserStore = () => {
           </>
         ) : (
           <>
-            <h2>Modify Store</h2>
+            <h2>Edit Inventory</h2>
             <section className="product-editor">
               <form className="edit-form">
                 <label className="form-labels">Product Name: </label>

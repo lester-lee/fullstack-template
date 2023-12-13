@@ -1,9 +1,12 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useGetProductQuery } from "../CashRegister/productsSlice";
 import EditProduct from "./EditItemForm";
 
-const ProductDetails= () => {
+import "./ProductDetails.scss";
+
+const ProductDetails = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const { data: product, isLoading } = useGetProductQuery(id);
 
@@ -14,18 +17,27 @@ const ProductDetails= () => {
   return isLoading ? (
     <p>Loading...</p>
   ) : (
-    <>
-      <div>
-        <h2>
-          Product: {product.name}
-        </h2>
-        <p>Price: {product.price}</p>
-        <img src={product.imgUrl} />
-        <p>Category: {product.category}</p>
-      </div>
-      <EditProduct id={product.id} />
-    </>
+    <body>
+      <h1 className="heading">Edit Item</h1>
+      <h2>{product.name}</h2>
+      <section className="edit-product-container">
+        <section className="edit-form-component">
+          <EditProduct id={product.id} />
+        </section>
+        <section>
+          <img className="product-details-img" src={product.imgUrl} />
+          <div className="description">
+            <p>Price: ${product.price.toFixed(2)}</p>
+            <p>Category: {product.category}</p>
+          </div>
+        </section>
+      </section>
+      <footer>
+        <button onClick={() => navigate("/")}>Home</button>
+        <button onClick={() => navigate("/edit")}>Back to Inventory</button>
+      </footer>
+    </body>
   );
-}
+};
 
 export default ProductDetails;
