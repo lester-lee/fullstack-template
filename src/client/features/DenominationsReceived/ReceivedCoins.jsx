@@ -25,6 +25,20 @@ import "./ReceivedCoins.scss";
 import Totalbar from "../TotalsBar/TotalsBar";
 import Popup from "../Popup/Popup";
 
+import centCoin1 from "../../assets/images/1-cent-coin.jpeg";
+import centCoin5 from "../../assets/images/5-cent-coin.jpeg";
+import centCoin10 from "../../assets/images/10-cent-coin.jpeg";
+import centCoin25 from "../../assets/images/25-cent-coin.jpeg";
+import centCoin100 from "../../assets/images/100-cent-coin.jpeg";
+
+const coinImgs = {
+  centCoin1,
+  centCoin5,
+  centCoin10,
+  centCoin25,
+  centCoin100,
+};
+
 const ReceivedCoins = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -91,7 +105,7 @@ const ReceivedCoins = () => {
         </div>
         <section className="coinsSection">
           {Object.entries(coins).map(([coinValue, count]) => {
-            const coinSrc = `src/client/assets/images/${coinValue}-cent-coin.jpeg`;
+            const coinSrc = coinImgs[`centCoin${coinValue}`];
             return (
               <div className="coinDiv" key={coinValue}>
                 <img

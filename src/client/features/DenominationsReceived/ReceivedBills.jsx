@@ -25,7 +25,7 @@ import dollarBill20 from "../../assets/images/20-dollar-bill.jpeg";
 import dollarBill50 from "../../assets/images/50-dollar-bill.jpeg";
 import dollarBill100 from "../../assets/images/100-dollar-bill.jpeg";
 
-const images = {
+const billImgs = {
   dollarBill1,
   dollarBill5,
   dollarBill10,
@@ -92,7 +92,7 @@ const ReceivedBills = () => {
         </div>
         <section className="billsSection">
           {Object.entries(bills).map(([billValue, count]) => {
-            const billSrc = images[`dollarBill${billValue}`];
+            const billSrc = billImgs[`dollarBill${billValue}`];
             return (
               <div className="billDiv" key={billValue}>
                 <img
