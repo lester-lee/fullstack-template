@@ -53,6 +53,7 @@ const Login = () => {
       <div className="register">
         <p>Don't have a store yet? Register here:</p>
         <button onClick={() => navigate("/register")}>Register</button>
+        <button onClick={() => navigate("/")}>Home</button>
       </div>
     </>
   );

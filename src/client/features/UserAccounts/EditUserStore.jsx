@@ -147,6 +147,7 @@ const EditUserStore = () => {
               </div>
             </section>
             <footer className="buttonDiv">
+            <button onClick={() => navigate("/")}>Home</button>
               <button onClick={() => handleLogout()}>Log Out</button>
 
               <button
