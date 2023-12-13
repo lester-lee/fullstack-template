@@ -10,7 +10,7 @@ import {
 import { useGetStoreDetailsQuery } from "./authSlice";
 import { useGetProductsByStoreIdQuery } from "../CashRegister/productsSlice";
 import { skipToken } from "@reduxjs/toolkit/query";
-import "./EditUserStore.scss";
+import "./EditUserstore.scss";
 
 // page allows administrators to add and edit products in their store
 const EditUserStore = () => {
