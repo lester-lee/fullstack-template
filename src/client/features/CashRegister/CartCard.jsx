@@ -3,7 +3,11 @@ import { removeFromCart } from "./cartSlice";
 import "./CartCard.scss";
 
 /**
+ * This component will accept a prop containing product
+ * data and create a card to be rendered in the cart.
  *
+ * @param {object} product
+ * @returns a div to be rendered in the cart.
  */
 const CartCard = ({ product }) => {
   const { name, price, quantity } = product;
