@@ -2,82 +2,80 @@
 //     font-family: Verdana, sans-serif;
 // }
 .loginHeader {
-    background-color: #C0DEAD;
-    border-radius: 10px;
-    height: 70px;
-    width: 80vw;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
+  background-color: #c0dead;
+  border-radius: 10px;
+  height: 70px;
+  width: 95vw;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
 
+  h1 {
+    margin: 20px;
+    padding: 0;
+    font-size: 3.4vh;
+    max-height: 100%;
+  }
 
-        h1 {
-            margin: 20px;
-            padding: 0;
-            font-size: 3.4vh;
-            max-height: 100%;
-        }
-
-        p {
-            margin-right: 20px;
-            margin-left: 150px;
-            padding: 0;
-        }
-
+  p {
+    margin-right: 20px;
+    margin-left: 150px;
+    padding: 0;
+  }
 }
 
 form {
-    background-color: white;
-    border: 3px solid #ED8A53;
-    border-radius: 30px;
-    box-shadow: 0 5px 0 lightgray;
-    display: flex;
-    flex-direction: column;
-    margin: 30px;
-    width: 300px;
-    height: 350px;
-    font-size: larger;
+  background-color: white;
+  border: 3px solid #ed8a53;
+  border-radius: 30px;
+  box-shadow: 0 5px 0 lightgray;
+  display: flex;
+  flex-direction: column;
+  margin: 30px;
+  width: 300px;
+  height: 350px;
+  font-size: larger;
 
-    h2 {
-        font-size: x-large;
-        font-weight: 100;
-        margin-top: 20px;
-        margin-left:15px;
-    }
-    label {
-        margin-top: 20px;
-        margin-left:15px;
-    }
+  h2 {
+    font-size: x-large;
+    font-weight: 100;
+    margin-top: 20px;
+    margin-left: 15px;
+  }
+  label {
+    margin-top: 20px;
+    margin-left: 15px;
+  }
 
-    input {
-        margin-left: 15px;
-        margin-top: 5px;
-        width: 220px;
-        border-radius: 10px;
-    }
+  input {
+    margin-left: 15px;
+    margin-top: 5px;
+    width: 220px;
+    border-radius: 10px;
+  }
 }
 
 .register {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 
-    p{
-        margin-bottom: 0px;
-        margin-left: 20px;
-        font-size: 12px;
-    }
+  p {
+    margin-bottom: 0px;
+    margin-left: 20px;
+    font-size: 12px;
+  }
 
-    button {
-        margin-top: 1px;
-    }
+  button {
+    margin-top: 1px;
+  }
 }
 
 .registerFormText {
-    margin-left: 20px;
-    margin-top: 0;
+  margin-left: 20px;
+  margin-top: 0;
 }
 
 .registerFormWelcome {
-    margin-left: 20px;
-    margin-bottom: 0;
+  margin-left: 20px;
+  margin-bottom: 0;
 }
