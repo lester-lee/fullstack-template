@@ -1,76 +1,79 @@
-.receivedCoinHeader {
-    position: absolute;
-    top: 0;
-    background-color: #fbc59d;
-    border-radius: 10px;
-    height: 70px;
-    width: 80vw;
-    margin-top: 7px;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-
-
-    h1 {
-        margin: 20px;
-        padding: 0;
-        font-size: 3.4vh;
-        max-height: 100%;
-    }
-
-        p {
-            margin-right: 20px;
-            margin-left: 100px;
-            padding: 0;
-        }
-
+body {
+  display: flex;
+  align-items: center;
+  // min-height: 100vh;
+  flex-direction: column;
 }
-    
-.coinsSection{
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Creates 2 equal-width columns */
+
+.receivedCoinHeader {
+  background-color: #fbc59d;
+  border-radius: 10px;
+  width: 95vw;
+  height: 3em;
+  // margin-top: 7px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  h1 {
+    margin: 20px;
+    padding: 0;
+    font-size: 1.5em;
+  }
+
+  p {
+    margin-right: 20px;
+    margin-left: 100px;
+  }
+}
+
+.coinsSection {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 8px; /* Adjust the gap between items as needed */
-  margin-left: 40px;
-  margin-bottom: 20px;
-  margin-top: 20px;
+  flex-grow: 1;
+  width: 85%;
 }
 
 .coinDiv {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 15em;
+  margin: 1em;
+
+  img {
+    border-radius: 50%;
+    box-shadow: 0 5px 0 lightgray;
+    border: 6px solid white;
+    cursor: pointer;
+    margin: 3px;
+  }
+
+  img:active {
+    box-shadow: none;
+    transform: translateY(5px);
+  }
+
+  p {
+    font-size: 30px;
+  }
+
+  .remove-button {
     display: flex;
-    flex-direction: row;
     align-items: center;
-    justify-content: space-between;
-    width: 300px;
-
-    img {
-        border-radius: 20px;
-        box-shadow: 0 5px 0 lightgray;
-        border: 15px solid white;
-        cursor: pointer;
-        margin: 5px;
-    }
-
-    img:active {
-        box-shadow: none;
-        transform: translateY(5px);
-    }
-
-    p {
-        font-size: 30px;
-    }
-
-    .remove-button {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 3px;
-        padding-bottom: 7.5px;
-        background-color: red;
-        border-radius: 50%;
-        color: black;
-        font-family: Verdana, sans-serif;
-        font-size: 30px;
-        width: 20px;
-        height: 20px;
-    }
+    justify-content: center;
+    margin: 3px;
+    padding-bottom: 7.5px;
+    background-color: red;
+    border-radius: 50%;
+    color: black;
+    font-family: Verdana, sans-serif;
+    font-size: 30px;
+    width: 20px;
+    height: 20px;
+  }
 }

@@ -1,20 +1,18 @@
 .totalsBar {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    background-color: #C0DEAD;
-    border-radius: 10px;
-    //margin: 200px;
-    height: 70px;
-    width: 80vw;
-    margin-top: 45px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: #c0dead;
+  border-radius: 10px;
+  width: 95vw;
+  height: 4em;
 
-    h1 {
-        margin: 20px;
-        margin-right: 50px;
-        padding: 0;
-        font-size: 4vh;
-        max-height: 100%;
-    }
+  h1 {
+    margin: 20px;
+    margin-right: 50px;
+    padding: 0;
+    font-size: 1.5em;
+    max-height: 3em;
+  }
 }
-
