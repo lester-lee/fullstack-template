@@ -32,9 +32,9 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 8px; /* Adjust the gap between items as needed */
+  gap: 15px; /* Adjust the gap between items as needed */
   flex-grow: 1;
-  width: 85%;
+  width: 95%;
 }
 
 .coinDiv {
@@ -42,7 +42,7 @@ body {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  width: 15em;
+  width: 17em;
   margin: 1em;
 
   img {
@@ -59,7 +59,7 @@ body {
   }
 
   p {
-    font-size: 30px;
+    font-size: 25px;
   }
 
   .remove-button {
