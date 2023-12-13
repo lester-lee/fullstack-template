@@ -5,12 +5,14 @@
   border-radius: 20px;
   box-shadow: 0 5px 0 lightgray;
   background-color: white;
-  aspect-ratio: fixed;
-  width: 9em;
+  height: 11em;
+  min-width: fit-content;
+  max-width: 11em;
   img {
+    aspect-ratio: fixed;
     padding-top: 1em;
     align-self: center;
-    width: 90%;
+    width: 9em;
   }
   margin: 2em;
   cursor: pointer;
