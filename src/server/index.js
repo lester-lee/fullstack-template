@@ -26,6 +26,11 @@ const createApp = async () => {
   // Serve static HTML in production & Vite dev server in development
   if (process.env.NODE_ENV === "production") {
     app.use(express.static(path.resolve(__dirname, "../../dist/")));
+
+    // Redirect all non-API routes to the index HTML file
+    app.get("*", (req, res) => {
+      res.sendFile(path.resolve(__dirname, "../../dist/index.html"));
+    });
   } else {
     // Pulled from https://vitejs.dev/config/server-options.html#server-middlewaremode
     const vite = await createViteServer({
