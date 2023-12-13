@@ -21,4 +21,4 @@ The Counter Amounter application is built using a combination of technologies ch
 - **Express and Node:** Power the backend server, enabling data storage and manipulation, and facilitating communication between the front-end and the database.
 - **SQLite:** Serves as the lightweight database, providing efficient storage for inventory and user information.
 
-  By leveraging the strengths of these technologies, Counter Amounter delivers a valuable tool for individuals seeking to develop their cash register skills and enhance their employment opportunities.
+By leveraging the strengths of these technologies, Counter Amounter delivers a valuable tool for individuals seeking to develop their cash register skills and enhance their employment opportunities.
