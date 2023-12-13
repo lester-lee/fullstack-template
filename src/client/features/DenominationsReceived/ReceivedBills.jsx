@@ -76,7 +76,7 @@ const ReceivedBills = () => {
         </div>
         <section className="billsSection">
           {Object.entries(bills).map(([billValue, count]) => {
-            const billSrc = `src/client/assets/images/${billValue}-dollar-bill.jpeg`;
+            const billSrc = `../../assets/images/${billValue}-dollar-bill.jpeg`;
             return (
               <div className="billDiv" key={billValue}>
                 <img
