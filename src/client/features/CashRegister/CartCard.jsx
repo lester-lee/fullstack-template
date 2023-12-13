@@ -2,6 +2,9 @@ import { useDispatch } from "react-redux";
 import { removeFromCart } from "./cartSlice";
 import "./CartCard.scss";
 
+/**
+ *
+ */
 const CartCard = ({ product }) => {
   const { name, price, quantity } = product;
 
