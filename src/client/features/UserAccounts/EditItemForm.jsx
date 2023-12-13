@@ -1,36 +1,38 @@
 import { useState, useEffect } from "react";
-import { useEditProductMutation, useGetProductQuery } from "../CashRegister/productsSlice";
+import {
+  useEditProductMutation,
+  useGetProductQuery,
+} from "../CashRegister/productsSlice";
 
 const EditProduct = ({ id }) => {
+  const [name, setName] = useState("");
+  const [price, setPrice] = useState("");
+  const [imgUrl, setImgUrl] = useState("");
+  const [category, setCategory] = useState("");
 
-    const [name, setName] = useState("");
-    const [price, setPrice] = useState("");
-    const [imgUrl, setImgUrl] = useState("");
-    const [category, setCategory] = useState("");
+  const [editItem] = useEditProductMutation();
 
-    const [editItem] = useEditProductMutation();
+  //to pull data to populate form fields
+  const productQuery = useGetProductQuery(id);
+  const productData = productQuery.data;
 
-    //to pull data to populate form fields
-    const productQuery = useGetProductQuery(id);
-    const productData = productQuery.data;
+  useEffect(() => {
+    // Set state variables with the fetched data
+    if (productData) {
+      setName(productData.name);
+      setPrice(productData.price);
+      setImgUrl(productData.imgUrl);
+      setCategory(productData.category);
+    } // Dependency array to re-run effect when ID changes
+  }, [productData]);
 
-    useEffect(() => {
-          // Set state variables with the fetched data
-          if (productData) {
-            setName(productData.name);
-            setPrice(productData.price);
-            setImgUrl(productData.imgUrl);
-            setCategory(productData.category);
-          } // Dependency array to re-run effect when ID changes
-        }, [productData]);
-
-    const product = {
-        id,
-        name,
-        price,
-        imgUrl,
-        category
-    };
+  const product = {
+    id,
+    name,
+    price,
+    imgUrl,
+    category,
+  };
 
   const update = async (evt) => {
     evt.preventDefault();
@@ -41,7 +43,7 @@ const EditProduct = ({ id }) => {
     <section>
       <form onSubmit={update}>
         <label className="update-name">
-          Name
+          Name:
           <input
             type="text"
             value={name}
@@ -50,7 +52,7 @@ const EditProduct = ({ id }) => {
           ></input>
         </label>
         <label className="update-price">
-          Price
+          Price:
           <input
             type="float"
             value={price}
@@ -68,7 +70,7 @@ const EditProduct = ({ id }) => {
           ></input>
         </label>
         <label className="update-category">
-          Category
+          Category:
           <input
             type="text"
             value={category}
@@ -80,6 +82,6 @@ const EditProduct = ({ id }) => {
       </form>
     </section>
   );
-}
+};
 
 export default EditProduct;
