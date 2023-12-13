@@ -15,10 +15,10 @@ Counter Amounter is an accessibility app designed to assist individuals with int
 
 ## Stack: SQLite, Express, React, Node
 
-The Counter Amounter application is built using a combination of technologies chosen for thier specific strengths and suitability for the project's objectives:
+The Counter Amounter application is built using a combination of technologies chosen for their specific strengths and suitability for the project's objectives:
 
 - **React:** Provides a dynamic and interactive user interface, allowing for a smooth and engaging user experience.
 - **Express and Node:** Power the backend server, enabling data storage and manipulation, and facilitating communication between the front-end and the database.
 - **SQLite:** Serves as the lightweight database, providing efficient storage for inventory and user information.
 
-  By leveraging the stengths of these technologies, Counter Amounter delivers a valuable tool for individuals seeking to develop their cash register skills and enhance their employment opportunities.
+  By leveraging the strengths of these technologies, Counter Amounter delivers a valuable tool for individuals seeking to develop their cash register skills and enhance their employment opportunities.
