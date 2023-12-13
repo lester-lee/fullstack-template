@@ -10,7 +10,7 @@ import {
 import { useGetStoreDetailsQuery } from "./authSlice";
 import { useGetProductsByStoreIdQuery } from "../CashRegister/productsSlice";
 import { skipToken } from "@reduxjs/toolkit/query";
-import "./EditUserStore.scss";
+import "./EditUserstore.scss";
 
 // page allows administrators to add and edit products in their store
 const EditUserStore = () => {
@@ -147,6 +147,7 @@ const EditUserStore = () => {
               </div>
             </section>
             <footer className="buttonDiv">
+            <button onClick={() => navigate("/")}>Home</button>
               <button onClick={() => handleLogout()}>Log Out</button>
 
               <button

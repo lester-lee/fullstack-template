@@ -2,6 +2,8 @@
 
 ## Introduction
 
+[Counter Amounter](https://counter-amounter.onrender.com)
+
 Counter Amounter is an accessibility app designed to assist individuals with intellectual disabilities and other students in learning and practicing cash register operations, including counting change and interacting with customers. It provides a simulated environment that fosters skill development in a safe and supportive setting.
 
 ## Key Features
@@ -13,11 +15,11 @@ Counter Amounter is an accessibility app designed to assist individuals with int
 - **Social Interaction Training:** Includes prompts and suggestions for interacting with customers, encouraging social competency development.
 - **Administrator Control Panel:** Enables educators or administrators to customize the app by adding or editing inventory items and prompts to cater to individual needs and learning objectives.
 
-## Stack: SQLite, Express, React, Node
+## Stack: SQLite, Express, React, Redux, Node
 
 The Counter Amounter application is built using a combination of technologies chosen for their specific strengths and suitability for the project's objectives:
 
-- **React:** Provides a dynamic and interactive user interface, allowing for a smooth and engaging user experience.
+- **React and Redux:** Provides a dynamic and interactive user interface, allowing for a smooth and engaging user experience.
 - **Express and Node:** Power the backend server, enabling data storage and manipulation, and facilitating communication between the front-end and the database.
 - **SQLite:** Serves as the lightweight database, providing efficient storage for inventory and user information.
 
