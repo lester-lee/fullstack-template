@@ -1,5 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+/**
+ * The initial state of the cart slice.
+ * @typedef {Object} CartState
+ * @property {number} totalPrice - The total price of all items in the cart.
+ * @property {number} totalReceived - The total amount of money received from the customer.
+ * @property {number} changeToGive - The amount of change to give to the customer.
+ * @property {Object} calculatedChange - An object containing the breakdown of the change to be given.
+ * @property {Array.<Object>} cartItems - An array of objects representing the items in the cart. Each object should have the following properties:
+ *   * id: The unique identifier of the product.
+ *   * name: The name of the product.
+ *   * price: The price of the product.
+ *   * quantity: The quantity of the product in the cart.
+ */
 const initialState = {
   totalPrice: 0,
   totalReceived: 0,
@@ -8,19 +21,38 @@ const initialState = {
   cartItems: [],
 };
 
+/**
+ * A slice of the Redux store that manages the state of the cart.
+ * @typedef {Object} CartSlice
+ * @property {string} name - The name of the slice.
+ * @property {CartState} initialState - The initial state of the slice.
+ * @property {Object.<string, Function>} reducers - An object containing the reducers for the slice.
+ *   * addToCart: Adds a product to the cart.
+ *   * removeFromCart: Removes a product from the cart.
+ *   * addTotalReceived: Adds the amount of money received from the customer to the total.
+ *   * subtractTotalReceived: Subtracts the amount of money refunded to the customer from the total.
+ *   * addCalculatedChange: Adds the calculated change to the state.
+ *   * setChangeToGive: Sets the amount of change to give to the customer.
+ *   * resetCart: Resets the cart state to its initial state.
+ */
 const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
+    /**
+     * Adds a product to the cart. If the product already exists in the
+     * cart, the quanity of the product will be increased appropriately.
+     * @param {CartState} state - The current state of the cart.
+     * @param {Object} action - The action object.
+     * @param {Object} action.payload - The product to add to the cart.
+     */
     addToCart: (state, action) => {
-      //product object for use in price calculation and cart cards
       const product = action.payload;
 
-      // Check if the product is a duplicate of an item already in the cart
       const existingCartItem = state.cartItems.find(
         (cartItem) => cartItem.id === product.id
       );
-      // If product already exists in the cart update quantity and total price
+
       if (existingCartItem) {
         existingCartItem.quantity++;
         console.log(
@@ -28,23 +60,26 @@ const cartSlice = createSlice({
         );
         state.totalPrice += product.price;
       } else {
-        // If product not already in cart, add to cart and give quantity of 1
         state.cartItems.push({ ...product, quantity: 1 });
         state.totalPrice += product.price;
         console.log(product.name, "added to cart");
       }
     },
+    /**
+     * Removes a product from the cart. If there is more than one instance
+     * of the product, the quantity will be decreased appropriately.
+     * @param {CartState} state - The current state of the cart.
+     * @param {Object} action - The action object.
+     * @param {Object} action.payload - The product to remove from the cart.
+     */
     removeFromCart: (state, action) => {
-      //product object for use in price calculation and cart cards
       const product = action.payload;
 
-      // Look for product in cart
       const cartIndex = state.cartItems.findIndex(
         (cartItem) => cartItem.id === product.id
       );
       const cartItem = state.cartItems[cartIndex];
 
-      // If product exists in the cart and there are more than one, reduce quanitiy
       if (cartIndex !== -1) {
         if (cartItem.quantity > 1) {
           cartItem.quantity--;
@@ -54,7 +89,6 @@ const cartSlice = createSlice({
           state.totalPrice -= product.price;
           console.log(cartItem.name, "quantity updated");
         } else {
-          // If there is only one of the product in cart, remove from cart
           state.cartItems.splice(cartIndex, 1);
           console.log(
             `${product.price} deducted from total of ${state.totalPrice} for ${product.name}`
