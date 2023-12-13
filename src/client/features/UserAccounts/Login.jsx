@@ -50,11 +50,13 @@ const Login = () => {
         />
         <button className="form-button">Log In</button>
       </form>
+      <section className="nav-butons">
       <div className="register">
-        <p>Don't have a store yet? Register here:</p>
+        <p>Don't have a store yet? <br/> Register here:</p>
         <button onClick={() => navigate("/register")}>Register</button>
-        <button onClick={() => navigate("/")}>Home</button>
       </div>
+      <button onClick={() => navigate("/")}>Home</button>
+      </section>
     </>
   );
 };
