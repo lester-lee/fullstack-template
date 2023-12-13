@@ -18,6 +18,22 @@ import Popup from "../Popup/Popup";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 
+import dollarBill1 from "../../assets/images/1-dollar-bill.jpeg";
+import dollarBill5 from "../../assets/images/5-dollar-bill.jpeg";
+import dollarBill10 from "../../assets/images/10-dollar-bill.jpeg";
+import dollarBill20 from "../../assets/images/20-dollar-bill.jpeg";
+import dollarBill50 from "../../assets/images/50-dollar-bill.jpeg";
+import dollarBill100 from "../../assets/images/100-dollar-bill.jpeg";
+
+const images = {
+  dollarBill1,
+  dollarBill5,
+  dollarBill10,
+  dollarBill20,
+  dollarBill50,
+  dollarBill100,
+};
+
 const ReceivedBills = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -76,7 +92,7 @@ const ReceivedBills = () => {
         </div>
         <section className="billsSection">
           {Object.entries(bills).map(([billValue, count]) => {
-            const billSrc = `src/client/assets/images/${billValue}-dollar-bill.jpeg`;
+            const billSrc = images[`dollarBill${billValue}`];
             return (
               <div className="billDiv" key={billValue}>
                 <img
