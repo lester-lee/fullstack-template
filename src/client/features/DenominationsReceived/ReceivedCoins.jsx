@@ -15,11 +15,13 @@ import {
   addTotalReceived,
   subtractTotalReceived,
   addCalculatedChange,
+  setChangeToGive,
 } from "../CashRegister/cartSlice";
 import { useState } from "react";
 
 import calculateChange from "./changeCalculation";
-import "../../assets/images/images.scss";
+import "./Denomination.scss";
+import "./ReceivedCoins.scss";
 import Totalbar from "../TotalsBar/TotalsBar";
 import Popup from "../Popup/Popup";
 
@@ -27,11 +29,13 @@ const ReceivedCoins = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [dollarCoins, setDollarCoins] = useState(0);
-  const [quarters, setQuarters] = useState(0);
-  const [dimes, setDimes] = useState(0);
-  const [nickels, setNickels] = useState(0);
-  const [pennies, setPennies] = useState(0);
+  const [coins, setCoins] = useState({
+    100: 0,
+    25: 0,
+    10: 0,
+    5: 0,
+    1: 0,
+  });
 
   const totalPrice = useSelector((state) => state.cart.totalPrice);
 
@@ -39,159 +43,92 @@ const ReceivedCoins = () => {
 
   const changeToGive = totalReceived - totalPrice;
 
+  //Popup:
+  const [buttonPopup, setButtonPopup] = useState(false);
+
+  // Increase quantity of coin clicked and increase total value recieved
+  const handleCoinClick = (coinValue) => {
+    // Add coin to denomination count
+    setCoins((prevCoins) => ({
+      ...prevCoins,
+      [coinValue]: prevCoins[coinValue] + 1,
+    }));
+    // Increase total value recieved
+    dispatch(addTotalReceived(coinValue / 100));
+  };
+
+  // Remove quantity of coin clicked and subtract from total value recieved
+  const handleCoinRemovalClick = (coinValue) => {
+    // Remove coin from denominatoin count
+    setCoins((prevCoins) => ({
+      ...prevCoins,
+      [coinValue]: prevCoins[coinValue] - 1,
+    }));
+    // Decrease total value recieved
+    dispatch(subtractTotalReceived(coinValue / 100));
+  };
+
   const handleClick = () => {
     const result = calculateChange(changeToGive);
     dispatch(addCalculatedChange({ changeObject: result }));
+    dispatch(setChangeToGive(changeToGive));
     if (changeToGive < 0) {
       setButtonPopup(true);
     } else {
       navigate("/change");
     }
   };
-  //Popup:
-  const [buttonPopup, setButtonPopup] = useState(false);
 
   return (
     <>
-      <div className="totalbar">
-        <Totalbar />
-      </div>
-      <h1>Received Coins page</h1>
-
-      {/* dollar coins */}
-      <img
-        src="src/client/assets/images/dollar-coin.jpeg"
-        alt="dollar-coin"
-        className="coins dollar-coin"
-        onClick={() => {
-          dispatch(addTotalReceived({ value: 1 }));
-          setDollarCoins(dollarCoins + 1);
-        }}
-      />
-      {dollarCoins > 0 ? (
-        <>
-          <p>x {dollarCoins}</p>
-          <button
-            className="minus-button"
-            onClick={() => {
-              setDollarCoins(dollarCoins - 1);
-              dispatch(subtractTotalReceived({ value: 1 }));
-            }}
-          >
-            -
-          </button>
-        </>
-      ) : null}
-      <br />
-      {/* quarters */}
-      <img
-        src="src/client/assets/images/quarter.jpeg"
-        alt="quarter"
-        className="coins quarter"
-        onClick={() => {
-          dispatch(addTotalReceived({ value: 0.25 }));
-          setQuarters(quarters + 1);
-        }}
-      />
-      {quarters > 0 ? (
-        <>
-          <p>x {quarters}</p>
-          <button
-            className="minus-button"
-            onClick={() => {
-              setQuarters(quarters - 1);
-              dispatch(subtractTotalReceived({ value: 0.25 }));
-            }}
-          >
-            -
-          </button>
-        </>
-      ) : null}
-      <br />
-      {/* dimes */}
-      <img
-        src="src/client/assets/images/dime.jpeg"
-        alt="dime"
-        className="coins dime"
-        onClick={() => {
-          dispatch(addTotalReceived({ value: 0.1 }));
-          setDimes(dimes + 1);
-        }}
-      />
-      {dimes > 0 ? (
-        <>
-          <p>x {dimes}</p>
-          <button
-            className="minus-button"
-            onClick={() => {
-              setDimes(dimes - 1);
-              dispatch(subtractTotalReceived({ value: 0.1 }));
-            }}
-          >
-            -
-          </button>
-        </>
-      ) : null}
-      <br />
-      {/* nickels */}
-      <img
-        src="src/client/assets/images/nickel.jpeg"
-        alt="nickel"
-        className="coins nickel"
-        onClick={() => {
-          dispatch(addTotalReceived({ value: 0.05 }));
-          setNickels(nickels + 1);
-        }}
-      />
-      {nickels > 0 ? (
-        <>
-          <p>x {nickels}</p>
-          <button
-            className="minus-button"
-            onClick={() => {
-              setNickels(nickels - 1);
-              dispatch(subtractTotalReceived({ value: 0.05 }));
-            }}
-          >
-            -
-          </button>
-        </>
-      ) : null}
-      <br />
-      {/* pennies */}
-      <img
-        src="src/client/assets/images/penny.jpeg"
-        alt="penny"
-        className="coins penny"
-        onClick={() => {
-          dispatch(addTotalReceived({ value: 0.01 }));
-          setPennies(pennies + 1);
-        }}
-      />
-      {pennies > 0 ? (
-        <>
-          <p>x {pennies}</p>
-          <button
-            className="minus-button"
-            onClick={() => {
-              setPennies(pennies - 1);
-              dispatch(subtractTotalReceived({ value: 0.01 }));
-            }}
-          >
-            -
-          </button>
-        </>
-      ) : null}
-      <br />
-      <button onClick={handleClick}>Next</button>
-      {/* Popup: */}
-      <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
-        <h1 className="popup-header">Tell the customer:</h1>
-        <p className="popup-para">
-          It looks like the cost is more than what you paid, please provide more
-          cash. Thanks!
-        </p>
-      </Popup>
+      <body>
+        <div className="receivedCoinHeader">
+          <h1 className="receivedHeaderText">Received Coins</h1>
+          <p>Click on each coin that you received from the customer</p>
+        </div>
+        <div className="totalbar">
+          <Totalbar />
+        </div>
+        <section className="coinsSection">
+          {Object.entries(coins).map(([coinValue, count]) => {
+            const coinSrc = `src/client/assets/images/${coinValue}-cent-coin.jpeg`;
+            return (
+              <div className="coinDiv" key={coinValue}>
+                <img
+                  src={coinSrc}
+                  alt={`${coinValue}-cent-coin`}
+                  className={`coins coin-${coinValue}-cent`}
+                  onClick={() => handleCoinClick(coinValue)}
+                />
+                {count > 0 && (
+                  <>
+                    <p>x {count}</p>
+                    <button
+                      className="remove-button"
+                      onClick={() => handleCoinRemovalClick(coinValue)}
+                    >
+                      -
+                    </button>
+                  </>
+                )}
+                <br />
+              </div>
+            );
+          })}
+        </section>
+        <footer>
+          <button onClick={() => navigate("/received-bills")}>Back</button>
+          <button onClick={handleClick}>Next</button>
+        </footer>
+        {/* Popup: */}
+        <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
+          <h1 className="popup-header">Tell the customer:</h1>
+          <p className="popup-para">
+            It looks like the cost is more than what you paid, please provide
+            more cash. Thanks!
+          </p>
+        </Popup>
+      </body>
     </>
   );
 };

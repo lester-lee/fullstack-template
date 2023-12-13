@@ -1,5 +1,30 @@
 body {
-  max-width: 70ch;
-  margin: 0 auto;
-  padding: 0.5rem;
+  background-color: #fff4c7;
+  font-family: Verdana, sans-serif;
+  padding: 1em;
+}
+
+h1 {
+  font-size: 30px;
+  font-weight: 300;
+}
+p {
+  font-size: 15px;
+}
+
+input {
+  height: 2em;
+}
+
+button {
+  background-color: #ffaa6f;
+  border-radius: 10px;
+  padding: 4px;
+  margin: 5px;
+  cursor: pointer;
+  width: 100px;
+  height: 50px;
+  font-family: Verdana, sans-serif;
+  font-size: 95%;
+  border-width: 0;
 }

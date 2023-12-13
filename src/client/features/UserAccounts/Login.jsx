@@ -1,12 +1,18 @@
 import { useState } from "react";
 import { useLoginMutation } from "./authSlice.js";
+import { useNavigate } from "react-router-dom";
+import "./Login.scss";
 
-export default function Login() {
+// Login Form
+const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
+  //calls LOGIN endpoint
   const [login] = useLoginMutation();
 
+  // awaits successful LOGIN, and navigates to edit page
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -14,12 +20,20 @@ export default function Login() {
     } catch (err) {
       next(err);
     }
+    navigate("/edit");
   };
 
   return (
     <>
-      <h1>Login Page</h1>
+      <div className="loginHeader">
+        <h1>Login</h1>
+        <p>Log in to your store, or register to create a new store</p>
+      </div>
       <form className="login-form" onSubmit={handleSubmit}>
+        <h2>
+          Welcome! <br />
+          Please log in!
+        </h2>
         <label className="form-labels">Username: </label>
         <input
           className="form-inputs"
@@ -36,6 +50,12 @@ export default function Login() {
         />
         <button className="form-button">Log In</button>
       </form>
+      <div className="register">
+        <p>Don't have a store yet? Register here:</p>
+        <button onClick={() => navigate("/register")}>Register</button>
+      </div>
     </>
   );
-}
+};
+
+export default Login;

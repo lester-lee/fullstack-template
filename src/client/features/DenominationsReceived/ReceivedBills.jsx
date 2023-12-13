@@ -2,7 +2,8 @@
 // onClick the picture, it adds value to total received (connected to navBar (shared state))
 // a delete button
 // next button
-import "../../assets/images/images.scss";
+import "./Denomination.scss";
+import "./ReceivedBills.scss";
 
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -21,12 +22,15 @@ const ReceivedBills = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [hundreds, setHundreds] = useState(0);
-  const [fifties, setFifties] = useState(0);
-  const [twenties, setTwenties] = useState(0);
-  const [tens, setTens] = useState(0);
-  const [fives, setFives] = useState(0);
-  const [ones, setOnes] = useState(0);
+  // Inialize demonimation state object
+  const [bills, setBills] = useState({
+    100: 0,
+    50: 0,
+    20: 0,
+    10: 0,
+    5: 0,
+    1: 0,
+  });
 
   //Popup: to show the total in the popup
   const { totalPrice } = useSelector((state) => state.cart);
@@ -38,169 +42,81 @@ const ReceivedBills = () => {
     }, 200);
   }, []);
 
+  // Increase quantity of bill clicked and increase total value recieved
+  const handleBillClick = (billValue) => {
+    // Add bill to denomination count
+    setBills((prevBills) => ({
+      ...prevBills,
+      [billValue]: prevBills[billValue] + 1,
+    }));
+    // Increase total value recieved
+    dispatch(addTotalReceived(billValue));
+  };
+
+  // Remove quantity of bill clicked and subtract from total value recieved
+  const handleBillRemovalClick = (billValue) => {
+    // Remove bill from denomination count
+    setBills((prevBills) => ({
+      ...prevBills,
+      [billValue]: prevBills[billValue] - 1,
+    }));
+    // Decrease total value recieved
+    dispatch(subtractTotalReceived(billValue));
+  };
+
   return (
     <>
-      <Popup trigger={timedPopup} setTrigger={setTimedPopup}>
-        <h1 className="popup-header">Tell the customer:</h1>
-        <p className="popup-para">
-          Your total today is ${totalPrice.toFixed(2)}
-        </p>
-      </Popup>
-      <div className="totalbar">
-        <Totalbar />
-      </div>
-      <h1>Received Bills page</h1>
-      {/* hundreds */}
-      <img
-        src="src/client/assets/images/hundred-dollar-bill.jpeg"
-        alt="hundred-dollar-bill"
-        className="bills"
-        onClick={() => {
-          dispatch(addTotalReceived({ value: 100 }));
-          setHundreds(hundreds + 1);
-        }}
-      />
-      {hundreds > 0 ? (
-        <>
-          <p>x {hundreds}</p>
+      <body>
+        <div className="receivedBillHeader">
+          <h1 className="receivedHeaderText">Received Bills</h1>
+          <p>Click on each bill that you received from the customer</p>
+        </div>
+        <div className="totalbar">
+          <Totalbar />
+        </div>
+        <section className="billsSection">
+          {Object.entries(bills).map(([billValue, count]) => {
+            const billSrc = `src/client/assets/images/${billValue}-dollar-bill.jpeg`;
+            return (
+              <div className="billDiv" key={billValue}>
+                <img
+                  src={billSrc}
+                  alt={`${billValue}-dollar-bill`}
+                  className="bills"
+                  onClick={() => handleBillClick(billValue)}
+                />
+                {count > 0 && (
+                  <>
+                    <p>x {count}</p>
+                    <button
+                      className="remove-button"
+                      onClick={() => handleBillRemovalClick(billValue)}
+                    >
+                      -
+                    </button>
+                  </>
+                )}
+                <br />
+              </div>
+            );
+          })}
+        </section>
+        <footer>
+          <button onClick={() => navigate("/products")}>Back</button>
           <button
-            className="minus-button"
-            onClick={() => {
-              setHundreds(hundreds - 1);
-              dispatch(subtractTotalReceived({ value: 100 }));
-            }}
+            className="receivedBillNextButton"
+            onClick={() => navigate("/received-coins")}
           >
-            -
+            Next
           </button>
-        </>
-      ) : null}
-      <br />
-      {/* fifties */}
-      <img
-        src="src/client/assets/images/fifty-dollar-bill.jpeg"
-        alt="fifty-dollar-bill"
-        className="bills"
-        onClick={() => {
-          dispatch(addTotalReceived({ value: 50 }));
-          setFifties(fifties + 1);
-        }}
-      />
-      {fifties > 0 ? (
-        <>
-          <p>x {fifties}</p>
-          <button
-            className="minus-button"
-            onClick={() => {
-              setFifties(fifties - 1);
-              dispatch(subtractTotalReceived({ value: 50 }));
-            }}
-          >
-            -
-          </button>
-        </>
-      ) : null}
-      <br />
-      {/* twenties */}
-      <img
-        src="src/client/assets/images/twenty-dollar-bill.jpeg"
-        alt="twenty-dollar-bill"
-        className="bills"
-        onClick={() => {
-          dispatch(addTotalReceived({ value: 20 }));
-          setTwenties(twenties + 1);
-        }}
-      />
-      {twenties > 0 ? (
-        <>
-          <p>x {twenties}</p>
-          <button
-            className="minus-button"
-            onClick={() => {
-              setTwenties(twenties - 1);
-              dispatch(subtractTotalReceived({ value: 20 }));
-            }}
-          >
-            -
-          </button>
-        </>
-      ) : null}
-      <br />
-      {/* tens */}
-      <img
-        src="src/client/assets/images/ten-dollar-bill.jpg"
-        alt="ten-dollar-bill"
-        className="bills"
-        onClick={() => {
-          dispatch(addTotalReceived({ value: 10 }));
-          setTens(tens + 1);
-        }}
-      />
-      {tens > 0 ? (
-        <>
-          <p>x {tens}</p>
-          <button
-            className="minus-button"
-            onClick={() => {
-              setTens(tens - 1);
-              dispatch(subtractTotalReceived({ value: 10 }));
-            }}
-          >
-            -
-          </button>
-        </>
-      ) : null}
-      <br />
-      {/* fives */}
-      <img
-        src="src/client/assets/images/five-dollar-bill.jpg"
-        alt="five-dollar-bill"
-        className="bills"
-        onClick={() => {
-          dispatch(addTotalReceived({ value: 5 }));
-          setFives(fives + 1);
-        }}
-      />
-      {fives > 0 ? (
-        <>
-          <p>x {fives}</p>
-          <button
-            className="minus-button"
-            onClick={() => {
-              setFives(fives - 1);
-              dispatch(subtractTotalReceived({ value: 5 }));
-            }}
-          >
-            -
-          </button>
-        </>
-      ) : null}
-      <br />
-      {/* singles */}
-      <img
-        src="src/client/assets/images/one-dollar-bill.jpg"
-        alt="one-dollar-bill"
-        className="bills"
-        onClick={() => {
-          dispatch(addTotalReceived({ value: 1 }));
-          setOnes(ones + 1);
-        }}
-      />
-      {ones > 0 ? (
-        <>
-          <p>x {ones}</p>
-          <button
-            className="minus-button"
-            onClick={() => {
-              setOnes(ones - 1);
-              dispatch(subtractTotalReceived({ value: 1 }));
-            }}
-          >
-            -
-          </button>
-        </>
-      ) : null}
-      <br />
-      <button onClick={() => navigate("/received-coins")}>Next</button>
+        </footer>
+        <Popup trigger={timedPopup} setTrigger={setTimedPopup}>
+          <h1 className="popup-header">Tell the customer:</h1>
+          <p className="popup-para">
+            Your total today is ${totalPrice.toFixed(2)}
+          </p>
+        </Popup>
+      </body>
     </>
   );
 };

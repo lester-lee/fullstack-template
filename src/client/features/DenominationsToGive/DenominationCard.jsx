@@ -1,3 +1,5 @@
+import "./DenominationCard.scss";
+
 const DenominationCard = ({ denomination, value }) => {
   // variables to be set in if statements
   let imgSrc = null;
@@ -6,47 +8,48 @@ const DenominationCard = ({ denomination, value }) => {
   // determines img and className to associate with key/value pairs
   const determineImg = () => {
     if (denomination === "Twenties") {
-      imgSrc = "src/client/assets/images/twenty-dollar-bill.jpeg";
+      imgSrc = "src/client/assets/images/20-dollar-bill.jpeg";
       className = "bills";
     }
     if (denomination === "Tens") {
-      imgSrc = "src/client/assets/images/ten-dollar-bill.jpg";
+      imgSrc = "src/client/assets/images/10-dollar-bill.jpeg";
       className = "bills";
     }
     if (denomination === "Fives") {
-      imgSrc = "src/client/assets/images/five-dollar-bill.jpg";
+      imgSrc = "src/client/assets/images/5-dollar-bill.jpeg";
       className = "bills";
     }
     if (denomination === "Singles") {
-      imgSrc = "src/client/assets/images/one-dollar-bill.jpg";
+      imgSrc = "src/client/assets/images/1-dollar-bill.jpeg";
       className = "bills";
     }
     if (denomination === "Quarters") {
-      imgSrc = "src/client/assets/images/quarter.jpeg";
-      className = "coins quarter";
+      imgSrc = "src/client/assets/images/25-cent-coin.jpeg";
+      className = "coins coin-25-cent";
     }
     if (denomination === "Dimes") {
-      imgSrc = "src/client/assets/images/dime.jpeg";
-      className = "coins dime";
+      imgSrc = "src/client/assets/images/10-cent-coin.jpeg";
+      className = "coins coin-10-cent";
     }
     if (denomination === "Nickels") {
-      imgSrc = "src/client/assets/images/Nickel.jpeg";
-      className = "coins nickel";
+      imgSrc = "src/client/assets/images/5-cent-coin.jpeg";
+      className = "coins coin-5-cent";
     }
     if (denomination === "Pennies") {
-      imgSrc = "src/client/assets/images/penny.jpeg";
-      className = "coins penny";
+      imgSrc = "src/client/assets/images/1-cent-coin.jpeg";
+      className = "coins coin-1-cent";
     }
   };
 
   determineImg();
 
   return (
-    <ul className="denomination-card">
-      <h4>{denomination}: </h4>
-      <p>{value}</p>
+    <section className="denomination-card">
       <img className={className} src={imgSrc} />
-    </ul>
+      <h4>
+        {denomination}: {value}
+      </h4>
+    </section>
   );
 };
 

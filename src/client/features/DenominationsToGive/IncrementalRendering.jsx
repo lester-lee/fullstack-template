@@ -4,12 +4,13 @@ import { useSelector } from "react-redux";
 import Totalbar from "../TotalsBar/TotalsBar";
 import DenominationCard from "./DenominationCard";
 
-import "../../assets/images/images.scss";
+import "../DenominationsReceived/Denomination.scss";
+import "./IncrementalRendering.scss";
 
 // finds denominations with values > 0, and renders one at a time (onClick)
 const IncrementalRendering = () => {
   //gets calculatedChange object from redux store
-  const calculatedChange = useSelector((state) => state.cart.calculatedChange);
+  const { calculatedChange, changeToGive } = useSelector((state) => state.cart);
 
   const navigate = useNavigate();
 
@@ -37,28 +38,44 @@ const IncrementalRendering = () => {
 
   return (
     <>
-      <div className="totalbar">
-        <Totalbar />
-      </div>
-      {renderedDenomination ? (
-        <>
-          <div>
-            <DenominationCard
-              denomination={renderedDenomination}
-              value={renderedValue}
-            />
+      <body>
+        <section className="combinedHeading">
+          <div className="changeHeader">
+            <h1>Change</h1>
+            <p className="changeP">
+              Give each customer the bills and coins below
+            </p>
           </div>
-          {/* conditional to only display next button if there is another denomination/value to show */}
-          {index + 2 < renderingArray.length ? (
-            <button onClick={() => setIndex(index + 2)}>Next</button>
-          ) : null}
-          <button onClick={() => navigate("/total-change")}>
-            View total change
-          </button>
-        </>
-      ) : (
-        <button onClick={() => navigate("/")}>Home</button>
-      )}
+          <br />
+          <div className="totalbar">
+            <Totalbar />
+          </div>
+        </section>
+        <h3>Total Change Due: ${changeToGive.toFixed(2)}</h3>
+        {renderedDenomination ? (
+          <>
+            <div className="card">
+              <DenominationCard
+                denomination={renderedDenomination}
+                value={renderedValue}
+              />
+            </div>
+            <footer>
+              <button onClick={() => navigate("/received-coins")}>Back</button>
+              {/* conditional to only display next button if there is another denomination/value to show */}
+              <div className="changeButtonDiv">
+                {index + 2 < renderingArray.length ? (
+                  <button onClick={() => setIndex(index + 2)}>Next</button>
+                ) : null}
+
+                <button onClick={() => navigate("/total-change")}>Total</button>
+              </div>
+            </footer>
+          </>
+        ) : (
+          <button onClick={() => navigate("/")}>Home</button>
+        )}
+      </body>
     </>
   );
 };

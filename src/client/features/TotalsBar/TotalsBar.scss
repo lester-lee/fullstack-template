@@ -1,0 +1,18 @@
+.totalsBar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: #c0dead;
+  border-radius: 10px;
+  width: 95vw;
+  height: 4em;
+
+  h1 {
+    margin: 20px;
+    margin-right: 50px;
+    padding: 0;
+    font-size: 1.5em;
+    max-height: 3em;
+  }
+}
