@@ -4,6 +4,11 @@
   align-items: center;
   justify-content: space-between;
 
+  .coins {
+    border-radius: 50%;
+    border: 6px solid white;
+  }
+
   img {
     border-radius: 20px;
     box-shadow: 0 5px 0 lightgray;

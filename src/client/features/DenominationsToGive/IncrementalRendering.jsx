@@ -58,6 +58,12 @@ const IncrementalRendering = () => {
               <DenominationCard
                 denomination={renderedDenomination}
                 value={renderedValue}
+                className={
+                  renderedDenomination ===
+                  ("Quarters" || "Dimes" || "Nickels" || "Pennies")
+                    ? "coins"
+                    : "bills"
+                }
               />
             </div>
             <footer>
